@@ -1378,10 +1378,10 @@ export const quizData: QuizQuestion[] = [
         id: 115,
         question: "(Python/sklearn) Jak w scikit-learn obliczyć punkty krzywej ROC (FPR, TPR, progi) dla klasyfikatora binarnego?",
         options: [
-            "Użyć sklearn.metrics.roc curve(y true, y score).",
-            "Użyć sklearn.metrics.roc auc score(y true, y score).",
-            "Użyć sklearn.metrics.classificatio report.",
-            "Użyć sklearn.metrics.precision recall curve(y true, y score).",
+            "Użyć sklearn.metrics.roc_curve(y_true, y_score).",
+            "Użyć sklearn.metrics.roc_auc_score(y_true, y_score).",
+            "Użyć sklearn.metrics.classificatio_report.",
+            "Użyć sklearn.metrics.precision recall_curve(y true, y score).",
             "Policzyć sklearn.metrics.confusion matrix i odczytać z niej bezpośrednio całą krzywą.",
         ],
         correct: [0]

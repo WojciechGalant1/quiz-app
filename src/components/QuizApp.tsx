@@ -303,8 +303,8 @@ const QuizApp = () => {
                                     <button
                                         onClick={() => loadPool('Wszystkie pytania')}
                                         className={`w-full p-4 rounded-xl text-left border-2 transition-all flex items-center justify-between ${activePoolName === 'Wszystkie pytania'
-                                                ? 'bg-purple-500/30 border-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.2)]'
-                                                : 'bg-white/5 border-white/10 hover:border-white/30'
+                                            ? 'bg-purple-500/30 border-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.2)]'
+                                            : 'bg-white/5 border-white/10 hover:border-white/30'
                                             }`}
                                     >
                                         <span className="text-white font-medium">Baza główna (~150 pytań)</span>
@@ -321,8 +321,8 @@ const QuizApp = () => {
                                                     key={pool.filename}
                                                     onClick={() => loadPool(pool.name, true)}
                                                     className={`p-4 rounded-xl text-left border-2 transition-all flex items-center justify-between ${activePoolName === pool.name
-                                                            ? 'bg-blue-500/30 border-blue-400'
-                                                            : 'bg-white/5 border-white/10 hover:border-white/30'
+                                                        ? 'bg-blue-500/30 border-blue-400'
+                                                        : 'bg-white/5 border-white/10 hover:border-white/30'
                                                         }`}
                                                 >
                                                     <div className="flex flex-col">
@@ -344,8 +344,8 @@ const QuizApp = () => {
                                                 key={name}
                                                 onClick={() => loadPool(name)}
                                                 className={`p-4 rounded-xl text-left border-2 transition-all flex items-center justify-between group ${activePoolName === name
-                                                        ? 'bg-purple-500/30 border-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.2)]'
-                                                        : 'bg-white/5 border-white/10 hover:border-white/30'
+                                                    ? 'bg-purple-500/30 border-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.2)]'
+                                                    : 'bg-white/5 border-white/10 hover:border-white/30'
                                                     }`}
                                             >
                                                 <div className="flex flex-col">
@@ -394,29 +394,61 @@ const QuizApp = () => {
                             <div className="space-y-4 mb-10 max-h-[40vh] overflow-y-auto pr-4 custom-scrollbar">
                                 {shuffledQuestions.map((q, index) => {
                                     const status = getUserAnswerStatus(index);
+                                    const userAnswer = selectedAnswers[index] || [];
                                     return (
                                         <div
                                             key={`${q.id}-${index}`}
-                                            className={`p-5 rounded-2xl border-2 transition-all ${status === 'correct'
+                                            className={`p-6 rounded-2xl border-2 transition-all ${status === 'correct'
                                                 ? 'bg-green-500/10 border-green-500/30'
                                                 : status === 'incorrect'
                                                     ? 'bg-red-500/10 border-red-500/30'
                                                     : 'bg-white/5 border-white/10'
                                                 }`}
                                         >
-                                            <div className="flex items-start gap-4">
+                                            <div className="flex items-start gap-4 mb-4">
                                                 <div className="mt-1">
                                                     {status === 'correct' ? <Check className="w-6 h-6 text-green-400" /> : <X className="w-6 h-6 text-red-400" />}
                                                 </div>
                                                 <div className="flex-1">
                                                     <div className="flex justify-between items-center mb-1">
-                                                        <h3 className="text-white/40 text-xs font-bold uppercase tracking-widest">Pytanie {index + 1}</h3>
+                                                        <h3 className="text-white/40 text-[10px] font-bold uppercase tracking-widest">Pytanie {index + 1}</h3>
                                                         <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${status === 'correct' ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}>
                                                             {status === 'correct' ? 'OK' : 'BŁĄD'}
                                                         </span>
                                                     </div>
-                                                    <p className="text-white font-medium leading-relaxed">{q.question}</p>
+                                                    <p className="text-white font-bold leading-relaxed">{q.question}</p>
                                                 </div>
+                                            </div>
+
+                                            <div className="space-y-2 ml-10">
+                                                {q.options.map((option, optIdx) => {
+                                                    const isCorrect = q.correct.includes(optIdx);
+                                                    const isSelected = userAnswer.includes(optIdx);
+
+                                                    let borderClass = 'border-white/5';
+                                                    let bgClass = 'bg-white/5';
+                                                    let textClass = 'text-white/60';
+                                                    let Icon = null;
+
+                                                    if (isCorrect) {
+                                                        bgClass = 'bg-green-500/20';
+                                                        borderClass = 'border-green-500/30';
+                                                        textClass = 'text-green-300 font-semibold';
+                                                        Icon = Check;
+                                                    } else if (isSelected && !isCorrect) {
+                                                        bgClass = 'bg-red-500/20';
+                                                        borderClass = 'border-red-500/30';
+                                                        textClass = 'text-red-300';
+                                                        Icon = X;
+                                                    }
+
+                                                    return (
+                                                        <div key={optIdx} className={`p-3 rounded-xl border-2 flex items-center justify-between text-sm transition-all ${bgClass} ${borderClass} ${textClass}`}>
+                                                            <span>{option}</span>
+                                                            {Icon && <Icon className="w-4 h-4 flex-shrink-0 ml-2" />}
+                                                        </div>
+                                                    );
+                                                })}
                                             </div>
                                         </div>
                                     );
@@ -542,12 +574,9 @@ const QuizApp = () => {
 
                             {/* Footer Navigation */}
                             <div className="pt-8 border-t border-white/10">
-                                <div className="flex items-center justify-between mb-6">
+                                <div className="flex items-center justify-center mb-6">
                                     <span className="text-white/40 text-sm font-medium">
-                                        Wymagane odpowiedzi: <span className="text-white/80">{currentQData.correct.length}</span>
-                                    </span>
-                                    <span className="text-white/40 text-sm font-medium">
-                                        Zaznaczono: <span className={userAnswers.length === currentQData.correct.length ? 'text-green-400' : 'text-purple-400'}>{userAnswers.length}</span>
+                                        Wybierz poprawne odpowiedzi
                                     </span>
                                 </div>
 
