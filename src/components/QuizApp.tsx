@@ -143,14 +143,18 @@ const QuizApp = () => {
         setShowPoolMenu(false);
     };
 
-    const exportPoolToJSON = () => {
-        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(currentPool, null, 2));
+    const downloadPoolAsJSON = (name: string, pool: QuizQuestion[]) => {
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(pool, null, 2));
         const downloadAnchorNode = document.createElement('a');
         downloadAnchorNode.setAttribute("href", dataStr);
-        downloadAnchorNode.setAttribute("download", `${activePoolName.replace(/\s+/g, '_')}_${new Date().toISOString().slice(0, 10)}.json`);
+        downloadAnchorNode.setAttribute("download", `${name.replace(/\s+/g, '_')}_${new Date().toISOString().slice(0, 10)}.json`);
         document.body.appendChild(downloadAnchorNode);
         downloadAnchorNode.click();
         downloadAnchorNode.remove();
+    };
+
+    const exportPoolToJSON = () => {
+        downloadPoolAsJSON(activePoolName, currentPool);
     };
 
     if (shuffledQuestions.length === 0) {
@@ -227,7 +231,7 @@ const QuizApp = () => {
         const userAnswer = selectedAnswers[questionIndex] || [];
         const correctAnswer = shuffledQuestions[questionIndex].correct;
 
-        if (userAnswer.length === 0) return 'unanswered';
+        if (userAnswer.length === 0 && correctAnswer.length > 0) return 'unanswered';
 
         if (userAnswer.length === correctAnswer.length &&
             userAnswer.every(a => correctAnswer.includes(a))) {
@@ -329,7 +333,22 @@ const QuizApp = () => {
                                                         <span className="text-white font-medium">{pool.name}</span>
                                                         <span className="text-white/40 text-xs">Plik zewnętrzny</span>
                                                     </div>
-                                                    {activePoolName === pool.name && <Check className="w-4 h-4 text-blue-400" />}
+                                                    <div className="flex items-center gap-2">
+                                                        {activePoolName === pool.name && <Check className="w-4 h-4 text-blue-400" />}
+                                                        <button
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();
+                                                                // Fetch is required for external pools
+                                                                fetch(`/pools/${pool.filename}`)
+                                                                    .then(res => res.json())
+                                                                    .then(data => downloadPoolAsJSON(pool.name, data));
+                                                            }}
+                                                            className="p-1.5 text-white/20 hover:text-blue-400 hover:bg-blue-400/10 rounded-md transition-all sm:opacity-0 group-hover:opacity-100"
+                                                            title="Eksportuj do JSON"
+                                                        >
+                                                            <Download className="w-4 h-4" />
+                                                        </button>
+                                                    </div>
                                                 </button>
                                             ))}
                                         </div>
@@ -352,11 +371,24 @@ const QuizApp = () => {
                                                     <span className="text-white font-medium">{name}</span>
                                                     <span className="text-white/40 text-xs">{savedPools[name].length} pytań</span>
                                                 </div>
-                                                <div className="flex items-center gap-2">
-                                                    {activePoolName === name && <Check className="w-4 h-4 text-purple-400" />}
+                                                <div className="flex items-center gap-1">
+                                                    {activePoolName === name && <Check className="w-4 h-4 text-purple-400 mr-1" />}
+                                                    <button
+                                                        onClick={(e) => {
+                                                            e.stopPropagation();
+                                                            const ids = savedPools[name];
+                                                            const poolToExport = quizData.filter(q => ids.includes(q.id));
+                                                            downloadPoolAsJSON(name, poolToExport);
+                                                        }}
+                                                        className="p-1.5 text-white/20 hover:text-blue-400 hover:bg-blue-400/10 rounded-md transition-all sm:opacity-0 group-hover:opacity-100"
+                                                        title="Eksportuj do JSON"
+                                                    >
+                                                        <Download className="w-4 h-4" />
+                                                    </button>
                                                     <button
                                                         onClick={(e) => deletePool(name, e)}
                                                         className="p-1.5 text-white/20 hover:text-red-400 hover:bg-red-400/10 rounded-md transition-all sm:opacity-0 group-hover:opacity-100"
+                                                        title="Usuń pulę"
                                                     >
                                                         <Trash2 className="w-4 h-4" />
                                                     </button>

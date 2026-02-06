@@ -1,0 +1,1144 @@
+[
+  {
+    "id": 8,
+    "question": "W jakim celu agent utrzymuje model świata?",
+    "options": [
+      "Ponieważ model świata jest wymagany nawet w środowiskach statycznych bez dynamiki.",
+      "Wyłącznie po to, by przechowywać zrzuty ekranu GUI.",
+      "Aby przewidywać efekty akcji i planować sekwencje działań przed ich wykonaniem.",
+      "Aby lepiej radzić sobie z niepewnością i częściową obserwowalnością.",
+      "Aby zastąpić percepcję losowym zgadywaniem."
+    ],
+    "correct": [
+      2,
+      3
+    ]
+  },
+  {
+    "id": 10,
+    "question": "(Python/pandas) Jak policzyć liczność grup pandas.DataFrame df według Age (ile osób w każdym wieku)?",
+    "options": [
+      "df.value counts()",
+      "df.groupby(\"Age\").len()",
+      "df.groupby(\"Age\")[\"Name\"].count()",
+      "df.groupby(\"Age\").size()",
+      "df.count(\"Age\")"
+    ],
+    "correct": [
+      2,
+      3
+    ]
+  },
+  {
+    "id": 19,
+    "question": "Kiedy label encoding może być niebezpieczny dla modeli liniowych?",
+    "options": [
+      "Gdy kategorie są uporządkowane (np. S < M < L).",
+      "Gdy kategorie są nominalne (bez porządku) — liczby wprowadzają sztuczną rangę.",
+      "Gdy model interpretuje różnice numeryczne jako odległości między kategoriami.",
+      "Gdy używamy wyłącznie drzew decyzyjnych.",
+      "Gdy cecha ma tylko dwie klasy binarne."
+    ],
+    "correct": [
+      1,
+      2
+    ]
+  },
+  {
+    "id": 23,
+    "question": "Które stwierdzenia o wielokrotnej imputacji (np. MICE) są prawdziwe?",
+    "options": [
+      "Nie wymaga żadnych założeń o mechanizmie braków.",
+      "Zawsze gwarantuje wyższą dokładność niż brak imputacji.",
+      "Generuje kilka kompletnych wersji zbioru, trenuje na każdej i łączy wyniki.",
+      "Jest identyczna z KNN-imputacją.",
+      "Może lepiej odzwierciedlać niepewność imputacji niż pojedyncza średnia/mediana."
+    ],
+    "correct": [
+      2,
+      4
+    ]
+  },
+  {
+    "id": 24,
+    "question": "(Python/sklearn,pandas) Które polecenia uzupełnią braki w kolumnie \"age\" dla pandas.DataFrame df medianą?",
+    "options": [
+      "Użyj sklearn.impute.SimpleImputer(strategy=\"median\") dopasowanego na train, a potem zastosuj do test.",
+      "Policz medianę na train i wypełnij:med = df train[\"age\"].median(); df train[\"age\"] = df train[\"age\"].fillna(med); dftest[\"age\"] = df_test[\"age\"].fillna(med);",
+      "med = df[\"age\"].median(); df[\"age\"] = df[\"age\"].fillna(med) przed podziałem na train/test.",
+      "df.fillna(method=\"drop\").",
+      "df[\"age\"].fillna(df[\"age\"].mean()) liczone na połączonych train+test."
+    ],
+    "correct": [
+      0,
+      1
+    ]
+  },
+  {
+    "id": 26,
+    "question": "(Python/sklearn) Które techniki służą do detekcji anomalii w danych wielowymiarowych?",
+    "options": [
+      "LabelEncoder na zmiennej celu.",
+      "One-Hot Encoding.",
+      "Isolation Forest.",
+      "LOF (Local Outlier Factor).",
+      "StandardScaler."
+    ],
+    "correct": [
+      2,
+      3
+    ]
+  },
+  {
+    "id": 27,
+    "question": "Jakie są dobre praktyki przy wykonywaniu podziału danych na train/val/test?",
+    "options": [
+      "Łączenie danych z testu do walidacji, by zwiększyć jakość oceny.",
+      "Losowy podział z utrzymaniem rozkładu klas (stratyfikacja) w klasyfikacji.",
+      "Wspólne skalowanie/enkodowanie dopasowane przed podziałem danych.",
+      "Używanie tych samych obserwacji jednocześnie w treningu i teście.",
+      "W szeregach czasowych — zachowanie porządku czasowego."
+    ],
+    "correct": [
+      1,
+      4
+    ]
+  },
+  {
+    "id": 31,
+    "question": "Które techniki należą do Transfer Learningu?",
+    "options": [
+      "Fine-tuning części/całości sieci pretrenowanej.",
+      "Adaptacja domenowa.",
+      "Wyłącznie regularyzacja L2 bez przenoszenia parametrów/cech.",
+      "Feature extraction z zamrożonym szkieletem i nową warstwą klasyfikacyjną.",
+      "Losowe inicjalizowanie wag za każdym razem bez wykorzystania wiedzy źródłowej."
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ]
+  },
+  {
+    "id": 35,
+    "question": "Które stwierdzenia o stratyfikacji w k-fold są prawdziwe?",
+    "options": [
+      "Stratyfikacja wymaga, by ten sam przykład znalazł się w wielu foldach naraz.",
+      "W regresji stratyfikacja zawsze rozdziela obserwacje według identycznych wartości ciągłych bez binowania.",
+      "Stratyfikacja to wyłącznie technika Reinforcement Learning do doboru akcji.",
+      "Stratyfikacja polega na mieszaniu etykiet między foldami.",
+      "Stratyfikacja jest zabroniona w problemach z niezbalansowanymi klasami."
+    ],
+    "correct": []
+  },
+  {
+    "id": 37,
+    "question": "(Python/sklearn) Które z poniższych to liniowe klasyfikatory w scikit-learn?",
+    "options": [
+      "LinearSVC",
+      "DecisionTreeClassifier",
+      "KNeighborsClassifier",
+      "LogisticRegression",
+      "Perceptron"
+    ],
+    "correct": [
+      0,
+      3,
+      4
+    ]
+  },
+  {
+    "id": 39,
+    "question": "(Python) Dopasuj bibliotekę do zadania/zastosowania.",
+    "options": [
+      "XGBoost/LightGBM/CatBoost → gradient boosting z wrapperami API kompatybilnymi z sklearn i opcjonalnym wsparciem",
+      "Optuna → automatyczna optymalizacja hiperparametrów z integracją sklearn i callbackami.",
+      "MLflow → śledzenie eksperymentów, artefaktów i rejestr modeli.",
+      "skorch → adapter ujednolicający modele PyTorch do interfejsu sklearn.",
+      "imbalanced-learn (imblearn) → techniki radzenia sobie z niezbalansowanymi klasami i integracja z sklearn.Pipeline."
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "id": 40,
+    "question": "Które charakterystyki reguł Horn są poprawne?",
+    "options": [
+      "Dobrze wspierają wnioskowanie do przodu i do tyłu.",
+      "Efektywne wnioskowanie (względem ogólnej logiki pierwszego rzędu) w wielu zadaniach praktycznych.",
+      "Są podstawą Datalogu i wielu systemów regułowych.",
+      "Postać: A←B ∧···∧B (konkluzja i koniunkcja przesłanek).",
+      "Specjalny przypadek: fakty (brak przesłanek) i cele (brak konkluzji)."
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "id": 41,
+    "question": "Które twierdzenia o zaletach/ograniczeniach typów wiedzy są prawdziwe?",
+    "options": [
+      "Wiedza proceduralna zawsze gwarantuje optymalność rozwiązania niezależnie od problemu.",
+      "Wiedza deklaratywna jest nieużyteczna do wyjaśnień — tylko proceduralna umożliwia interpretację.",
+      "Wiedza heurystyczna jest zabroniona w planowaniu, bo nigdy nie przyspiesza przeszukiwania.",
+      "Wiedza deklaratywna nie może współistnieć z proceduralną w jednym systemie.",
+      "Heurystyki nie mogą być uczone z danych — muszą być ręcznie wpisywane."
+    ],
+    "correct": []
+  },
+  {
+    "id": 43,
+    "question": "Ontologie w stylu Web Ontology Language/Description Logics: wskaż poprawne twierdzenia.",
+    "options": [
+      "Rozróżniają wiedzę terminologiczną (TBox) i asercyjną (ABox).",
+      "Wymagają zamkniętego świata jak w relacyjnych bazach danych.",
+      "Przyjmują zwykle open-world assumption i monotoniczność.",
+      "Nie wspierają klas i relacji — tylko fakty atomowe.",
+      "Wnioskowanie jest zawsze wielomianowe niezależnie od profilu Web Ontology Language."
+    ],
+    "correct": [
+      0,
+      2
+    ]
+  },
+  {
+    "id": 44,
+    "question": "Klauzule Horna i programowanie w logice (Datalog/Prolog): wskaż prawdziwe.",
+    "options": [
+      "Prolog nie używa unifikacji w dopasowaniu wzorców.",
+      "Klauzule Horna nie mogą reprezentować reguł IF–THEN.",
+      "Datalog dopuszcza funkcje o nieskończonej głębokości, gwarantując terminację.",
+      "Klauzula Horna ma co najwyżej jedną literę dodatnią.",
+      "Wnioskowanie może używać SLD-resolution z unifikacją."
+    ],
+    "correct": [
+      3,
+      4
+    ]
+  },
+  {
+    "id": 45,
+    "question": "(Python) Wskaż typowe błędy modelowania w bazie reguł.",
+    "options": [
+      "Rozdzielenie wiedzy na fakty i reguły bazowe.",
+      "Zadawanie zapytań po nasyceniu bazy.",
+      "Stosowanie rekurencji do osiągalności w grafie.",
+      "Niespójna arność tego samego predykatu w różnych faktach.",
+      "Użycie zmiennych w faktach ugruntowanych."
+    ],
+    "correct": [
+      3,
+      4
+    ]
+  },
+  {
+    "id": 50,
+    "question": "(Python) Wskaż nieprawdziwe twierdzenia o unifikacji.",
+    "options": [
+      "Unifikacja zawsze losowo wiąże tę samą zmienną z różnymi stałymi.",
+      "Unifikacja zwraca listę wszystkich faktów, nie substytucję.",
+      "Unifikacja ignoruje nazwy predykatów — liczą się tylko argumenty.",
+      "Unifikacja jest możliwa tylko, gdy arności się różnią.",
+      "Unifikacja wymaga, by fakt zawierał zmienne tak jak wzorzec."
+    ],
+    "correct": []
+  },
+  {
+    "id": 51,
+    "question": "(Python) Wskaż poprawne zdania o zmiennych w wzorcach atomów.",
+    "options": [
+      "Zmienną można traktować jako łańcuch rozpoczynający się od ’?’ (np. ’?x’).",
+      "Zmiennych nie wolno używać w głowie reguły.",
+      "Ta sama zmienna może przyjmować różne wartości w tej samej substytucji.",
+      "Zmienna musi mieć typ liczbowy.",
+      "Zmienna może otrzymać wiązanie do stałej podczas unifikacji."
+    ],
+    "correct": [
+      0,
+      4
+    ]
+  },
+  {
+    "id": 52,
+    "question": "(Python) Które stwierdzenia dot. reguł bazowych są poprawne?",
+    "options": [
+      "Może służyć jako punkt startowy dla reguł rekurencyjnych.",
+      "Może współistnieć z regułami nierekurencyjnymi i rekurencyjnymi.",
+      "Reguła z pustym ciałem jest równoważna faktowi.",
+      "Zwiększa zbiór zmaterializowanych faktów jeszcze przed wnioskowaniem.",
+      "Nie wymaga unifikacji ciała przy wyprowadzaniu głowy."
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "id": 54,
+    "question": "Wskaż niepoprawne stwierdzenia o heurystykach.",
+    "options": [
+      "Lepsza (silniejsza) heurystyka zwykle zmniejsza liczbę rozwiniętych węzłów.",
+      "Heurystyka równa zero redukuje A* do przeszukiwania z kosztami.",
+      "Dopuszczalna heurystyka powinna zawsze przeszacowywać, aby szybciej skończyć.",
+      "Heurystyka może wynikać z relaksacji ograniczeń problemu (np. ignorowanie kolizji).",
+      "Jeśli heurystyka jest stała i równa temu samemu dodatniemu numerowi dla wszystkich stanów, to A* zawsze będzie optymalne"
+    ],
+    "correct": [
+      2,
+      4
+    ]
+  },
+  {
+    "id": 55,
+    "question": "Wskaż niepoprawne kojarzenia typu problemu i algorytmu.",
+    "options": [
+      "Deterministyczny, wieloetapowy → graf AND-OR jest konieczny.",
+      "Deterministyczny, wieloetapowy → A* z admisyjną heurystyką.",
+      "Niedeterministyczny, wieloetapowy → wyszukiwanie w AND-OR z warunkowaniem.",
+      "Deterministyczny, jednoetapowy → wybór argmax po funkcji oceny.",
+      "Niedeterministyczny, wieloetapowy → zwykły A* bez żadnych zmian zawsze tworzy poprawny plan warunkowy."
+    ],
+    "correct": [
+      0,
+      4
+    ]
+  },
+  {
+    "id": 56,
+    "question": "Które stwierdzenia o planie równoległym w GraphPlan są prawdziwe?",
+    "options": [
+      "Akcje na tym samym poziomie mogą być wykonywane równolegle, jeśli nie są mutex.",
+      "Jeśli dwie akcje dotyczą rozłącznych faktów, to z definicji są mutex.",
+      "W GraphPlan zawsze wykonuje się dokładnie jedną akcję na poziom.",
+      "Równoległość wymaga, aby akcje miały identyczne preconditions.",
+      "Ekstrakcja planu wybiera na danym poziomie zbiór akcji, które wspólnie spełniają cele i nie konfliktują."
+    ],
+    "correct": [
+      0,
+      4
+    ]
+  },
+  {
+    "id": 58,
+    "question": "Które przykłady planowania niedeterministycznego są sensowne?",
+    "options": [
+      "Niedeterminizm oznacza, że akcje nie mają preconditions.",
+      "Robot podnosi obiekt, który może się wyślizgnąć; plan zawiera powtórzenie chwytu jako alternatywę.",
+      "Plan niedeterministyczny składa się wyłącznie z jednej liniowej ścieżki działań.",
+      "Każda akcja ma dokładnie jeden, deterministyczny wynik – nie ma potrzeby planu warunkowego.",
+      "Akcja „otwórz drzwi” może się powieść lub nie; plan powinien zawierać gałąź awaryjną dla wyniku negatywnego."
+    ],
+    "correct": [
+      1,
+      4
+    ]
+  },
+  {
+    "id": 60,
+    "question": "Które stwierdzenia poprawnie odróżniają wyszukiwanie nieinformowane od informowanego?",
+    "options": [
+      "Informowane (np. A*) wykorzystuje heurystykę szacującą „odległość” do celu.",
+      "Informowane nie eksploruje w ogóle gałęzi nieoptymalnych — nie rozwija żadnych węzłów pobocznych.",
+      "Nieinformowane nie używa wiedzy o problemie poza strukturą przestrzeni stanów.",
+      "Heurystyka to gwarantowana dokładna odległość do celu.",
+      "Nieinformowane zawsze znajduje rozwiązanie optymalne dla dowolnych kosztów."
+    ],
+    "correct": [
+      0,
+      2
+    ]
+  },
+  {
+    "id": 63,
+    "question": "(Python) Wskaż niepoprawne stwierdzenia o odległościach w siatce 4-kierunkowej.",
+    "options": [
+      "Jeśli dozwolone są tylko ruchy góra/dół/lewo/prawo, Manhattan nie przeszacowuje najkrótszej liczby kroków.",
+      "W siatce 4-kierunkowej Manhattan zwykle nie przeszacowuje.",
+      "Manhattan przeszacowuje koszt, gdy ruch na ukos jest zabroniony i koszty są nieujemne.",
+      "Wartość heurystyki powinna być › rzeczywistego kosztu, by przyspieszyć A*.",
+      "Odległość euklidesowa jest zawsze ‹ odległości Manhattan, dlatego jest zawsze lepszą heurystyką."
+    ],
+    "correct": [
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "id": 64,
+    "question": "(Python) Jak walidować poprawność implementacji wyszukiwania?",
+    "options": [
+      "Weryfikować, że suma wag krawędzi na zwróconej ścieżce równa się raportowanemu kosztowi.",
+      "Sprawdzać rekonstrukcję ścieżki zgodną z mapą poprzedników.",
+      "Testować na małych grafach ręcznie policzonych.",
+      "Symulować przypadki brzegowe: brak ścieżki, wiele ścieżek o tym samym koszcie, grafy z cyklami dodatnimi.",
+      "Porównywać A* z h=0 do Dijkstry (powinny dać identyczny koszt/ścieżkę)."
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "id": 65,
+    "question": "(Python) Jak radzić sobie z wieloma najkrótszymi ścieżkami o tym samym koszcie?",
+    "options": [
+      "Zbierać wszystkie poprzedniki o tym samym koszcie i odtwarzać wiele ścieżek.",
+      "Wprowadzić tie-breaking w kolejce (np. preferować mniejsze h lub leksykograficznie).",
+      "Raportować deterministyczny wybór przez ustaloną kolejność sąsiadów.",
+      "Zdefiniować dodatkowe kryterium (np. minimalna liczba kroków przy równym koszcie).",
+      "Akceptować dowolną z równokosztowych ścieżek jako poprawną."
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "id": 66,
+    "question": "Które techniki najczęściej łączy się z uczeniem aktywnym w kontekście anotacji danych do sieci neuronowych?",
+    "options": [
+      "Selekcja najbardziej informacyjnych przykładów do etykietowania przez człowieka.",
+      "Zastąpienie etykiet nagrodą środowiska.",
+      "Trenowanie bez żadnej walidacji jakości wybranych przykładów.",
+      "Całkowite pominięcie danych nieoznaczonych i skupienie się wyłącznie na syntetycznych.",
+      "Losowe etykietowanie wszystkich danych bez priorytetyzacji."
+    ],
+    "correct": [
+      0
+    ]
+  },
+  {
+    "id": 69,
+    "question": "Które zastosowania są typowe dla konwolucyjnych sieci neuronowych?",
+    "options": [
+      "Bezpośrednie dowodzenie twierdzeń matematycznych symbolicznymi regułami.",
+      "Segmentacja semantyczna i instancyjna.",
+      "Klasyfikacja obrazów i wykrywanie obiektów.",
+      "Rozwiązywanie układów równań liniowych metodą Gaussa bez danych.",
+      "Super-rozdzielczość i odszumianie obrazów."
+    ],
+    "correct": [
+      1,
+      2,
+      4
+    ]
+  },
+  {
+    "id": 70,
+    "question": "Kiedy warto rozważyć klasyczny spadek gradientowy z pędem zamiast metod adaptacyjnych?",
+    "options": [
+      "Gdy zależy nam na dobrej generalizacji na dużych, bogatych zbiorach i mamy czas na strojenie tempa uczenia i harmonogramu.",
+      "Gdy potrzebujemy bezwarunkowo największej możliwej szybkości spadku na starcie.",
+      "Gdy gradienty są skrajnie rzadkie i każdy parametr powinien mieć własny krok.",
+      "Gdy chcemy całkowicie uniknąć doboru hiperparametrów.",
+      "Gdy metody adaptacyjne szybko zbijają stratę, ale walidacja stoi w miejscu lub rośnie."
+    ],
+    "correct": [
+      0,
+      4
+    ]
+  },
+  {
+    "id": 72,
+    "question": "Do jakich scenariuszy najlepiej pasują poniższe techniki?",
+    "options": [
+      "Regularyzacja L1 — gdy zależy nam na rzadkich rozwiązaniach i interpretowalności (selekcja cech).",
+      "Dropout — gdy chcemy zmniejszyć ko-adaptacje w warstwach ukrytych dużych sieci.",
+      "Dropout — najlepszy wybór do małych modeli liniowych z jedną wagą.",
+      "Regularyzacja L1 — zawsze lepsza od L2 w każdej architekturze.",
+      "Regularyzacja L2 — gdy chcemy stabilizować uczenie i ograniczać duże wagi bez wyzerowywania ich."
+    ],
+    "correct": [
+      0,
+      1,
+      4
+    ]
+  },
+  {
+    "id": 73,
+    "question": "Gdzie najczęściej spotkamy sieci splotowe jednowymiarowe?",
+    "options": [
+      "Analiza sekwencji znaków lub słów po odpowiednim zakodowaniu.",
+      "Wyłącznie segmentacja trójwymiarowych wolumenów medycznych.",
+      "Detekcja kolizji w symulacjach fizycznych bez danych.",
+      "Ekstrakcja cech z szeregów czasowych dla prognozowania.",
+      "Przetwarzanie sygnałów czasowych, takich jak audio lub dane czujników."
+    ],
+    "correct": [
+      0,
+      3,
+      4
+    ]
+  },
+  {
+    "id": 76,
+    "question": "Gradient clipping — po co się go używa?",
+    "options": [
+      "Zastępuje potrzebę użycia tempa uczenia.",
+      "Jest szczególnie pomocny w modelach sekwencyjnych, gdzie mogą występować eksplodujące gradienty.",
+      "Wymusza, by gradient zawsze był równy zeru poza ostatnią warstwą.",
+      "Aby ograniczać zbyt duże wartości gradientów i zapobiegać niestabilnym, zbyt dużym krokom.",
+      "Służy do redukcji rozmiaru modelu przez „obcinanie” warstw."
+    ],
+    "correct": [
+      1,
+      3
+    ]
+  },
+  {
+    "id": 77,
+    "question": "(Python/PyTorch) Wybierz poprawną inicjalizację optimizer Adam z szybkością uczenia 0.001.",
+    "options": [
+      "optimizer = torch.optim.AdamW(model.parameters(), lr=None)",
+      "optimizer = torch.optim.SGD(model, lr=1e-3)",
+      "optimizer = torch.optim.Adagrad(model.parameters(), learning rate=1e-3)",
+      "optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)",
+      "optimizer = torch.optim.Adam(lr=1e-3)"
+    ],
+    "correct": [
+      3
+    ]
+  },
+  {
+    "id": 80,
+    "question": "Kiedy warto zastosować regresję wielomianową?",
+    "options": [
+      "Gdy model liniowy systematycznie zostawia wzorzec w resztach (np. kształt łuku).",
+      "Gdy wykres reszt jest idealnie losowy wokół zera.",
+      "Gdy zależność między zmienną objaśnianą a cechą jest nieliniowa i można ją aproksymować wielomianem.",
+      "Zawsze, bo wielomiany gwarantują brak przeuczenia.",
+      "Nigdy, bo wielomiany są identyczne z modelem stałym."
+    ],
+    "correct": [
+      0,
+      2
+    ]
+  },
+  {
+    "id": 83,
+    "question": "Które przykłady są nieliniowymi modelami regresji (względem cech wejściowych)?",
+    "options": [
+      "Regresor wektorów nośnych z jądrem radialnym.",
+      "Regresor lasu losowego.",
+      "Średnia arytmetyczna wartości (y) niezależna od (x).",
+      "Regresja liniowa bez transformacji cech.",
+      "Regresja wielomianowa z cechami (1,x,x2,x3)."
+    ],
+    "correct": [
+      0,
+      1,
+      4
+    ]
+  },
+  {
+    "id": 84,
+    "question": "Regresja wielomianowa a współliniowość — które zdania są prawdziwe?",
+    "options": [
+      "Cecha x może być silnie skorelowana z x2,x3,..., co zwiększa współliniowość i wariancję estymacji.",
+      "Regularizacja L2 może złagodzić niestabilność współczynników.",
+      "Wielomiany z definicji eliminują problem współliniowości.",
+      "Standaryzacja zawsze gwarantuje, że kolinearność zniknie.",
+      "Kolinearność nie wpływa na niepewność współczynników."
+    ],
+    "correct": [
+      0,
+      1
+    ]
+  },
+  {
+    "id": 87,
+    "question": "Które przykłady opisują typowe zastosowania regresji?",
+    "options": [
+      "Prognoza cen mieszkań na podstawie metrażu, lokalizacji i roku budowy.",
+      "Wykrywanie anomalii wyłącznie na podstawie braku etykiet.",
+      "Szacowanie zużycia energii na podstawie temperatury i obciążenia.",
+      "Przypisywanie zdjęcia do jednej z dziesięciu kategorii zwierząt.",
+      "Przewidywanie czasu dostawy paczki z użyciem dystansu i natężenia ruchu."
+    ],
+    "correct": [
+      0,
+      2,
+      4
+    ]
+  },
+  {
+    "id": 91,
+    "question": "(Python/sklearn) Jak uzyskać predykcje modelu w scikit-learn po wytrenowaniu?",
+    "options": [
+      "Wywołać model.predict(X test).",
+      "Wywołać model.transform(X test).",
+      "Wywołać predict(model, X test) z sklearn.metrics.",
+      "Wywołać model.infer(X test).",
+      "Wywołać model.forward(X test)."
+    ],
+    "correct": [
+      0
+    ]
+  },
+  {
+    "id": 92,
+    "question": "Czym jest drzewo decyzyjne w uczeniu maszynowym?",
+    "options": [
+      "Model, który rekurencyjnie dzieli przestrzeń cech na podobszary przy użyciu testów na pojedynczych cechach.",
+      "Losowy generator etykiet niezależny od danych wejściowych.",
+      "Sieć konwolucyjna z warstwami splotowymi i funkcją aktywacji ReLU.",
+      "Zbiór reguł if–then realizowanych jako węzły decyzyjne prowadzące do liści z predykcją.",
+      "Zawsze liniowy model z jedną wspólną wagą dla wszystkich cech."
+    ],
+    "correct": [
+      0,
+      3
+    ]
+  },
+  {
+    "id": 93,
+    "question": "Które hiperparametry drzewa bezpośrednio kontrolują jego złożoność i mają wpływ na przeuczenie?",
+    "options": [
+      "Minimalny spadek nieczystości wymagany do podziału.",
+      "Minimalna liczba próbek do podziału i w liściu.",
+      "Maksymalna głębokość drzewa.",
+      "Współczynnik uczenia (learning rate) jak w boosting bez zmian.",
+      "Liczba epok uczenia jak w sieciach neuronowych."
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ]
+  },
+  {
+    "id": 94,
+    "question": "Jakie są popularne miary jednorodności (nieczystości) używane przy wyborze podziału w drzewach?",
+    "options": [
+      "Nieczystość Giniego.",
+      "Entropia informacyjna.",
+      "Odchylenie standardowe samej cechy bez odniesienia do etykiet.",
+      "Średnia arytmetyczna wartości cechy.",
+      "Losowy wskaźnik jednorodności bazujący na rzucie monetą."
+    ],
+    "correct": [
+      0,
+      1
+    ]
+  },
+  {
+    "id": 96,
+    "question": "Dlaczego losowanie podzbioru cech w węźle pomaga lasom?",
+    "options": [
+      "Zawsze poprawia dokładność bez spadku stabilności.",
+      "Wymusza jednolite użycie wszystkich cech w każdym drzewie.",
+      "Redukuje korelację między drzewami, dzięki czemu uśrednianie bardziej obniża wariancję.",
+      "Wprowadza dodatkową losowość, co zmniejsza ryzyko dominacji silnych cech.",
+      "Zwiększa głębokość drzew niezależnie od danych."
+    ],
+    "correct": [
+      2,
+      3
+    ]
+  },
+  {
+    "id": 97,
+    "question": "Wskaż prawidłowe stwierdzenia o przeuczeniu w drzewach.",
+    "options": [
+      "Głębokie drzewa z małymi liśćmi mają wysokie ryzyko przeuczenia.",
+      "Zwiększenie n estimators w pojedynczym DecisionTreeClassifier zmniejsza przeuczenie.",
+      "Skalowanie cech zawsze eliminuje overfitting drzewa.",
+      "Ograniczenia max depth i min samples leaf redukują wariancję modelu.",
+      "Zwiększanie liczby klas zawsze obniża ryzyko przeuczenia drzewa."
+    ],
+    "correct": [
+      0,
+      3
+    ]
+  },
+  {
+    "id": 98,
+    "question": "Które kryteria nieczystości są typowo używane w drzewach klasyfikacyjnych?",
+    "options": [
+      "Impurity Giniego.",
+      "Średni błąd bezwzględny (MAE) jako jedyne kryterium w klasyfikacji.",
+      "Współczynnik korelacji Pearsona między cechami.",
+      "Entropia (zysk informacyjny).",
+      "Funkcja aktywacji sigmoidalna."
+    ],
+    "correct": [
+      0,
+      3
+    ]
+  },
+  {
+    "id": 100,
+    "question": "(Python/sklearn) Co robi ccp alpha w drzewach scikit-learn?",
+    "options": [
+      "Zastępuje max depth i min samples leaf, uniemożliwiając ich użycie.",
+      "Steruje obcinaniem drzewa metodą koszt–złożoność; większe wartości silniej przycinają.",
+      "Włącza losowe podmiany cech w liściach.",
+      "Ustawia maks. liczbę drzew w lesie.",
+      "Włącza walidację krzyżową w trakcie wzrostu drzewa."
+    ],
+    "correct": [
+      1
+    ]
+  },
+  {
+    "id": 101,
+    "question": "(Python/sklearn) Jak poprawnie ustawić losowość w lesie losowym dla odtwarzalności?",
+    "options": [
+      "Użyć wyłącznie oob score=True.",
+      "Zachować stałe ziarno również w train test split.",
+      "Zamiast RandomForestClassifier użyć DecisionTreeClassifier.",
+      "Ustawić max features=None — to wystarczy do replikowalności.",
+      "Przekazać random state do RandomForestClassifier."
+    ],
+    "correct": [
+      1,
+      4
+    ]
+  },
+  {
+    "id": 102,
+    "question": "(Python/sklearn) Które działania są dobrą praktyką przy ocenie lasu?",
+    "options": [
+      "Tuning parametrów na zbiorze testowym, a następnie raportowanie na tym samym zbiorze.",
+      "Łączenie zbioru treningowego i testowego przed GridSearchCV.",
+      "Zestawienie wyników z OOB i K-fold, by ocenić stabilność.",
+      "Raportowanie wyłącznie dokładności bez macierzy pomyłek przy nierównowadze klas.",
+      "Użycie walidacji krzyżowej z StratifiedKFold dla klasyfikacji."
+    ],
+    "correct": [
+      2,
+      4
+    ]
+  },
+  {
+    "id": 106,
+    "question": "Zaznacz prawdziwe stwierdzenia o F1-score.",
+    "options": [
+      "F1 jest średnią harmoniczną precyzji i czułości: F1=2· P·R .",
+      "W problemach niezbalansowanych F1 jest równoważne accuracy.",
+      "F1 ignoruje fałszywe pozytywy.",
+      "F1 karze duże rozbieżności między precyzją a czułością.",
+      "F1 to średnia arytmetyczna precyzji i czułości."
+    ],
+    "correct": [
+      0,
+      3
+    ]
+  },
+  {
+    "id": 109,
+    "question": "Dlaczego balanced accuracy bywa preferowana względem zwykłego accuracy przy niezbalansowanych klasach?",
+    "options": [
+      "Zawsze daje wyższy wynik niż accuracy.",
+      "Może ujawnić, że model ignoruje klasę rzadką mimo wysokiego zwykłego accuracy.",
+      "Wymaga prawdopodobieństw zamiast etykiet.",
+      "Nie zależy od macierzy pomyłek.",
+      "Uwzględnia czułość obu klas po równo, więc nie jest zdominowana przez klasę większościową."
+    ],
+    "correct": [
+      1,
+      4
+    ]
+  },
+  {
+    "id": 110,
+    "question": "Które opisy poprawnie charakteryzują regresję logistyczną jako klasyfikator?",
+    "options": [
+      "Wymaga drzew decyzyjnych jako warstwy wstępnej.",
+      "Może być rozszerzona do wieloklasowości (np. przez jeden-przeciw-reszcie).",
+      "Nie pozwala na regularyzację.",
+      "Jest klasyfikatorem generatywnym modelującym p(x,y).",
+      "Model liniowy zwracający prawdopodobieństwa klas i optymalizujący log-stratę."
+    ],
+    "correct": [
+      1,
+      4
+    ]
+  },
+  {
+    "id": 115,
+    "question": "(Python/sklearn) Jak w scikit-learn obliczyć punkty krzywej ROC (FPR, TPR, progi) dla klasyfikatora binarnego?",
+    "options": [
+      "Użyć sklearn.metrics.roc_curve(y_true, y_score).",
+      "Użyć sklearn.metrics.roc_auc_score(y_true, y_score).",
+      "Użyć sklearn.metrics.classificatio_report.",
+      "Użyć sklearn.metrics.precision recall_curve(y true, y score).",
+      "Policzyć sklearn.metrics.confusion matrix i odczytać z niej bezpośrednio całą krzywą."
+    ],
+    "correct": [
+      0
+    ]
+  },
+  {
+    "id": 119,
+    "question": "Reprezentacja niepewności: co odróżnia logikę rozmytą od czynników pewności (certainty factors)?",
+    "options": [
+      "W logice rozmytej prawdziwość jest wyłącznie binarna.",
+      "Czynniki pewności wymagają pełnych rozkładów prawdopodobieństwa Bayesa.",
+      "Obie techniki wykluczają łączenie dowodów z wielu reguł.",
+      "Czynniki pewności to heurystyczne miary przekonania przypisane regułom i wnioskom.",
+      "Logika rozmyta modeluje stopnie przynależności do zbiorów (wartości w przedziale [0,1])."
+    ],
+    "correct": [
+      3,
+      4
+    ]
+  },
+  {
+    "id": 124,
+    "question": "Wskaż prawdziwe stwierdzenia o wnioskowaniu wstecznym (backward chaining).",
+    "options": [
+      "Może żądać dodatkowych danych od użytkownika, gdy brakuje przesłanek.",
+      "Jest tym samym co wnioskowanie progresywne.",
+      "Zaczyna od hipotezy/celu i sprawdza, czy można ją wyprowadzić z dostępnych faktów i reguł.",
+      "Opiera się wyłącznie na losowaniu odpowiedzi.",
+      "Zawsze wymaga pełnej eksploracji wszystkich reguł od faktów do celów."
+    ],
+    "correct": [
+      0,
+      2
+    ]
+  },
+  {
+    "id": 125,
+    "question": "W administracji publicznej i prawie systemy ekspertowe mogą:",
+    "options": [
+      "Standaryzować procedury i ścieżki obsługi spraw.",
+      "Zastępować sądy w wydawaniu wyroków karnych.",
+      "Automatycznie uchwalać ustawy bez udziału człowieka.",
+      "Wspierać interpretacje podatkowe poprzez reguły kwalifikacji.",
+      "Weryfikować spełnienie kryteriów formalnych wniosków i świadczeń."
+    ],
+    "correct": [
+      0,
+      3,
+      4
+    ]
+  },
+  {
+    "id": 131,
+    "question": "Czym jest dopełnienie (negacja) zbioru rozmytego A?",
+    "options": [
+      "Dla zbiorów ostrych (0/1) sprowadza się do klasycznego dopełnienia.",
+      "W standardowej definicji: µ A¯(x)=1−µ",
+      "µ A¯(x)=µ",
+      "Dopełnienie polega na zamianie każdego α-przekroju na x:µ (x)<α.",
+      "µ A¯(x)="
+    ],
+    "correct": [
+      0,
+      1
+    ]
+  },
+  {
+    "id": 132,
+    "question": "Czym różni się niepewność probabilistyczna od nieostrości (rozmytości)?",
+    "options": [
+      "To pojęcia tożsame; µ(x) zawsze jest prawdopodobieństwem.",
+      "Prawdopodobieństwo i rozmytość mają identyczne reguły rachunku.",
+      "W zbiorach rozmytych µ(x) nie jest prawdopodobieństwem wystąpienia x, lecz stopniem przynależności.",
+      "Rozmytość oznacza, że zdarzenia są niezależne probabilistycznie.",
+      "Prawdopodobieństwo dotyczy losowości zdarzeń; rozmytość dotyczy stopnia spełniania pojęcia."
+    ],
+    "correct": [
+      2,
+      4
+    ]
+  },
+  {
+    "id": 134,
+    "question": "Które stwierdzenia o sortowaniu w OWA są prawdziwe?",
+    "options": [
+      "OWA wymaga posortowania także samych wag rosnąco.",
+      "Wejścia są porządkowane, a wagi przypisane do pozycji po sortowaniu.",
+      "Sortowanie można pominąć, jeśli wagi sumują się do 1.",
+      "Dzięki sortowaniu OWA jest symetryczny względem permutacji cech (anonimowy).",
+      "Sortowanie polega na przypisaniu największej wagi do najmniejszej wartości bez względu na rangę."
+    ],
+    "correct": [
+      1,
+      3
+    ]
+  },
+  {
+    "id": 135,
+    "question": "Które własności operatora OWA są prawdziwe?",
+    "options": [
+      "Ograniczenie: wynik leży w [minx , maxx ].",
+      "Homogeniczność dla dowolnych (także ujemnych) skalowań.",
+      "Idempotentność: jeśli wszystkie wejścia są równe a, to wynik =a.",
+      "Addytywność: OWA(x+y) zawsze równa się OWA(x) + OWA(y).",
+      "Monotoniczność: zwiększenie dowolnego wejścia nie zmniejszy wyniku."
+    ],
+    "correct": [
+      0,
+      2,
+      4
+    ]
+  },
+  {
+    "id": 137,
+    "question": "Jak interpretować funkcję przynależności µ (x) w zbiorze rozmytym A?",
+    "options": [
+      "Jako pochodną funkcji charakterystycznej.",
+      "Jako prawdopodobieństwo losowego zdarzenia niezależnego od x.",
+      "Jako wartość opisującą „jak bardzo” x spełnia pojęcie reprezentowane przez A.",
+      "Jako liczbę naturalną większą od 1.",
+      "Jako stopień przynależności elementu x do zbioru A w skali [0,1]."
+    ],
+    "correct": [
+      2,
+      4
+    ]
+  },
+  {
+    "id": 138,
+    "question": "Wskaż przykłady t-norm (operator „i”).",
+    "options": [
+      "Minimum (G¨odla): T(a,b)=min(a,b).",
+      "Drastyczna t-norma: T(a,b)= .",
+      "Łukasiewicza: T(a,b)=max0,a+b−1.",
+      "Iloczyn algebraiczny: T(a,b)=a·b."
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "id": 140,
+    "question": "Dopasuj etap modelu wnioskowania rozmytego (FIS) do opisu.",
+    "options": [
+      "Agregacja → połączenie wniosków reguł s-normą.",
+      "Fuzzyfikacja → obliczenie µ(x) dla terminów wejściowych.",
+      "Baza reguł → standaryzacja Z-score.",
+      "Aktywacja reguł → połączenie przesłanek t-normą.",
+      "Defuzyfikacja → wyznaczenie wartości ostrej."
+    ],
+    "correct": [
+      0,
+      1,
+      3,
+      4
+    ]
+  },
+  {
+    "id": 144,
+    "question": "Jak interpretować punkt operacyjny wybrany na krzywej ROC/PR?",
+    "options": [
+      "Punkt operacyjny musi leżeć na przekątnej ROC.",
+      "To para metryk uzyskana dla konkretnego progu; odzwierciedla kompromis TPR–FPR (ROC) lub Precision–Recall (PR).",
+      "Na PR zawsze wybieramy punkt o największym Recall bez względu na Precision.",
+      "Dobór punktu powinien wynikać z kosztów FP/FN lub ograniczeń.",
+      "Punkt operacyjny nie zależy od progu decyzji."
+    ],
+    "correct": [
+      1,
+      3
+    ]
+  },
+  {
+    "id": 145,
+    "question": "Jak ująć koszty w ocenie detekcji anomalii?",
+    "options": [
+      "Zawsze przyjmować koszt FP = koszt FN.",
+      "Zdefiniować macierz kosztów (koszt FP, FN) i minimalizować oczekiwany koszt.",
+      "Dobrać próg, by spełnić ograniczenia (np. FPR ‹α) przy maksymalnym Recall.",
+      "Koszty nie mają wpływu na wybór progu decyzji.",
+      "Koszty można ignorować przy ogromnej nierównowadze klas."
+    ],
+    "correct": [
+      1,
+      2
+    ]
+  },
+  {
+    "id": 146,
+    "question": "Które stwierdzenia o skali i kalibracji wyników anomalii są prawdziwe?",
+    "options": [
+      "Kalibracja niszczy ranking i dlatego nie powinna być stosowana.",
+      "Wynik każdego algorytmu można zawsze interpretować jako p-value bez dodatkowych założeń.",
+      "Różne algorytmy zwracają wyniki w różnych skalach; do wspólnego progu potrzebna bywa kalibracja lub normalizacja.",
+      "Skala score jest identyczna między LOF, Isolation Forest i One-Class SVM.",
+      "Monotoniczne przekształcenie score (np. skalowanie liniowe) nie zmienia kolejności próbek."
+    ],
+    "correct": [
+      2,
+      4
+    ]
+  },
+  {
+    "id": 147,
+    "question": "Jak wybrać próg na podstawie krzywej ROC, aby zbalansować czułość i specyficzność?",
+    "options": [
+      "Wybrać próg maksymalizujący statystykę Youdena: J =TPR−FPR.",
+      "Wybrać próg minimalizujący odległość euklidesową do punktu idealnego (FPR=0,TPR=1).",
+      "Zawsze ustawić próg na medianie skali.",
+      "Wziąć dowolny próg z największą liczbą TN.",
+      "Wybrać próg minimalizujący TPR+FPR."
+    ],
+    "correct": [
+      0,
+      1
+    ]
+  },
+  {
+    "id": 148,
+    "question": "Dopasuj przykład do novelty detection lub outlier detection.",
+    "options": [
+      "Zawsze etykietujemy anomalie w treningu, więc to novelty detection.",
+      "Danetransakcyjneznielicznymioszustwamijużwtreningu;użycieIsolationForestodpornegonaoutliery→outlier detection.",
+      "Autoenkoder uczony na normalnych przebiegach czujnika; wysokie błędy rekonstrukcji w produkcji → novelty detection.",
+      "Trenowanie One-Class SVM na czystych danych normalnych, a test zawiera nowe typy oszustw → novelty detection.",
+      "Gdy w treningu są anomalia, to na pewno novelty detection."
+    ],
+    "correct": [
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "id": 149,
+    "question": "Przykład Isolation Forest score — wskaż poprawne interpretacje.",
+    "options": [
+      "Im krótsza średnia długość ścieżki izolacji h(x) w lesie, tym wyższy score anomalii.",
+      "Score bywa wyprowadzany przez normalizację h(x) względem oczekiwanej długości c(n); punkty „łatwe do odcięcia” dostają",
+      "Dłuższe ścieżki oznaczają większą anomalię.",
+      "Score to dokładne prawdopodobieństwo anomalii wyuczone z etykiet.",
+      "Wynik jest niezależny od liczby drzew i próbkowania."
+    ],
+    "correct": [
+      0,
+      1
+    ]
+  },
+  {
+    "id": 150,
+    "question": "Które stwierdzenia o kalibracji i przekształceniach monotonicznych skali są prawdziwe?",
+    "options": [
+      "AUC-PR zawsze się zwiększa po skalowaniu do [0,1].",
+      "Monotonia niszczy kolejność i zmienia AUC-ROC.",
+      "F1 przy stałym progu liczbowym może się zmienić po przekształceniu skali.",
+      "ROC zależy od absolutnych wartości skali, nie od rankingu.",
+      "Monotoniczne przekształcenie skali nie zmienia AUC-ROC."
+    ],
+    "correct": [
+      2,
+      4
+    ]
+  },
+  {
+    "id": 151,
+    "question": "Jak uniknąć data leakage w detekcji anomalii?",
+    "options": [
+      "Użyć Pipeline, aby dopasować przekształcenia wyłącznie na zbiorze uczącym.",
+      "Usunąć z test tylko anomalia, normalne zostawić.",
+      "Wykonać train/test split przed obliczaniem transformacji (skalowanie, PCA) i trenować transformacje tylko na train.",
+      "Dobierać hiperparametry na zbiorze testowym, a potem raportować na nim metryki.",
+      "Skalować wspólnie train+test, bo to „stabilizuje” wyniki."
+    ],
+    "correct": [
+      0,
+      2
+    ]
+  },
+  {
+    "id": 152,
+    "question": "Dopasuj przykład szeregów czasowych do typu anomalii.",
+    "options": [
+      "Wysoka temperatura procesora przy niskim obciążeniu (ale normalna przy wysokim) → kontekstowa.",
+      "Cykl dobowy (dzień/noc) → punktowa.",
+      "Jednorazowy skok napięcia w sekundzie t na stabilnej linii → punktowa.",
+      "Losowy brak jednej próbki w strumieniu → zbiorowa.",
+      "Nagła zmiana średniego poziomu sygnału i utrzymanie nowego poziomu przez 10 minut → zbiorowa."
+    ],
+    "correct": [
+      0,
+      2,
+      4
+    ]
+  },
+  {
+    "id": 153,
+    "question": "Jakie są punkty charakterystyczne krzywej ROC?",
+    "options": [
+      "((0,0)): gdy próg tak wysoki, że wszystko klasyfikowane jako „normalne”.",
+      "Prosta losowa to linia pionowa (x=0.5).",
+      "((0,0)) odpowiada progowi najniższemu, a ((1,1)) najwyższemu.",
+      "((1,1)): gdy próg tak niski, że wszystko klasyfikowane jako „anomalia”.",
+      "((0,1)) jest zawsze osiągalny dla każdego losowego klasyfikatora."
+    ],
+    "correct": [
+      0,
+      3
+    ]
+  },
+  {
+    "id": 154,
+    "question": "Chcesz zapewnić Recall ›0.9 (wysoka czułość). Jak dobrać próg?",
+    "options": [
+      "Zwiększać próg, bo większy próg zwiększa Recall.",
+      "Przesuwać próg w dół, monitorując Recall aż osiągnie/wyprzedzi 0.9, a potem minimalizować FPR/FP wśród spełniających",
+      "Wybrać punkt o maksymalnym Precision niezależnie od Recall.",
+      "Ustawić próg na medianie.",
+      "Wybrać najmniejszy próg, dla którego na krzywej PR/ROC spełnione jest Recall›0.9."
+    ],
+    "correct": [
+      1,
+      4
+    ]
+  },
+  {
+    "id": 155,
+    "question": "(Python/sklearn) Jak pozyskać ciągłą ocenę stopnia anomalii z sklearn.ensemble.IsolationForest mdl?",
+    "options": [
+      "scores = -mdl.score samples(X).",
+      "scores = mdl.predict(X).",
+      "scores = mdl.apply(X).",
+      "scores = -mdl.decision function(X).",
+      "scores = mdl.feature importances ."
+    ],
+    "correct": [
+      0,
+      3
+    ]
+  },
+  {
+    "id": 156,
+    "question": "(Python/sklearn) Jakie źródła skali anomalii zwracają typowe algorytmy?",
+    "options": [
+      "predict(X).",
+      "score samples(X).",
+      "transform score(X).",
+      "decision function(X).",
+      "test samples(X)."
+    ],
+    "correct": [
+      1,
+      3
+    ]
+  }
+]

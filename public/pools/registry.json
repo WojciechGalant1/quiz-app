@@ -1,3 +1,8 @@
 {
-    "externalPools": []
+    "externalPools": [
+        {
+            "name": "Testowa pula 1",
+            "filename": "test111_2026-02-05.json"
+        }
+    ]
 }

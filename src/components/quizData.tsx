@@ -287,7 +287,7 @@ export const quizData: QuizQuestion[] = [
         question: "(Python/sklearn,pandas) Które polecenia uzupełnią braki w kolumnie \"age\" dla pandas.DataFrame df medianą?",
         options: [
             "Użyj sklearn.impute.SimpleImputer(strategy=\"median\") dopasowanego na train, a potem zastosuj do test.",
-            "Policz medianę na train i wypełnij:med = df train[\"age\"].median(); df train[\"age\"] = df train[\"age\"].fillna(med);",
+            "Policz medianę na train i wypełnij:med = df train[\"age\"].median(); df train[\"age\"] = df train[\"age\"].fillna(med); dftest[\"age\"] = df_test[\"age\"].fillna(med);",
             "med = df[\"age\"].median(); df[\"age\"] = df[\"age\"].fillna(med) przed podziałem na train/test.",
             "df.fillna(method=\"drop\").",
             "df[\"age\"].fillna(df[\"age\"].mean()) liczone na połączonych train+test.",
@@ -1390,9 +1390,9 @@ export const quizData: QuizQuestion[] = [
         id: 116,
         question: "(Python/sklearn) Jak uzyskać macierz pomyłek w scikit-learn?",
         options: [
-            "sklearn.metrics.roc curve(y true, y pred)",
-            "sklearn.metrics.confusion plot(y true, y pred)",
-            "sklearn.metrics.confusion matrix(y true, y pred)",
+            "sklearn.metrics.roc_curve(y_true, y_pred)",
+            "sklearn.metrics.confusion_plot(y_true, y_pred)",
+            "sklearn.metrics.confusion_matrix(y true, y pred)",
             "sklearn.metrics.cmatrix(y true, y pred)",
             "sklearn.metrics.auc(y true, y pred)",
         ],
@@ -1774,7 +1774,7 @@ export const quizData: QuizQuestion[] = [
         question: "Dopasuj przykład do novelty detection lub outlier detection.",
         options: [
             "Zawsze etykietujemy anomalie w treningu, więc to novelty detection.",
-            "Danetransakcyjneznielicznymioszustwamijużwtreningu;użycieIsolationForestodpornegonaoutliery→outlier detection.",
+            "Dane transakcyjne z nielicznymi oszustwami już w treningu; użycie Isolation Forest odpornego na outliery → outlier detection.",
             "Autoenkoder uczony na normalnych przebiegach czujnika; wysokie błędy rekonstrukcji w produkcji → novelty detection.",
             "Trenowanie One-Class SVM na czystych danych normalnych, a test zawiera nowe typy oszustw → novelty detection.",
             "Gdy w treningu są anomalia, to na pewno novelty detection.",
@@ -1857,11 +1857,11 @@ export const quizData: QuizQuestion[] = [
         id: 155,
         question: "(Python/sklearn) Jak pozyskać ciągłą ocenę stopnia anomalii z sklearn.ensemble.IsolationForest mdl?",
         options: [
-            "scores = -mdl.score samples(X).",
-            "scores = mdl.predict(X).",
-            "scores = mdl.apply(X).",
-            "scores = -mdl.decision function(X).",
-            "scores = mdl.feature importances .",
+            "scores = -mdl.score_samples(X)",
+            "scores = mdl.predict(X)",
+            "scores = mdl.apply(X)",
+            "scores = -mdl.decision_function(X)",
+            "scores = mdl.feature_importances_",
         ],
         correct: [0, 3]
     },
