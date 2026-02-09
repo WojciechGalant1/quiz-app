@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ChevronRight, ChevronLeft, Check, X, RotateCcw, BookOpen, Download, Layers, Trash2, Save, Plus } from 'lucide-react';
+import { ChevronRight, ChevronLeft, Check, X, RotateCcw, BookOpen, Download, Trash2, Save, Plus, Layers } from 'lucide-react';
 import { quizData, type QuizQuestion } from './quizData';
 
 const shuffleArray = <T,>(array: T[]): T[] => {
@@ -41,8 +41,8 @@ const QuizApp = () => {
     const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number[]>>({});
     const [showResults, setShowResults] = useState(false);
     const [score, setScore] = useState(0);
-    const [showPoolMenu, setShowPoolMenu] = useState(false);
     const [newPoolName, setNewPoolName] = useState('');
+    const [showLibraryModal, setShowLibraryModal] = useState(false);
 
     const prepareQuiz = (pool: QuizQuestion[]) => {
         const randomized = shuffleArray(pool).map(q => {
@@ -140,7 +140,21 @@ const QuizApp = () => {
         setSelectedAnswers({});
         setShowResults(false);
         setScore(0);
-        setShowPoolMenu(false);
+        setShowLibraryModal(false);
+    };
+
+    const startRandomTest = () => {
+        const shuffled = shuffleArray(quizData);
+        const random40 = shuffled.slice(0, 40);
+
+        setActivePoolName('Losowe 40 pytań');
+        setCurrentPool(random40);
+        prepareQuiz(random40);
+        setCurrentQuestion(0);
+        setSelectedAnswers({});
+        setShowResults(false);
+        setScore(0);
+        setShowLibraryModal(false);
     };
 
     const downloadPoolAsJSON = (name: string, pool: QuizQuestion[]) => {
@@ -241,110 +255,183 @@ const QuizApp = () => {
     };
 
     return (
-        <div className="min-h-screen bg-indigo-900 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 p-6 flex flex-col items-center justify-center relative overflow-hidden">
-            {/* Background elements */}
-            <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-purple-500/20 blur-[120px] rounded-full pointer-events-none" />
-            <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-pink-500/20 blur-[120px] rounded-full pointer-events-none" />
-
-            {/* Main Container */}
-            <div className="max-w-4xl w-full z-10">
-                <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/20">
-
-                    {/* Header */}
-                    <div className="flex items-center justify-between mb-8 gap-4 flex-wrap">
-                        <div className="flex items-center gap-3">
-                            <BookOpen className="w-8 h-8 text-purple-300" />
-                            <div>
-                                <h1 className="text-3xl font-bold text-white tracking-tight">Quiz SI</h1>
-                                <p className="text-xs text-purple-200/60 font-medium uppercase tracking-wider">{activePoolName}</p>
-                            </div>
-                        </div>
-
-                        <div className="flex items-center gap-3">
-                            <button
-                                onClick={() => setShowPoolMenu(!showPoolMenu)}
-                                className={`p-2.5 rounded-xl transition-all flex items-center gap-2 font-semibold ${showPoolMenu ? 'bg-white text-purple-900 shadow-lg' : 'bg-white/10 text-white hover:bg-white/20'
-                                    }`}
-                                title="Biblioteka pytań"
-                            >
-                                <Layers className="w-5 h-5" />
-                                <span className="hidden sm:inline">Biblioteka</span>
-                            </button>
-
-                            <div className="h-10 w-[1px] bg-white/10 mx-1 hidden sm:block" />
-
-                            <div className="flex items-center gap-3">
-                                <button
-                                    onClick={resetToFullPool}
-                                    className="text-white/40 hover:text-white transition-colors group p-2"
-                                    title="Resetuj do pełnej puli"
-                                >
-                                    <RotateCcw className="w-5 h-5 group-hover:rotate-[-45deg] transition-transform" />
-                                </button>
-                                <div className="text-white/90 font-bold bg-white/10 px-4 py-2 rounded-xl border border-white/10 backdrop-blur-md">
-                                    {currentQuestion + 1} <span className="text-white/40 font-normal">/</span> {shuffledQuestions.length}
-                                </div>
-                            </div>
-                        </div>
+        <div className="min-h-screen bg-indigo-900 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 flex flex-col items-center relative overflow-x-hidden">
+            {/* Navbar */}
+            <nav className="w-full bg-black/40 backdrop-blur-md border-b border-white/10 p-4 sticky top-0 z-50">
+                <div className="max-w-6xl mx-auto flex items-center justify-between gap-4">
+                    <div className="flex items-center gap-3 shrink-0">
+                        <BookOpen className="w-7 h-7 text-purple-400" />
+                        <h1 className="text-xl font-bold text-white tracking-tight hidden sm:block">Quiz SI</h1>
                     </div>
 
-                    {/* Library Menu */}
-                    {showPoolMenu && (
-                        <div className="mb-8 p-6 bg-black/30 rounded-2xl border border-white/10 animate-in fade-in slide-in-from-top-4 duration-300">
-                            <div className="flex items-center justify-between mb-4">
-                                <h3 className="text-white font-bold flex items-center gap-2">
-                                    <Layers className="w-4 h-4 text-purple-400" />
-                                    Twoje Pule Pytań
-                                </h3>
-                                <button onClick={() => setShowPoolMenu(false)} className="text-white/40 hover:text-white">
-                                    <X className="w-5 h-5" />
-                                </button>
-                            </div>
+                    <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
+                        <button
+                            onClick={() => loadPool('Wszystkie pytania')}
+                            className={`px-4 py-2 rounded-xl text-sm font-bold transition-all whitespace-nowrap ${activePoolName === 'Wszystkie pytania'
+                                ? 'bg-purple-500 text-white shadow-[0_0_15px_rgba(168,85,247,0.4)]'
+                                : 'bg-white/5 text-white/60 hover:bg-white/10 hover:text-white'
+                                }`}
+                        >
+                            Główna
+                        </button>
 
-                            <div className="space-y-6 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
+                        <button
+                            onClick={startRandomTest}
+                            className={`px-4 py-2 rounded-xl text-sm font-bold transition-all whitespace-nowrap ${activePoolName === 'Losowe 40 pytań'
+                                ? 'bg-orange-500 text-white shadow-[0_0_15px_rgba(249,115,22,0.4)]'
+                                : 'bg-white/5 text-white/60 hover:bg-white/10 hover:text-white'
+                                }`}
+                        >
+                            Szybki test
+                        </button>
+
+                        <button
+                            onClick={() => setShowLibraryModal(true)}
+                            className="px-4 py-2 rounded-xl text-sm font-bold bg-white/10 text-white hover:bg-white/20 transition-all flex items-center gap-2 whitespace-nowrap"
+                        >
+                            <Layers className="w-4 h-4" />
+                            Biblioteka
+                        </button>
+                    </div>
+                </div>
+            </nav>
+
+            {/* Library Modal */}
+            {showLibraryModal && (
+                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+                    <div
+                        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+                        onClick={() => setShowLibraryModal(false)}
+                    />
+                    <div className="bg-slate-900 border border-white/10 w-full max-w-3xl rounded-3xl shadow-2xl z-10 flex flex-col max-h-[85vh] animate-in fade-in zoom-in-95 duration-300">
+                        {/* Modal Header */}
+                        <div className="p-6 border-b border-white/5 flex items-center justify-between">
+                            <div className="flex items-center gap-3">
+                                <div className="p-2 bg-purple-500/20 rounded-xl">
+                                    <Layers className="w-6 h-6 text-purple-400" />
+                                </div>
                                 <div>
-                                    <h4 className="text-white/40 text-[10px] uppercase font-bold tracking-widest mb-3 px-1">Główna baza</h4>
+                                    <h3 className="text-xl font-bold text-white tracking-tight">Biblioteka Pytań</h3>
+                                    <p className="text-xs text-white/30 uppercase font-black tracking-widest leading-none mt-1">Wybierz zestaw do nauki</p>
+                                </div>
+                            </div>
+                            <button
+                                onClick={() => setShowLibraryModal(false)}
+                                className="p-2 hover:bg-white/5 rounded-full text-white/40 hover:text-white transition-colors"
+                            >
+                                <X className="w-6 h-6" />
+                            </button>
+                        </div>
+
+                        {/* Modal Body */}
+                        <div className="flex-1 overflow-y-auto p-6 custom-scrollbar">
+                            <div className="space-y-8">
+                                {/* Base Pool */}
+                                <div>
+                                    <h4 className="text-[10px] uppercase font-black text-white/20 mb-3 px-1 tracking-widest">Główna baza pytań</h4>
                                     <button
                                         onClick={() => loadPool('Wszystkie pytania')}
-                                        className={`w-full p-4 rounded-xl text-left border-2 transition-all flex items-center justify-between ${activePoolName === 'Wszystkie pytania'
-                                            ? 'bg-purple-500/30 border-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.2)]'
-                                            : 'bg-white/5 border-white/10 hover:border-white/30'
+                                        className={`w-full p-5 rounded-2xl text-left border-2 transition-all flex items-center justify-between group ${activePoolName === 'Wszystkie pytania'
+                                            ? 'bg-purple-500/20 border-purple-500/50 shadow-[0_0_20px_rgba(168,85,247,0.1)]'
+                                            : 'bg-white/5 border-white/5 hover:border-white/10'
                                             }`}
                                     >
-                                        <span className="text-white font-medium">Baza główna (~150 pytań)</span>
-                                        {activePoolName === 'Wszystkie pytania' && <Check className="w-4 h-4 text-purple-400" />}
+                                        <div className="flex items-center gap-4">
+                                            <div className={`p-3 rounded-xl transition-colors ${activePoolName === 'Wszystkie pytania' ? 'bg-purple-500 text-white' : 'bg-white/5 text-white/40'}`}>
+                                                <BookOpen className="w-5 h-5" />
+                                            </div>
+                                            <div>
+                                                <p className="font-bold text-white text-lg">Wszystkie pytania</p>
+                                                <p className="text-white/30 text-xs">Pełna baza z quizData.tsx (~155 pytań)</p>
+                                            </div>
+                                        </div>
+                                        {activePoolName === 'Wszystkie pytania' && <Check className="w-6 h-6 text-purple-400" />}
                                     </button>
                                 </div>
 
+                                {/* Saved Pools */}
+                                <div>
+                                    <h4 className="text-[10px] uppercase font-black text-white/20 mb-3 px-1 tracking-widest">Twoje Zapisane Pule (Local Storage)</h4>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                        {Object.keys(savedPools).map(name => (
+                                            <button
+                                                key={name}
+                                                onClick={() => loadPool(name)}
+                                                className={`p-4 rounded-xl text-left border-2 transition-all flex items-center justify-between group ${activePoolName === name
+                                                    ? 'bg-blue-500/20 border-blue-500/50 shadow-[0_0_20px_rgba(59,130,246,0.1)]'
+                                                    : 'bg-white/5 border-white/5 hover:border-white/10'
+                                                    }`}
+                                            >
+                                                <div className="flex flex-col">
+                                                    <span className="text-white font-bold">{name}</span>
+                                                    <span className="text-white/30 text-xs">{savedPools[name].length} pytań</span>
+                                                </div>
+                                                <div className="flex items-center gap-1">
+                                                    {activePoolName === name && <Check className="w-4 h-4 text-blue-400 mr-1" />}
+                                                    <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                        <button
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();
+                                                                const ids = savedPools[name];
+                                                                const poolToExport = quizData.filter(q => ids.includes(q.id));
+                                                                downloadPoolAsJSON(name, poolToExport);
+                                                            }}
+                                                            className="p-1.5 hover:bg-white/10 rounded-lg text-blue-400"
+                                                            title="Eksportuj"
+                                                        >
+                                                            <Download className="w-4 h-4" />
+                                                        </button>
+                                                        <button
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();
+                                                                deletePool(name, e);
+                                                            }}
+                                                            className="p-1.5 hover:bg-white/10 rounded-lg text-red-400"
+                                                            title="Usuń"
+                                                        >
+                                                            <Trash2 className="w-4 h-4" />
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </button>
+                                        ))}
+                                        {Object.keys(savedPools).length === 0 && (
+                                            <div className="md:col-span-2 py-8 text-center border-2 border-dashed border-white/5 rounded-2xl text-white/20 text-sm">
+                                                Brak zapisanych pul
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+
+                                {/* External Pools */}
                                 {externalPools.length > 0 && (
                                     <div>
-                                        <h4 className="text-white/40 text-[10px] uppercase font-bold tracking-widest mb-3 px-1">Pliki Projektu (public/pools)</h4>
+                                        <h4 className="text-[10px] uppercase font-black text-white/20 mb-3 px-1 tracking-widest">Pliki Serwera (public/pools)</h4>
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                             {externalPools.map(pool => (
                                                 <button
                                                     key={pool.filename}
                                                     onClick={() => loadPool(pool.name, true)}
-                                                    className={`p-4 rounded-xl text-left border-2 transition-all flex items-center justify-between ${activePoolName === pool.name
-                                                        ? 'bg-blue-500/30 border-blue-400'
-                                                        : 'bg-white/5 border-white/10 hover:border-white/30'
+                                                    className={`p-4 rounded-xl text-left border-2 transition-all flex items-center justify-between group ${activePoolName === pool.name
+                                                        ? 'bg-emerald-500/20 border-emerald-500/50 shadow-[0_0_20px_rgba(16,185,129,0.1)]'
+                                                        : 'bg-white/5 border-white/5 hover:border-white/10'
                                                         }`}
                                                 >
                                                     <div className="flex flex-col">
-                                                        <span className="text-white font-medium">{pool.name}</span>
-                                                        <span className="text-white/40 text-xs">Plik zewnętrzny</span>
+                                                        <span className="text-white font-bold">{pool.name}</span>
+                                                        <span className="text-white/30 text-xs">Gotowy zestaw zadań</span>
                                                     </div>
                                                     <div className="flex items-center gap-2">
-                                                        {activePoolName === pool.name && <Check className="w-4 h-4 text-blue-400" />}
+                                                        {activePoolName === pool.name && <Check className="w-4 h-4 text-emerald-400" />}
                                                         <button
                                                             onClick={(e) => {
                                                                 e.stopPropagation();
-                                                                // Fetch is required for external pools
                                                                 fetch(`/pools/${pool.filename}`)
                                                                     .then(res => res.json())
                                                                     .then(data => downloadPoolAsJSON(pool.name, data));
                                                             }}
-                                                            className="p-1.5 text-white/20 hover:text-blue-400 hover:bg-blue-400/10 rounded-md transition-all sm:opacity-0 group-hover:opacity-100"
-                                                            title="Eksportuj do JSON"
+                                                            className="p-1.5 hover:bg-white/10 rounded-lg text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity"
+                                                            title="Eksportuj"
                                                         >
                                                             <Download className="w-4 h-4" />
                                                         </button>
@@ -354,57 +441,40 @@ const QuizApp = () => {
                                         </div>
                                     </div>
                                 )}
-
-                                <div>
-                                    <h4 className="text-white/40 text-[10px] uppercase font-bold tracking-widest mb-3 px-1">Twoje zapisy (Pamięć lokalna)</h4>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                                        {Object.keys(savedPools).map(name => (
-                                            <button
-                                                key={name}
-                                                onClick={() => loadPool(name)}
-                                                className={`p-4 rounded-xl text-left border-2 transition-all flex items-center justify-between group ${activePoolName === name
-                                                    ? 'bg-purple-500/30 border-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.2)]'
-                                                    : 'bg-white/5 border-white/10 hover:border-white/30'
-                                                    }`}
-                                            >
-                                                <div className="flex flex-col">
-                                                    <span className="text-white font-medium">{name}</span>
-                                                    <span className="text-white/40 text-xs">{savedPools[name].length} pytań</span>
-                                                </div>
-                                                <div className="flex items-center gap-1">
-                                                    {activePoolName === name && <Check className="w-4 h-4 text-purple-400 mr-1" />}
-                                                    <button
-                                                        onClick={(e) => {
-                                                            e.stopPropagation();
-                                                            const ids = savedPools[name];
-                                                            const poolToExport = quizData.filter(q => ids.includes(q.id));
-                                                            downloadPoolAsJSON(name, poolToExport);
-                                                        }}
-                                                        className="p-1.5 text-white/20 hover:text-blue-400 hover:bg-blue-400/10 rounded-md transition-all sm:opacity-0 group-hover:opacity-100"
-                                                        title="Eksportuj do JSON"
-                                                    >
-                                                        <Download className="w-4 h-4" />
-                                                    </button>
-                                                    <button
-                                                        onClick={(e) => deletePool(name, e)}
-                                                        className="p-1.5 text-white/20 hover:text-red-400 hover:bg-red-400/10 rounded-md transition-all sm:opacity-0 group-hover:opacity-100"
-                                                        title="Usuń pulę"
-                                                    >
-                                                        <Trash2 className="w-4 h-4" />
-                                                    </button>
-                                                </div>
-                                            </button>
-                                        ))}
-                                        {Object.keys(savedPools).length === 0 && (
-                                            <div className="p-4 border border-dashed border-white/10 rounded-xl text-white/20 text-center text-sm md:col-span-2">
-                                                Brak zapisanych sesji
-                                            </div>
-                                        )}
-                                    </div>
-                                </div>
                             </div>
                         </div>
-                    )}
+                    </div>
+                </div>
+            )}
+
+            {/* Background elements */}
+            <div className="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-purple-500/20 blur-[120px] rounded-full pointer-events-none" />
+            <div className="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-pink-500/20 blur-[120px] rounded-full pointer-events-none" />
+
+            {/* Main Content Area */}
+            <main className="max-w-4xl w-full z-10 p-6 flex-1 flex flex-col justify-center">
+                <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/20">
+
+                    {/* Header */}
+                    <div className="flex items-center justify-between mb-8 gap-4 flex-wrap">
+                        <div className="flex flex-col">
+                            <span className="text-[10px] text-purple-200/40 font-black uppercase tracking-[0.2em] mb-1">Aktualna Pula</span>
+                            <h2 className="text-xl font-bold text-white tracking-tight truncate max-w-[250px] sm:max-w-md">{activePoolName}</h2>
+                        </div>
+
+                        <div className="flex items-center gap-3">
+                            <button
+                                onClick={resetToFullPool}
+                                className="text-white/40 hover:text-white transition-colors group p-2 bg-white/5 rounded-xl border border-white/10"
+                                title="Resetuj do pełnej puli"
+                            >
+                                <RotateCcw className="w-5 h-5 group-hover:rotate-[-45deg] transition-transform" />
+                            </button>
+                            <div className="text-white/90 font-bold bg-white/10 px-4 py-2 rounded-xl border border-white/10 backdrop-blur-md">
+                                {currentQuestion + 1} <span className="text-white/40 font-normal">/</span> {shuffledQuestions.length}
+                            </div>
+                        </div>
+                    </div>
 
                     {showResults ? (
                         <div className="animate-in fade-in zoom-in-95 duration-500">
@@ -423,7 +493,7 @@ const QuizApp = () => {
                                 </p>
                             </div>
 
-                            <div className="space-y-4 mb-10 max-h-[40vh] overflow-y-auto pr-4 custom-scrollbar">
+                            <div className="space-y-4 mb-10 max-h-[35vh] overflow-y-auto pr-4 custom-scrollbar">
                                 {shuffledQuestions.map((q, index) => {
                                     const status = getUserAnswerStatus(index);
                                     const userAnswer = selectedAnswers[index] || [];
@@ -649,7 +719,7 @@ const QuizApp = () => {
                 <div className="mt-8 text-center">
                     <p className="text-white/30 text-xs font-bold uppercase tracking-[0.3em]">AI Quiz Master Pro v2.0</p>
                 </div>
-            </div>
+            </main>
 
             {/* Global Scrollbar Customization */}
             <style dangerouslySetInnerHTML={{
