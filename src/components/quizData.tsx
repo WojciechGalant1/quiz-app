@@ -12,7 +12,7 @@ export const quizData: QuizQuestion[] = [
         options: [
             "SELECT Id_Student, Nazwisko, Imie FROM Studenci ;",
             "CURSOR c1 IS SELECT Id_Student, Nazwisko, Imie FROM Studenci ;",
-            "SELECT Id_Student, Nazwisko, Imie INTO vid, vnazwisko, vimie FROM Studenci ;",
+            "SELECT Id_Student, Nazwisko, Imie INTO vid, vnazwisko, vimie FROM Studenci ;\n💡 **Wyjaśnienie:** Składnia PL/SQL ściśle wymaga klauzuli `INTO` przy instrukcjach `SELECT`, które powracają jako zapytanie jednowierszowe, w celu przekazania wyników pod docelowe zmienne robocze. Brak tego wymogu rodzi błąd kompilacji bazy.",
         ],
         correct: [2]
     },
@@ -23,7 +23,7 @@ export const quizData: QuizQuestion[] = [
             "Umożliwiają pobranie wiersza danych i zapisanie ich w zmiennej",
             "Umożliwiają wielokrotne powtarzanie tych samych operacji z wykorzystaniem różnych danych",
             "Umożliwiają przetwarzanie danych z wykorzystaniem wielu wierszy będących wynikiem zapytania",
-            "Umożliwiają wykonanie zapytania do bazy danych",
+            "Umożliwiają wykonanie zapytania do bazy danych\n💡 **Wyjaśnienie:** Kursory jawne uruchamia się dla bezpiecznego powielania operacji na zapytaniach o dużej ilości wierszy z bazy. Chronią aplikację bazodanową przed wyjątkami `TOO_MANY_ROWS` w tradycyjnym `SELECT INTO` i pozwalają badać w pętlach m.in. atrybuty stanu bazy takie jak `%NOTFOUND` w przypadku braku nowych wierszy.",
         ],
         correct: [2]
     },
@@ -34,7 +34,7 @@ export const quizData: QuizQuestion[] = [
             "CREATE OR REPLACE PACKAGE Pckg_Validate",
             "Najpierw CREATE PACKAGE Pckg_Validate, potem CREATE PACKAGE BODY Pckg_Validate",
             "CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
-            "Najpierw CREATE OR REPLACE PACKAGE Pckg_Validate, potem CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
+            "Najpierw CREATE OR REPLACE PACKAGE Pckg_Validate, potem CREATE OR REPLACE PACKAGE BODY Pckg_Validate\n💡 **Wyjaśnienie:** Cykl budowy obiektowej narzuca systematykę w Oracle - domyślnie instaluje się publiczną specyfikację poleceniem `CREATE OR REPLACE PACKAGE` z pustymi deklaracjami, by dopiero w drugiej fazie dostarczyć dedykowaną logikę za pomocą polecenia `CREATE OR REPLACE PACKAGE BODY`, modyfikującego algorytm bez usuwania ustawień bazy.",
         ],
         correct: [3]
     },
@@ -47,55 +47,44 @@ export const quizData: QuizQuestion[] = [
             "ALTER FUNCTION BY REPLACING SF_Validate",
             "CREATE OR MODIFY FUNCTION SF_Validate",
             "CREATE FUNCTION SF_Validate",
-            "ALTER FUNCTION SF_Validate",
+            "ALTER FUNCTION SF_Validate\n💡 **Wyjaśnienie:** Cykl budowy obiektowej narzuca systematykę w Oracle - domyślnie instaluje się publiczną specyfikację poleceniem `CREATE OR REPLACE PACKAGE` z pustymi deklaracjami, by dopiero w drugiej fazie dostarczyć dedykowaną logikę za pomocą polecenia `CREATE OR REPLACE PACKAGE BODY`, modyfikującego algorytm bez usuwania ustawień bazy.",
         ],
         correct: [0]
     },
     {
-        id: 6,
+        id: 5,
         question: "Procedura PL/SQL została zdefiniowana w następujący sposób:\nPROCEDURE dodaj_przedmiot (n_nazwa VARCHAR2 DEFAULT 'Informatyka',\nn_opis VARCHAR2) IS\nBEGIN\nINSERT INTO Przedmioty VALUES(n_nazwa, n_opis);\nEND dodaj przedmiot;\nProszę wskazać poprawne wywołanie tej procedury:",
         options: [
             "dodaj_ przedmiot(n_opis => NULL);",
             "dodaj przedmiot('Algorytmy');",
             "dodaj_ przedmiot('Algorytmy', 'Opis algorytmów\");",
-            "dodaj_przedmiot;",
+            "dodaj_przedmiot;\n💡 **Wyjaśnienie:** Parametry domyślne dają elastyczność w omijaniu argumentów. Aby jednak skutecznie pominąć część wprowadzanych atrybutów bez błędu, stosujemy notację nazwaną ze strzałką '=>', jednoznacznie dopasowując przekazywany argument do docelowej nazwy w sygnaturze.",
         ],
         correct: [0, 2]
     },
     {
-        id: 7,
+        id: 6,
         question: "Która kolekcja jest zawszę gęsta?",
         options: [
             "Kolekcja typu VARRAY",
             "Kolekcja typu tablica asocjacyjna",
-            "Kolekcja typu NESTED TABLE",
+            "Kolekcja typu NESTED TABLE\n💡 **Wyjaśnienie:** Kolekcje różnią się organizacją pod względem gęstości wierszy. Tablice asocjacyjne wspierają elastyczność i pozwalają na indeksy ujemne (poprzez indeksy oparte o PLS_INTEGER), a VARRAY to ze swej natury tablica sztywna, nierozszerzalna ponad założony limit i gęsta - dlatego nie można na niej wybiórczo usunąć pojedynczego elementu ze środka rzędu używając polecenia typu DELETE(indeks).",
         ],
         correct: [0]
     },
     {
-        id: 8,
-        question: "Procedura PL/SQL została zdefiniowana w następujący sposób:\nPROCEDURE dodaj_przedmiot (n_nazwa VARCHAR2 DEFAULT 'Informatyka', n_opis VARCHAR2) IS\nBEGIN\nINSERT INTO Przedmioty VALUES(n_nazwa, n_opis);\nEND dodaj przedmiot;\nProszę wskazać poprawne wywołanie tej procedury:",
-        options: [
-            "dodaj przedmiot('Algorytmy','Opis algorytmów\");",
-            "dodaj przedmiot;",
-            "dodaj przedmiot('Algorytmy');",
-            "dodaj_ przedmiot(n_opis => NULL);",
-        ],
-        correct: [0, 3]
-    },
-    {
-        id: 9,
+        id: 7,
         question: "W jaki sposób można sprawdzić poprawność semantyczną obsługi wyjątku?",
         options: [
             "Poprzez kompilację bloku PL/SQL, zawierającego kod obsługi wyjątku",
             "Poprzez wykonanie tylko tej instrukcji, która powoduje powstanie wyjątku",
             "Poprzez analizę poprawności składni kodu PL/SQL, zawierającego instrukcję powodującą powstanie wyjątku oraz jego obsługę",
-            "Poprzez uruchomienie (wykonanie) bloku PL/SQL, zawierającego instrukcję powodującą powstanie wyjątku oraz jego obsługę",
+            "Poprzez uruchomienie (wykonanie) bloku PL/SQL, zawierającego instrukcję powodującą powstanie wyjątku oraz jego obsługę\n💡 **Wyjaśnienie:** Proces przechwytywania awarii powołuje rezerwy wbudowane w kod Oracle, np. dla zdarzeń o znanym id `NO_DATA_FOUND`. Jeśli tworzymy własny wyjątek sprzęgający dany numer usterki do konkretnej nazwy, musimy zadeklarować go flagą oraz powiązać z systemowym parametrem komendy `PRAGMA EXCEPTION_INIT`. Obsługa wszystkich generycznie wrzuconych do potoku nieprzechwyconych incydentów polega domyślnie na wylistowaniu na ostatnim u dołu rankingu tzw. śmieciarki catchera `WHEN OTHERS`.",
         ],
         correct: [3]
     },
     {
-        id: 10,
+        id: 8,
         question: "Proszę wskazać predefiniowane nazwy wyjątków:",
         options: [
             "INVALID_CURSOR",
@@ -103,267 +92,179 @@ export const quizData: QuizQuestion[] = [
             "NO_DATA_FOUND",
             "TOO_MANY_ROWS",
             "DUP_VAL_ON_COLUMN",
-            "TO_MANY_DATA",
+            "TO_MANY_DATA\n💡 **Wyjaśnienie:** Proces przechwytywania awarii powołuje rezerwy wbudowane w kod Oracle, np. dla zdarzeń o znanym id `NO_DATA_FOUND`. Jeśli tworzymy własny wyjątek sprzęgający dany numer usterki do konkretnej nazwy, musimy zadeklarować go flagą oraz powiązać z systemowym parametrem komendy `PRAGMA EXCEPTION_INIT`. Obsługa wszystkich generycznie wrzuconych do potoku nieprzechwyconych incydentów polega domyślnie na wylistowaniu na ostatnim u dołu rankingu tzw. śmieciarki catchera `WHEN OTHERS`.",
         ],
         correct: [0, 1, 2, 3]
     },
     {
-        id: 11,
-        question: "W jakim celu wykorzystuje się kursory? Wskaż zdanie, które najlepiej oddaje celowość zastosowania kursorów.",
-        options: [
-            "Umożliwiają wielokrotne powtarzanie tych samych operacji z wykorzystaniem różnych danych",
-            "Umożliwiają wykonanie zapytania do bazy danych",
-            "Umożliwiają pobranie wiersza danych i zapisanie ich w zmiennej",
-            "Umożliwiają przetwarzanie danych z wykorzystaniem wielu wierszy będących wynikiem zapytania",
-        ],
-        correct: [3]
-    },
-    {
-        id: 12,
+        id: 9,
         question: "Które polecenie spowoduje skompilowanie ciała istniejącego pakietu o nazwie Pckg_Validate?",
         options: [
             "ALTER PACKAGE Pckg_Validate COMPILE",
             "ALTER PACKAGE Pckg_Validate COMPILE SPECIFICATION",
             "ALTER PACKAGE Pckg_Validate COMPILE BODY",
-            "ALTER PACKAGE Pckg_Validate COMPILE PACKAGE",
+            "ALTER PACKAGE Pckg_Validate COMPILE PACKAGE\n💡 **Wyjaśnienie:** Wybrana odpowiedź wprost odzwierciedla prawidłową, standardowo rekomendowaną ze sztuki i narzucaną w dokumentacjach architektoniczną konstrukcję ze środowisk od RDBMS dającą poprawnie funkcjonujący w bazie skrypt PL/SQL bez obciążeń na spadek spójności ani powodowaniach do przerwań.",
         ],
         correct: [2]
     },
     {
-        id: 13,
-        question: "Twoim zadaniem jest zmodyfikowanie kodu PL/SQL w funkcji składowanej SF_Validate istniejącej już w bazie danych. Które z poniższych polecenie wykorzystasz do tego celu?",
-        options: [
-            "CREATE OR MODIFY FUNCTION SF_Validate",
-            "CREATE OR REPLACE FUNCTION SF_Validate",
-            "MODIFY FUNCTION SF_Validate",
-            "ALTER FUNCTION SF_Validate",
-            "ALTER FUNCTION BY REPLACING SF_Validate",
-            "CREATE FUNCTION SF_Validate",
-        ],
-        correct: [1]
-    },
-    {
-        id: 14,
+        id: 10,
         question: "Wskaż sposób skojarzenia błędu o numerze -1 z nazwą wyjątku DUPLICATE_VALUES:",
         options: [
             "declare\n PRAGMA EXCEPTION_INIT(duplicate_values, -1); duplicate_values exception;\nbegin\n null;\nend;",
-            "declare\nduplicate_values exception;\nPRAGMA EXCEPTION_INIT(duplicate_values, -1);\nbegin\nnull;\nend;",
+            "declare\nduplicate_values exception;\nPRAGMA EXCEPTION_INIT(duplicate_values, -1);\nbegin\nnull;\nend;\n💡 **Wyjaśnienie:** Proces przechwytywania awarii powołuje rezerwy wbudowane w kod Oracle, np. dla zdarzeń o znanym id `NO_DATA_FOUND`. Jeśli tworzymy własny wyjątek sprzęgający dany numer usterki do konkretnej nazwy, musimy zadeklarować go flagą oraz powiązać z systemowym parametrem komendy `PRAGMA EXCEPTION_INIT`. Obsługa wszystkich generycznie wrzuconych do potoku nieprzechwyconych incydentów polega domyślnie na wylistowaniu na ostatnim u dołu rankingu tzw. śmieciarki catchera `WHEN OTHERS`.",
         ],
         correct: [1]
     },
     {
-        id: 15,
+        id: 11,
         question: "Twoim zadaniem jest zmodyfikować definicję funkcji udostępnianej w istniejącym pakiecie o nazwie Pckg_Validate. Jakie polecenie musisz zdefiniować, aby wykonać to zadanie? Wskaż odpowiedź, która opisuje poprawny sposób wykonania tej modyfikacji.",
         options: [
             "CREATE OR REPLACE PACKAGE Pckg_Validate",
             "Najpierw CREATE PACKAGE Pckg_Validate, potem CREATE PACKAGE BODY Pckg_Validate",
             "Najpierw CREATE OR REPLACE PACKAGE Pckg_Validate, potem CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
             "CREATE PACKAGE BODY Pckg_Validate",
-            "CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
+            "CREATE OR REPLACE PACKAGE BODY Pckg_Validate\n💡 **Wyjaśnienie:** Cykl budowy obiektowej narzuca systematykę w Oracle - domyślnie instaluje się publiczną specyfikację poleceniem `CREATE OR REPLACE PACKAGE` z pustymi deklaracjami, by dopiero w drugiej fazie dostarczyć dedykowaną logikę za pomocą polecenia `CREATE OR REPLACE PACKAGE BODY`, modyfikującego algorytm bez usuwania ustawień bazy.",
         ],
         correct: [4]
     },
     {
-        id: 16,
-        question: "W jakim celu wykorzystuje się kursory? Wskaż zdanie, które najlepiej oddaje celowość zastosowania kursorów.",
-        options: [
-            "Umożliwiają wielokrotne powtarzanie tych samych operacji z wykorzystaniem różnych danych",
-            "Umożliwiają wykonanie zapytania do bazy danych",
-            "Umożliwiają pobranie wiersza danych i zapisanie ich w zmiennej",
-            "Umożliwiają przetwarzanie danych z wykorzystaniem wielu wierszy będących wynikiem zapytania",
-        ],
-        correct: [3]
-    },
-    {
-        id: 17,
+        id: 12,
         question: "W którym momencie wykonywane jest zapytanie zdefiniowane w deklaracji kursora jawnego?",
         options: [
             "Podczas sprawdzania czy kursor został otwarty przy pomocy atrybutu %ISOPEN",
             "Podczas sprawdzania wartości atrybutu %FOUND",
             "Podczas wykonania instrukcji otwarcia kursora",
             "Podczas sprawdzania wartości atrybutu %NOTFOUND",
-            "Podczas pobierania danych do zmiennej przy pomocy instrukcji FETCH",
+            "Podczas pobierania danych do zmiennej przy pomocy instrukcji FETCH\n💡 **Wyjaśnienie:** Kursory jawne uruchamia się dla bezpiecznego powielania operacji na zapytaniach o dużej ilości wierszy z bazy. Chronią aplikację bazodanową przed wyjątkami `TOO_MANY_ROWS` w tradycyjnym `SELECT INTO` i pozwalają badać w pętlach m.in. atrybuty stanu bazy takie jak `%NOTFOUND` w przypadku braku nowych wierszy.",
         ],
         correct: [2]
     },
     {
-        id: 18,
+        id: 13,
         question: "Wskaż zdanie prawdziwe dotyczące pakietów definiowanych w bazie danych ORACLE.",
         options: [
             "Każdy pakiet składa się ze specyfikacji i ciała.",
             "Każdy pakiet musi składać się ze specyfikacji i opcjonalnie może posiadać ciało.",
             "W bazie danych można tworzyć pakiety o tej samej nazwie, jednak muszą one różnić się specyfikacją.",
             "Każdy pakiet musi zawierać co najmniej jeden podprogram PL/SQL.",
-            "Każdy pakiet musi mieć unikalną nazwę w bazie danych.",
+            "Każdy pakiet musi mieć unikalną nazwę w bazie danych.\n💡 **Wyjaśnienie:** Wybrana odpowiedź wprost odzwierciedla prawidłową, standardowo rekomendowaną ze sztuki i narzucaną w dokumentacjach architektoniczną konstrukcję ze środowisk od RDBMS dającą poprawnie funkcjonujący w bazie skrypt PL/SQL bez obciążeń na spadek spójności ani powodowaniach do przerwań.",
         ],
         correct: [1]
     },
     {
-        id: 19,
+        id: 14,
         question: "W której z sekcji bloku PL/SQL można zagnieżdżać kolejne bloki?",
         options: [
             "Tylko w sekcji EXCEPTION",
             "Tylko w sekcji BEGIN lub EXCEPTION",
             "Tylko w sekcji BEGIN",
-            "W każdej sekcji tj. w części DECLARE, BEGIN, EXCEPTION",
+            "W każdej sekcji tj. w części DECLARE, BEGIN, EXCEPTION\n💡 **Wyjaśnienie:** Architektura kodu bazuje tu na regułach wymiarowania referencyjnego. Deklarujące ujęcie predykatu pomocniczego `%ROWTYPE` bezbłędnie przesyła schemat relacyjny pobranej bazy czy kursora do deklarowanej w PL/SQL zmiennej. Reguły te wymuszają także trzymanie zadeklarowanych nowości logicznych dla procedur składowych podprogramów funkcji i procedur tuż u dołu przed sekcją otwarcia bloku roboczego `BEGIN`.",
         ],
         correct: [1]
     },
     {
-        id: 20,
+        id: 15,
         question: "Wskaż poprawny sposób deklarowania zmiennej rekordowej o nazwie My_Rec w bloku PL/SQL:",
         options: [
             "TYPE tMy_Rec AS OBJECT (Id NUMBER(5), Name VARCHAR2(30));\nMy_Rec tMy_Rec;",
             "My Rec IS RECORD (Id NUMBER(5), Name VARCHAR2(30));",
             "My Rec ROWTYPE (Id NUMBER(5), Name VARCHAR2(30));",
-            "TYPE tMy_Rec IS RECORD (Id NUMBER(5), Name VARCHAR2(30)); My_Rec tMy_Rec;",
+            "TYPE tMy_Rec IS RECORD (Id NUMBER(5), Name VARCHAR2(30)); My_Rec tMy_Rec;\n💡 **Wyjaśnienie:** Architektura kodu bazuje tu na regułach wymiarowania referencyjnego. Deklarujące ujęcie predykatu pomocniczego `%ROWTYPE` bezbłędnie przesyła schemat relacyjny pobranej bazy czy kursora do deklarowanej w PL/SQL zmiennej. Reguły te wymuszają także trzymanie zadeklarowanych nowości logicznych dla procedur składowych podprogramów funkcji i procedur tuż u dołu przed sekcją otwarcia bloku roboczego `BEGIN`.",
         ],
         correct: [3]
     },
     {
-        id: 21,
+        id: 16,
         question: "Twoim zadaniem jest zmodyfikować definicję funkcji udostępnianej w istniejącym pakiecie o nazwie\nPckg_Validate. Jakie polecenie musisz zdefiniować, aby wykonać to zadanie? Wskaż odpowiedź, która opisuje poprawny sposób wykonania tej modyfikacji.",
         options: [
             "CREATE PACKAGE BODY Pckg_Validate",
             "Najpierw CREATE PACKAGE Pckg_Validate, potem CREATE PACKAGE BODY Pckg_Validate",
             "CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
             "CREATE OR REPLACE PACKAGE Pckg_Validate",
-            "Najpierw CREATE OR REPLACE PACKAGE Pckg_Validate, potem CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
+            "Najpierw CREATE OR REPLACE PACKAGE Pckg_Validate, potem CREATE OR REPLACE PACKAGE BODY Pckg_Validate\n💡 **Wyjaśnienie:** Cykl budowy obiektowej narzuca systematykę w Oracle - domyślnie instaluje się publiczną specyfikację poleceniem `CREATE OR REPLACE PACKAGE` z pustymi deklaracjami, by dopiero w drugiej fazie dostarczyć dedykowaną logikę za pomocą polecenia `CREATE OR REPLACE PACKAGE BODY`, modyfikującego algorytm bez usuwania ustawień bazy.",
         ],
         correct: [2]
     },
     {
-        id: 22,
+        id: 17,
         question: "Twoim zadaniem jest zdefiniowanie typu kolekcji, który będzie dostępny dla innych użytkowników bazy danych podczas tworzenia kodu PL/SQL. W jaki sposób to zrobisz? Wskaż tę odpowiedź (te odpowiedzi), które umożliwiają wykonanie tego zadania.",
         options: [
             "Należy utworzyć w bazie danych pakiet, w którego specyfikacji znajdzie się deklaracja wymaganego typu kolekcji. Następnie w ciele pakietu należy zdefiniować typ danych dla elementów takiej kolekcji.",
             "Należy utworzyć blok PL/SQL, w którego części deklaracyjnej znajdzie się definicja wymaganego typu kolekcji. Następnie należy zapisać plik zawierający ten blok w bazie danych.",
             "Należy utworzyć w bazie danych specyfikację pakietu, w której znajdzie się definicja wymaganego typu kolekcji",
             "Należy utworzyć w bazie danych obiekt będący typem danych przy pomocy polecenia CREATE TYPE AS OBJECT, podając w nim definicję typu kolekcji",
-            "Należy utworzyć blok PL/SQL, w którego części deklaracyjnej znajdzie się definicja wymaganego typu kolekcji. Następnie należy zapisać ten blok w specyfikacji pakietu, utworzonej w bazie danych.",
+            "Należy utworzyć blok PL/SQL, w którego części deklaracyjnej znajdzie się definicja wymaganego typu kolekcji. Następnie należy zapisać ten blok w specyfikacji pakietu, utworzonej w bazie danych.\n💡 **Wyjaśnienie:** Cykl budowy obiektowej narzuca systematykę w Oracle - domyślnie instaluje się publiczną specyfikację poleceniem `CREATE OR REPLACE PACKAGE` z pustymi deklaracjami, by dopiero w drugiej fazie dostarczyć dedykowaną logikę za pomocą polecenia `CREATE OR REPLACE PACKAGE BODY`, modyfikującego algorytm bez usuwania ustawień bazy.",
         ],
         correct: [2]
     },
     {
-        id: 23,
-        question: "Wskaż poprawną postać instrukcji SELECT w języku PL/SQL, umieszczoną w części wykonawczej bloku PL/SQL (w zadaniu wykorzystano przykład bazy danych używanej na zajęciach laboratoryjnych).",
-        options: [
-            "SELECT Id_Student, Nazwisko, Imie FROM Studenci;",
-            "SELECT Id_Student, Nazwisko, Imie INTO vid, vnazwisko, vimie FROM Studenci;",
-            "CURSOR c1 IS SELECT Id_Student, Nazwisko, Imie FROM Studenci ;",
-        ],
-        correct: [1]
-    },
-    {
-        id: 24,
-        question: "Wskaż poprawną postać instrukcji SELECT w języku PL/SQL, umieszczoną w części wykonawczej bloku PL/SQL (w zadaniu wykorzystano przykład bazy danych używanej na zajęciach laboratoryjnych).",
-        options: [
-            "CURSOR c1 IS SELECT Id_Student, Nazwisko, Imie FROM Studenci ;",
-            "SELECT Id_Student, Nazwisko, Imie FROM Studenci ;",
-            "SELECT Id Student, Nazwisko, Imie INTO vid, vnazwisko, vimie FROM Studenci;",
-        ],
-        correct: [2]
-    },
-    {
-        id: 25,
-        question: "Wskaż sposób skojarzenia błędu o numerze -1 z nazwą wyjątku DUPLICATE_VALUES:",
-        options: [
-            "declare\nPRAGMA EXCEPTION_INIT(duplicate_values, -1);\nduplicate_values exception ;\nbegin\nnull;\nend;",
-            "declare\nPRAGMA EXCEPTION_INIT(duplicate_values, -1);\nbegin\nnull;\nend;",
-            "declare\nduplicate_values exception ;\nPRAGMA EXCEPTION_INIT(duplicate_values, -1);\nbegin\nnull;\nend;",
-        ],
-        correct: [2]
-    },
-    {
-        id: 26,
+        id: 18,
         question: "Proszę wskazać zdanie fałszywe dotyczące wyjątków:",
         options: [
             "Każdy błąd systemowy jest skojarzony z wyjątkiem\npredefiniowanym o odpowiedniej nazwie",
             "Wyjątki użytkownika muszą mieć nazwy unikalne w tym samym bloku PL/SQL",
             "Wyjątki użytkownika nie mogą mieć nazw identycznych z nazwami wyjątków predefiniowanych",
-            "Każdy wyjątek musi być obsłużony w tym samym bloku, w którym powstał",
+            "Każdy wyjątek musi być obsłużony w tym samym bloku, w którym powstał\n💡 **Wyjaśnienie:** Proces przechwytywania awarii powołuje rezerwy wbudowane w kod Oracle, np. dla zdarzeń o znanym id `NO_DATA_FOUND`. Jeśli tworzymy własny wyjątek sprzęgający dany numer usterki do konkretnej nazwy, musimy zadeklarować go flagą oraz powiązać z systemowym parametrem komendy `PRAGMA EXCEPTION_INIT`. Obsługa wszystkich generycznie wrzuconych do potoku nieprzechwyconych incydentów polega domyślnie na wylistowaniu na ostatnim u dołu rankingu tzw. śmieciarki catchera `WHEN OTHERS`.",
         ],
         correct: [0, 2, 3]
     },
     {
-        id: 27,
+        id: 19,
         question: "Twoim zadaniem jest utworzyć pakiet o nazwie Pckg_Validate, który będzie udostępniał typy kolekcji oraz funkcje walidujące dane. Przyjmując założenie, że pakiet ten nie istnieje jeszcze w bazie danych, jakie polecenia wykonasz, aby utworzyć ten pakiet? Wskaż odpowiedź, która opisuje poprawny sposób tworzenia tego pakietu.",
         options: [
             "CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
             "Najpierw CREATE OR REPLACE PACKAGE Pckg_Validate, potem CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
             "Najpierw CREATE PACKAGE Pckg_Validate, potem CREATE PACKAGE BODY Pckg_Validate",
-            "CREATE OR REPLACE PACKAGE Pckg_Validate",
+            "CREATE OR REPLACE PACKAGE Pckg_Validate\n💡 **Wyjaśnienie:** Cykl budowy obiektowej narzuca systematykę w Oracle - domyślnie instaluje się publiczną specyfikację poleceniem `CREATE OR REPLACE PACKAGE` z pustymi deklaracjami, by dopiero w drugiej fazie dostarczyć dedykowaną logikę za pomocą polecenia `CREATE OR REPLACE PACKAGE BODY`, modyfikującego algorytm bez usuwania ustawień bazy.",
         ],
         correct: [1]
     },
     {
-        id: 28,
-        question: "Które polecenie spowoduje skompilowanie ciała istniejącego pakietu o nazwie Pckg_Validate?",
-        options: [
-            "ALTER PACKAGE Pckg_Validate COMPILE SPECIFICATION",
-            "ALTER PACKAGE Pckg_Validate COMPILE BODY",
-            "ALTER PACKAGE Pckg_Validate COMPILE PACKAGE",
-            "ALTER PACKAGE Pckg_Validate COMPILE",
-        ],
-        correct: [1]
-    },
-    {
-        id: 29,
-        question: "Twoim zadaniem jest zdefiniowanie typu kolekcji, który będzie dostępny dla innych użytkowników bazy danych podczas tworzenia kodu PL/SQL. W jaki sposób to zrobisz? Wskaż tę odpowiedź (te odpowiedzi), które umożliwiają wykonanie tego zadania.",
-        options: [
-            "Należy utworzyć w bazie danych specyfikację pakietu, w której znajdzie się definicja wymaganego typu kolekcji",
-            "Należy utworzyć blok PL/SQL, w którego części deklaracyjnej znajdzie się definicja wymaganego typu kolekcji. Następnie należy zapisać ten blok w specyfikacji pakietu, utworzonej w bazie danych.",
-            "Należy utworzyć w bazie danych pakiet, w którego specyfikacji znajdzie się deklaracja wymaganego typu kolekcji. Następnie w ciele pakietu należy zdefiniować typ danych dla elementów takiej kolekcji.",
-            "Należy utworzyć w bazie danych obiekt będący typem danych przy pomocy polecenia CREATE TYPE AS OBJECT, podając w nim definicję typu kolekcji",
-            "Należy utworzyć blok PL/SQL, w którego części deklaracyjnej znajdzie się definicja wymaganego typu kolekcji. Następnie należy zapisać plik zawierający ten blok w bazie danych.",
-        ],
-        correct: [0]
-    },
-    {
-        id: 30,
+        id: 20,
         question: "Jak spowodować powstanie wyjątku predefiniowanego NO_DATA_FOUND?",
         options: [
             "Otworzyć kursor, który nie pobierze żadnych rekordów z bazy danych",
             "Wykonać instrukcję SELECT ... INTO, podając w niej warunek, który nigdy nie będzie spełniony.",
             "Wykonać instrukcję FETCH dla kursora jawnego, który nie zawiera żadnych rekordów",
-            "Wykonać instrukcję RAISE NO_DATA_FOUND",
+            "Wykonać instrukcję RAISE NO_DATA_FOUND\n💡 **Wyjaśnienie:** Proces przechwytywania awarii powołuje rezerwy wbudowane w kod Oracle, np. dla zdarzeń o znanym id `NO_DATA_FOUND`. Jeśli tworzymy własny wyjątek sprzęgający dany numer usterki do konkretnej nazwy, musimy zadeklarować go flagą oraz powiązać z systemowym parametrem komendy `PRAGMA EXCEPTION_INIT`. Obsługa wszystkich generycznie wrzuconych do potoku nieprzechwyconych incydentów polega domyślnie na wylistowaniu na ostatnim u dołu rankingu tzw. śmieciarki catchera `WHEN OTHERS`.",
         ],
         correct: [1, 3]
     },
     {
-        id: 31,
+        id: 21,
         question: "Jakie wyjątki powinno obsłużyć się w poniższym kodzie PL/SQL?\nDECLARE\n vx studenci.id_student%TYPE ;\nBEGIN\n SELECT ID student INTO vx FROM Studenci WHERE Nazwisko = 'Muryjas' ;\n IF vx IS NULL THEN\n DBMS_OUTPUT.PUT_LINE('This student does not exist');\nEND IF ;\nend ;",
         options: [
             "NO_DATA",
             "TOO_MANY_VALUES",
             "VALUE_ERROR",
             "NO_DATA_FOUND",
-            "TOO_MANY_ROWS",
+            "TOO_MANY_ROWS\n💡 **Wyjaśnienie:** Proces przechwytywania awarii powołuje rezerwy wbudowane w kod Oracle, np. dla zdarzeń o znanym id `NO_DATA_FOUND`. Jeśli tworzymy własny wyjątek sprzęgający dany numer usterki do konkretnej nazwy, musimy zadeklarować go flagą oraz powiązać z systemowym parametrem komendy `PRAGMA EXCEPTION_INIT`. Obsługa wszystkich generycznie wrzuconych do potoku nieprzechwyconych incydentów polega domyślnie na wylistowaniu na ostatnim u dołu rankingu tzw. śmieciarki catchera `WHEN OTHERS`.",
         ],
         correct: [3, 4]
     },
     {
-        id: 32,
+        id: 22,
         question: "Który z atrybutów kursora jawnego powinien być wykorzystany jako pierwszy po instrukcji otwarciu kursora:",
         options: [
             "%ROWCOUNT",
             "%FOUND",
             "%NOTFOUND",
-            "%ISOPEN",
+            "%ISOPEN\n💡 **Wyjaśnienie:** Kursory jawne uruchamia się dla bezpiecznego powielania operacji na zapytaniach o dużej ilości wierszy z bazy. Chronią aplikację bazodanową przed wyjątkami `TOO_MANY_ROWS` w tradycyjnym `SELECT INTO` i pozwalają badać w pętlach m.in. atrybuty stanu bazy takie jak `%NOTFOUND` w przypadku braku nowych wierszy.",
         ],
         correct: [3]
     },
     {
-        id: 33,
+        id: 23,
         question: "Czy poniższy kod PL/SQL jest poprawny z punktu widzenia składni:\nDECLARE\nFUNCTION Count_Exams (sid studenci.ID_student%TYPE) RETURN NUMBER IS exnr NUMBER ;\nBEGIN\nSELECT COUNT(*) INTO exnr FROM Egzaminy\nWHERE ID student = sid;\nRETURN exnr;\nEND Count_Exams ;\nCURSOR c1 IS SELECT ID student, Nazwisko, Imie FROM Studenci WHERE UPPER (Nazwisko) = 'MURYJAS' ;\nBEGIN\nFOR vc1 IN c1 LOOP\nDBMS_OUTPUT.PUT_LINE('ID - ' || Count_Exams (vc1.ID_student) );\nEND LOOP;\nEND;",
         options: [
             "Tak",
-            "Nie",
+            "Nie\n💡 **Wyjaśnienie:** Architektura kodu bazuje tu na regułach wymiarowania referencyjnego. Deklarujące ujęcie predykatu pomocniczego `%ROWTYPE` bezbłędnie przesyła schemat relacyjny pobranej bazy czy kursora do deklarowanej w PL/SQL zmiennej. Reguły te wymuszają także trzymanie zadeklarowanych nowości logicznych dla procedur składowych podprogramów funkcji i procedur tuż u dołu przed sekcją otwarcia bloku roboczego `BEGIN`.",
         ],
         correct: [1]
     },
     {
-        id: 34,
+        id: 24,
         question: "Podczas deklarowania zmiennej użyto atrybutu %ROWTYPE. Do czego odwołuje się ten atrybut?",
         options: [
             "Do definicji kursora (jego struktury)",
@@ -371,626 +272,355 @@ export const quizData: QuizQuestion[] = [
             "Do typu innej dowolnej zmiennej",
             "Do typu innej zmiennej skalarnej",
             "Do struktury tabeli",
-            "Do zmiennej rekordowej",
+            "Do zmiennej rekordowej\n💡 **Wyjaśnienie:** Architektura kodu bazuje tu na regułach wymiarowania referencyjnego. Deklarujące ujęcie predykatu pomocniczego `%ROWTYPE` bezbłędnie przesyła schemat relacyjny pobranej bazy czy kursora do deklarowanej w PL/SQL zmiennej. Reguły te wymuszają także trzymanie zadeklarowanych nowości logicznych dla procedur składowych podprogramów funkcji i procedur tuż u dołu przed sekcją otwarcia bloku roboczego `BEGIN`.",
         ],
         correct: [0, 1, 4]
     },
     {
-        id: 35,
+        id: 25,
         question: "W bloku PL/SQL zadeklarowano wyjątek użytkownika o nazwie NO_DATA_FOUND. W tym samym bloku użyto instrukcji SELECT ... INTO, która może spowodować powstanie wyjątku predefiniowanego NO_DATA_FOUND. W jaki sposób dokonać obsługi wyjątku predefiniowanego w sekcji EXCEPTION?",
         options: [
             "WHEN STANDARD.NO_DATA_FOUND THEN Blok_Obsługi;",
             "WHEN SERVER.NO_DATA_FOUND THEN Blok_Obsługi;",
             "WHEN NO_DATA_FOUND THEN Blok_Obsługi;",
-            "WHEN BUILT_IN.NO_DATA_FOUND THEN Blok_Obsługi;",
+            "WHEN BUILT_IN.NO_DATA_FOUND THEN Blok_Obsługi;\n💡 **Wyjaśnienie:** Proces przechwytywania awarii powołuje rezerwy wbudowane w kod Oracle, np. dla zdarzeń o znanym id `NO_DATA_FOUND`. Jeśli tworzymy własny wyjątek sprzęgający dany numer usterki do konkretnej nazwy, musimy zadeklarować go flagą oraz powiązać z systemowym parametrem komendy `PRAGMA EXCEPTION_INIT`. Obsługa wszystkich generycznie wrzuconych do potoku nieprzechwyconych incydentów polega domyślnie na wylistowaniu na ostatnim u dołu rankingu tzw. śmieciarki catchera `WHEN OTHERS`.",
         ],
         correct: [0]
     },
     {
-        id: 36,
+        id: 26,
         question: "Proszę wskazać numer linii kodu, w której występuje błąd:\n1| DECLARE\n2| Liczba NUMBER ;\n3| Mwyjatek EXCEPTION;\n4| BEGIN\n5| SELECT COUNT(*) INTO liczba FROM Egzaminy WHERE Id_osrodek = 1;\n6| IF liczba = 0 THEN\n7| EXECUTE mwyjatek ;\n8| END IF ;\n9|  INSERT INTO Osrodki (Id_osrodek, Nazwa_o) VALUES (10, 'Politechnika Lubelska');\n10| EXCEPTION\n11| WHEN OTHERS THEN dbms_output.put_line ('Powstał nieznany wyjątek');\n12| WHEN mwyjatek THEN\n13| dbms_output.put_line ('Brak egzaminów w ośrodku');\n14| END ;",
         options: [
             "9",
             "11",
             "3",
-            "7",
+            "7\n💡 **Wyjaśnienie:** Proces przechwytywania awarii powołuje rezerwy wbudowane w kod Oracle, np. dla zdarzeń o znanym id `NO_DATA_FOUND`. Jeśli tworzymy własny wyjątek sprzęgający dany numer usterki do konkretnej nazwy, musimy zadeklarować go flagą oraz powiązać z systemowym parametrem komendy `PRAGMA EXCEPTION_INIT`. Obsługa wszystkich generycznie wrzuconych do potoku nieprzechwyconych incydentów polega domyślnie na wylistowaniu na ostatnim u dołu rankingu tzw. śmieciarki catchera `WHEN OTHERS`.",
         ],
         correct: [1, 3]
     },
     {
-        id: 37,
-        question: "Podczas deklarowania zmiennej użyto atrybutu %ROWTYPE. Do czego odwołuje się ten atrybut?",
-        options: [
-            "Do struktury tabeli",
-            "Do zmiennej rekordowej",
-            "Do definicji kursora (jego struktury)",
-            "Do typu innej zmiennej skalarnej",
-            "Do zmiennej kursora",
-            "Do typu innej dowolnej zmiennej",
-        ],
-        correct: [0, 2, 4]
-    },
-    {
-        id: 38,
+        id: 27,
         question: "Który rodzaj kolekcji wymaga stosowania indeksu numerycznego w celu odwoływania się do jej elementów?",
         options: [
             "Kolekcja typu NESTED TABLE",
             "Kolekcja typu tablica asocjacyjna",
-            "Kolekcja typu VARRAY",
+            "Kolekcja typu VARRAY\n💡 **Wyjaśnienie:** Kolekcje różnią się organizacją pod względem gęstości wierszy. Tablice asocjacyjne wspierają elastyczność i pozwalają na indeksy ujemne (poprzez indeksy oparte o PLS_INTEGER), a VARRAY to ze swej natury tablica sztywna, nierozszerzalna ponad założony limit i gęsta - dlatego nie można na niej wybiórczo usunąć pojedynczego elementu ze środka rzędu używając polecenia typu DELETE(indeks).",
         ],
         correct: [0, 2]
     },
     {
-        id: 39,
+        id: 28,
         question: "Która linia poniższego kodu będzie źródłem błędu?\n1| DECLARE\n2| exno NUMBER := 0;\n3| PROCEDURE Count_Exams (ids egzaminy.id_student%TYPE, exn NUMBER) IS\n4| BEGIN\n5| SELECT COUNT(*) INTO exn FROM Egzaminy WHERE ID_student = ids;\n6| END Count_Ex  ams;\n7| BEGIN\n8| Count_Exams ('0000001', exno) ;\n9| DBMS_OUTPUT.PUT_LINE('This student had || exno || exams' ) ;\n10| END;",
         options: [
             "5",
             "8",
             "2",
-            "9",
+            "9\n💡 **Wyjaśnienie:** Parametry domyślne dają elastyczność w omijaniu argumentów. Aby jednak skutecznie pominąć część wprowadzanych atrybutów bez błędu, stosujemy notację nazwaną ze strzałką '=>', jednoznacznie dopasowując przekazywany argument do docelowej nazwy w sygnaturze.",
         ],
         correct: [0]
     },
     {
-        id: 40,
+        id: 29,
         question: "Dla jakiego typu kolekcji metoda COUNT i LAST zwrócą tę samą wartość?",
         options: [
             "Kolekcji typu tablica asocjacyjna",
             "Kolekcji VARRAY",
-            "Kolekcji NESTED TABLE",
+            "Kolekcji NESTED TABLE\n💡 **Wyjaśnienie:** Kolekcje różnią się organizacją pod względem gęstości wierszy. Tablice asocjacyjne wspierają elastyczność i pozwalają na indeksy ujemne (poprzez indeksy oparte o PLS_INTEGER), a VARRAY to ze swej natury tablica sztywna, nierozszerzalna ponad założony limit i gęsta - dlatego nie można na niej wybiórczo usunąć pojedynczego elementu ze środka rzędu używając polecenia typu DELETE(indeks).",
         ],
         correct: [1]
     },
     {
-        id: 41,
-        question: "Jak spowodować powstanie wyjątku predefiniowanego NO_DATA_FOUND?",
-        options: [
-            "Wykonać instrukcję SELECT ... INTO, podając w niej warunek, który nigdy nie będzie spełniony.",
-            "Wykonać instrukcję RAISE NO_DATA_FOUND",
-            "Otworzyć kursor, który nie pobierze żadnych rekordów z bazy danych",
-            "Wykonać instrukcję FETCH dla kursora jawnego, który nie zawiera żadnych rekordów",
-        ],
-        correct: [0, 1]
-    },
-    {
-        id: 42,
-        question: "Który rodzaj kolekcji wymaga stosowania indeksu numerycznego w celu odwoływania się do jej elementów?",
-        options: [
-            "Kolekcja typu VARRAY",
-            "Kolekcja typu tablica asocjacyjna",
-            "Kolekcja typu NESTED TABLE",
-        ],
-        correct: [0, 2]
-    },
-    {
-        id: 43,
+        id: 30,
         question: "Czym się charakteryzuje mocna zmienna kursora?",
         options: [
             "Można skojarzyć z nią tylko jedno zapytanie, dla którego struktura zbioru wynikowego jest zgodna z definicją typu danych określonego w deklaracji zmiennej",
             "Można skojarzyć z nią tylko takie zapytanie, dla którego struktura zbioru wynikowego jest zgodna z definicją typu danych określonego w deklaracji zmiennej",
             "Można z nią skojarzyć dowolne zapytanie",
-            "Jej deklaracja zawiera definicję typu danych, który opisuje strukturę zbioru wynikowego zapytania skojarzonego z tą zmienną",
+            "Jej deklaracja zawiera definicję typu danych, który opisuje strukturę zbioru wynikowego zapytania skojarzonego z tą zmienną\n💡 **Wyjaśnienie:** Architektura kodu bazuje tu na regułach wymiarowania referencyjnego. Deklarujące ujęcie predykatu pomocniczego `%ROWTYPE` bezbłędnie przesyła schemat relacyjny pobranej bazy czy kursora do deklarowanej w PL/SQL zmiennej. Reguły te wymuszają także trzymanie zadeklarowanych nowości logicznych dla procedur składowych podprogramów funkcji i procedur tuż u dołu przed sekcją otwarcia bloku roboczego `BEGIN`.",
         ],
         correct: [3]
     },
     {
-        id: 44,
+        id: 31,
         question: "Wskaż numer linii, w której występuje błąd deklaracji zmiennej:\n1| declare\n2| cursor c1 is SELECT Id_Student, COUNT(*) FROM Egzaminy GROUP BY Id_Student;\n3| vc1 c1%ROWTYPE;\n4| vc2 c1%TYPE;\n5| vc3 vc1%TYPE;\n6| vc4 vc1%ROWTYPE;\n7| begin\n8| null;\n9| end;",
         options: [
             "4",
             "3",
             "6",
-            "5",
+            "5\n💡 **Wyjaśnienie:** Architektura kodu bazuje tu na regułach wymiarowania referencyjnego. Deklarujące ujęcie predykatu pomocniczego `%ROWTYPE` bezbłędnie przesyła schemat relacyjny pobranej bazy czy kursora do deklarowanej w PL/SQL zmiennej. Reguły te wymuszają także trzymanie zadeklarowanych nowości logicznych dla procedur składowych podprogramów funkcji i procedur tuż u dołu przed sekcją otwarcia bloku roboczego `BEGIN`.",
         ],
         correct: [0, 2]
     },
     {
-        id: 45,
+        id: 32,
         question: "Instrukcja otwarcia kursora jawnego (OPEN) spowoduje powstanie wyjątku, jeśli:",
         options: [
             "Instrukcja SELECT definiująca kursor nie jest poprawna składniowo",
             "Kursor został już uprzednio otwarty",
             "Połączenie z bazą danych zostało utracone",
-            "Zbiór wynikowy powstały po wykonaniu instrukcji SELECT, definiującej kursor, jest pusty",
+            "Zbiór wynikowy powstały po wykonaniu instrukcji SELECT, definiującej kursor, jest pusty\n💡 **Wyjaśnienie:** Kursory jawne uruchamia się dla bezpiecznego powielania operacji na zapytaniach o dużej ilości wierszy z bazy. Chronią aplikację bazodanową przed wyjątkami `TOO_MANY_ROWS` w tradycyjnym `SELECT INTO` i pozwalają badać w pętlach m.in. atrybuty stanu bazy takie jak `%NOTFOUND` w przypadku braku nowych wierszy.",
         ],
         correct: [1]
     },
     {
-        id: 46,
+        id: 33,
         question: "Co można umieścić w specyfikacji pakietu, dla którego nie istnieje ciało pakietu?",
         options: [
             "Deklarację wyjątku",
             "Deklarację kursora",
             "Deklarację stałej",
             "Deklarację zmiennej",
-            "Deklarację typu danych",
+            "Deklarację typu danych\n💡 **Wyjaśnienie:** Cykl budowy obiektowej narzuca systematykę w Oracle - domyślnie instaluje się publiczną specyfikację poleceniem `CREATE OR REPLACE PACKAGE` z pustymi deklaracjami, by dopiero w drugiej fazie dostarczyć dedykowaną logikę za pomocą polecenia `CREATE OR REPLACE PACKAGE BODY`, modyfikującego algorytm bez usuwania ustawień bazy.",
         ],
         correct: [0, 1, 2, 3, 4]
     },
     {
-        id: 47,
+        id: 34,
         question: "Wskaż prawidłowy kod PL/SQL, umożliwiający wyświetlenie identyfikatora studenta, który nie zdawał żadnego egzaminu? Przyjmij założenie, że jeśli student zdawał egzamin to otrzymał z niego co najmniej 2 punkty.",
         options: [
             "DECLARE\nCURSOR C1 IS SELECT Id_Student, Nazwisko, Imie FROM Studenci ; CURSOR C2(ids studenci.id_student%TYPE) IS\nBEGIN\nSELECT COUNT(Punkty) Total FROM Egzaminy WHERE Id_student ids;\nFOR vc1 IN c1 LOOP\nFOR vc2 IN c2(vc1.Id_Student) LOOP\nIF vc2.Total = 0 THEN\nDBMS_OUTPUT.PUT_LINE('Student o ID = vc1.Id_Student || nie zdawał egzaminu');\nEND IF;\nEND LOOP;\nEND LOOP;\nEND;",
             "DECLARE\nCURSOR C1 IS SELECT Id Student, Nazwisko, Imie FROM Studenci ;\nCURSOR C2(ids studenci.id_student%TYPE) IS\nBEGIN\nSELECT SUM(Punkty) Total FROM Egzaminy WHERE Id_student = ids;\nFOR vc1 IN c1 LOOP\nFOR vc2 IN c2(vc1.Id_Student) LOOP\nIF vc2. Total IS NULL THEN\nDBMS_OUTPUT.PUT_LINE('Student o ID= || vc1.Id_Student || nie zdawał egzaminu');\nEND IF ;\nEND LOOP;\nEND LOOP;\nEND;",
             "DECLARE\nCURSOR C1 IS SELECT Id_Student, Nazwisko, Imie FROM Studenci ; CURSOR C2(ids studenci.id_student%TYPE) IS\nBEGIN\nSELECT SUM(Punkty) Total FROM Egzaminy WHERE Id_student = ids;\nFOR vc1 IN c1 LOOP\nFOR vc2 IN c2(vc1.Id_Student) LOOP\nIF vc2.Total = 0 THEN\nDBMS_OUTPUT.PUT_LINE('Student o ID= || vc1.Id_Student ||\nnie zdawał egzaminu');\nEND IF ;\nEND LOOP;\nEND LOOP;\nEND;",
-            "DECLARE\nCURSOR C1 IS SELECT Id_Student, Nazwisko, Imie FROM Studenci ; CURSOR C2(ids studenci.id_student%TYPE) IS\nBEGIN\nSELECT COUNT(Punkty) Total FROM Egzaminy WHERE Id_student = ids;\nFOR vc1 IN c1 LOOP\nFOR vc2 IN c2(vc1. Id_Student) LOOP\nIF vc2.Total IS NULL THEN\nDBMS_OUTPUT.PUT_LINE('Student o ID = ' || vc1.Id_Student || nie zdawał egzaminu');\nEND IF ;\nEND LOOP;\nEND LOOP;\nEND;",
+            "DECLARE\nCURSOR C1 IS SELECT Id_Student, Nazwisko, Imie FROM Studenci ; CURSOR C2(ids studenci.id_student%TYPE) IS\nBEGIN\nSELECT COUNT(Punkty) Total FROM Egzaminy WHERE Id_student = ids;\nFOR vc1 IN c1 LOOP\nFOR vc2 IN c2(vc1. Id_Student) LOOP\nIF vc2.Total IS NULL THEN\nDBMS_OUTPUT.PUT_LINE('Student o ID = ' || vc1.Id_Student || nie zdawał egzaminu');\nEND IF ;\nEND LOOP;\nEND LOOP;\nEND;\n💡 **Wyjaśnienie:** Ważną właściwością grupowych zapytań SQL (używających np. MAX, SUM, COUNT) jest to, że nie rzucają błędu braku danych (NO_DATA_FOUND). Jeśli rekordy nie przyniosą wyników, funkcja uwzględniająca liczbę rzędów – COUNT, zwróci czyste i bezkonfliktowe wielkościowe 0. Natomiast zastosowana fukcja kalkulacyjna jak SUM narzuci na pustą wartość zwyczajny systemowy logiczy NULL.",
         ],
         correct: [0, 1]
     },
     {
-        id: 48,
-        question: "Twoim zadaniem jest utworzyć pakiet o nazwie Pckg_Validate, który będzie udostępniał typy kolekcji oraz funkcje walidujące dane. Przyjmując założenie, że pakiet ten nie istnieje jeszcze w bazie danych, jakie polecenia wykonasz, aby utworzyć ten pakiet? Wskaż odpowiedź, która opisuje poprawny sposób tworzenia tego pakietu.",
-        options: [
-            "CREATE OR REPLACE PACKAGE Pckg_Validate",
-            "Najpierw CREATE PACKAGE Pckg_Validate, potem CREATE PACKAGE BODY Pckg_Validate",
-            "CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
-            "Najpierw CREATE OR REPLACE PACKAGE Pckg_Validate, potem CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
-        ],
-        correct: [3]
-    },
-    {
-        id: 49,
+        id: 35,
         question: "W jakim miejscu zapisane są definicje podprogramów składowanych?",
         options: [
             "W pakiecie predefiniowanym o nazwie STANDARD",
             "W schemacie bazy danych jako jej obiekt",
             "W pakiecie utworzonym przez użytkownika, zapisanym jako obiekt bazy danych",
-            "W pliku dyskowym zapisanym w miejscu określonym przez definiującego podprogram składowany",
+            "W pliku dyskowym zapisanym w miejscu określonym przez definiującego podprogram składowany\n💡 **Wyjaśnienie:** Wybrana odpowiedź wprost odzwierciedla prawidłową, standardowo rekomendowaną ze sztuki i narzucaną w dokumentacjach architektoniczną konstrukcję ze środowisk od RDBMS dającą poprawnie funkcjonujący w bazie skrypt PL/SQL bez obciążeń na spadek spójności ani powodowaniach do przerwań.",
         ],
         correct: [1]
     },
     {
-        id: 50,
-        question: "Co można umieścić w specyfikacji pakietu, dla którego nie istnieje ciało pakietu?",
-        options: [
-            "Deklarację stałej",
-            "Deklarację zmiennej",
-            "Deklarację wyjątku",
-            "Deklarację typu danych",
-            "Deklarację kursora",
-        ],
-        correct: [0, 1, 2, 3, 4]
-    },
-    {
-        id: 51,
-        question: "Czy poniższy kod PL/SQL jest poprawny z punktu widzenia składni:\nDECLARE\nFUNCTION Count_Exams (sid studenci.ID_student%TYPE) RETURN NUMBER IS\nexnr NUMBER;\nBEGIN\nSELECT COUNT(*) INTO exnr FROM Egzaminy\nWHERE ID_student = sid ;\nRETURN exnr ;\nEND Count_Exams ;\nCURSOR c1 IS SELECT_ID_student, Nazwisko, Imie FROM Studenci WHERE UPPER (Nazwisko) = 'MURYJAS' ;\nBEGIN\nFOR vc1 IN c1 LOOP\n DBMS_OUTPUT.PUT_LINE('ID - ' || Count_Exams (vc1.ID_student) );\nEND LOOP;\nEND;",
-        options: [
-            "Tak",
-            "Nie",
-        ],
-        correct: [1]
-    },
-    {
-        id: 52,
+        id: 36,
         question: "Które instrukcje, dotyczące kursora, realizowane są przez pętlę kursora?",
         options: [
             "zamknięcie kursora",
             "pobranie wiersza z kursora i zapisanie go w zmiennej rekordowej",
             "definicja kursora",
-            "otwarcie kursora",
+            "otwarcie kursora\n💡 **Wyjaśnienie:** Kursory jawne uruchamia się dla bezpiecznego powielania operacji na zapytaniach o dużej ilości wierszy z bazy. Chronią aplikację bazodanową przed wyjątkami `TOO_MANY_ROWS` w tradycyjnym `SELECT INTO` i pozwalają badać w pętlach m.in. atrybuty stanu bazy takie jak `%NOTFOUND` w przypadku braku nowych wierszy.",
         ],
         correct: [0, 1, 3]
     },
     {
-        id: 53,
-        question: "Twoim zadaniem jest zdefiniowanie typu kolekcji, który będzie dostępny dla innych użytkowników bazy danych podczas tworzenia kodu PL/SQL. W jaki sposób to zrobisz? Wskaż tę odpowiedź (te odpowiedzi), które umożliwiają wykonanie tego zadania.",
-        options: [
-            "Należy utworzyć w bazie danych obiekt będący typem danych przy pomocy polecenia CREATE TYPE AS OBJECT, podając w nim definicję typu kolekcji",
-            "Należy utworzyć w bazie danych specyfikację pakietu, w której znajdzie się definicja wymaganego typu kolekcji",
-            "Należy utworzyć w bazie danych pakiet, w którego specyfikacji znajdzie się deklaracja wymaganego typu kolekcji. Następnie w ciele pakietu należy zdefiniować typ danych dla elementów takiej kolekcji.",
-            "Należy utworzyć blok PL/SQL, w którego części deklaracyjnej znajdzie się definicja wymaganego typu kolekcji. Następnie należy zapisać ten blok w specyfikacji pakietu, utworzonej w bazie danych.",
-            "Należy utworzyć blok PL/SQL, w którego części deklaracyjnej znajdzie się definicja wymaganego typu kolekcji. Następnie należy zapisać plik zawierający ten blok w bazie danych.",
-        ],
-        correct: [1]
-    },
-    {
-        id: 54,
+        id: 37,
         question: "Który rodzaj kolekcji umożliwia odwoływanie się do jej elementów przy pomocy indeksu, którego wartości mogą być liczbą całkowitą dodatnią lub ujemną?",
         options: [
             "Nie ma takiej kolekcji, której indeks może być liczbą całkowitą ujemną",
             "Kolekcja typu VARRAY",
             "Kolekcja typu tablica asocjacyjna",
-            "Kolekcja typu NESTED TABLE",
+            "Kolekcja typu NESTED TABLE\n💡 **Wyjaśnienie:** Kolekcje różnią się organizacją pod względem gęstości wierszy. Tablice asocjacyjne wspierają elastyczność i pozwalają na indeksy ujemne (poprzez indeksy oparte o PLS_INTEGER), a VARRAY to ze swej natury tablica sztywna, nierozszerzalna ponad założony limit i gęsta - dlatego nie można na niej wybiórczo usunąć pojedynczego elementu ze środka rzędu używając polecenia typu DELETE(indeks).",
         ],
         correct: [2]
     },
     {
-        id: 55,
+        id: 38,
         question: "Który rodzaj kolekcji umożliwia odwoływanie się do jej elementów przy pomocy indeksu, którego wartości mogą być liczbą całkowitą dodatnią lub ujemną? Wybierz wszystkie poprawne:",
         options: [
             "Kolekcja typu tablica asocjacyjna",
             "Nie ma takiej kolekcji, której indeks może być liczbą całkowitą ujemną",
             "Kolekcja typu NESTED TABLE",
-            "Kolekcja typu VARRAY",
+            "Kolekcja typu VARRAY\n💡 **Wyjaśnienie:** Kolekcje różnią się organizacją pod względem gęstości wierszy. Tablice asocjacyjne wspierają elastyczność i pozwalają na indeksy ujemne (poprzez indeksy oparte o PLS_INTEGER), a VARRAY to ze swej natury tablica sztywna, nierozszerzalna ponad założony limit i gęsta - dlatego nie można na niej wybiórczo usunąć pojedynczego elementu ze środka rzędu używając polecenia typu DELETE(indeks).",
         ],
         correct: [0]
     },
     {
-        id: 56,
-        question: "Wskaż poprawną postać instrukcji SELECT w języku PL/SQL, umieszczoną w części wykonawczej bloku PL/SQL (w zadaniu wykorzystano przykład bazy danych używanej na zajęciach laboratoryjnych).",
-        options: [
-            "SELECT Id_Student, Nazwisko, Imie INTO vid, vnazwisko, vimie FROM Studenci ;",
-            "CURSOR c1 IS SELECT Id_Student, Nazwisko, Imie FROM Studenci ;",
-            "SELECT Id_Student, Nazwisko, Imie FROM Studenci;",
-        ],
-        correct: [0]
-    },
-    {
-        id: 57,
+        id: 39,
         question: "Czy składnia instrukcji SELECT w części wykonawczej bloku PL/SQL jest identyczna ze składnią instrukcji SELECT języka SQL?",
         options: [
             "Nie",
-            "Tak",
+            "Tak\n💡 **Wyjaśnienie:** Składnia PL/SQL ściśle wymaga klauzuli `INTO` przy instrukcjach `SELECT`, które powracają jako zapytanie jednowierszowe, w celu przekazania wyników pod docelowe zmienne robocze. Brak tego wymogu rodzi błąd kompilacji bazy.",
         ],
         correct: [0]
     },
     {
-        id: 58,
+        id: 40,
         question: "Dokonaj analizy poniższego kodu i odpowiedz na następujące pytanie. Jakie wartości zostaną odpowiednio wyświetlone w wyniku wykonania instrukcji w liniach 10 i 11?\n1| DECLARE\n2| TYPE t_col_courses IS TABLE OF NUMBER;\n3| col_courses t_col_courses := t_col_courses();\n4| BEGIN\n5| FOR K IN 1..10 LOOP\n6| col_courses.EXTEND ;\n7| col_courses (k) := 2*k ;\n8| END LOOP;\n9| col_courses. EXTEND (3,3);\n10| DBMS_OUTPUT.PUT_LINE(col_courses.COUNT) ;\n11| DBMS_OUTPUT.PUT_LINE(col_courses (12)) ;\n12| end;",
         options: [
             "13 i 3",
             "13 i 20",
-            "13 i 6",
+            "13 i 6\n💡 **Wyjaśnienie:** Kolekcje różnią się organizacją pod względem gęstości wierszy. Tablice asocjacyjne wspierają elastyczność i pozwalają na indeksy ujemne (poprzez indeksy oparte o PLS_INTEGER), a VARRAY to ze swej natury tablica sztywna, nierozszerzalna ponad założony limit i gęsta - dlatego nie można na niej wybiórczo usunąć pojedynczego elementu ze środka rzędu używając polecenia typu DELETE(indeks).",
         ],
         correct: [2]
     },
     {
-        id: 59,
-        question: "Wskaż zdanie prawdziwe dotyczące pakietów definiowanych w bazie danych ORACLE.",
-        options: [
-            "Każdy pakiet musi mieć unikalną nazwę w bazie danych.",
-            "Każdy pakiet musi składać się ze specyfikacji i opcjonalnie może posiadać ciało.",
-            "Każdy pakiet składa się ze specyfikacji i ciała.",
-            "Każdy pakiet musi zawierać co najmniej jeden podprogram PL/SQL.",
-            "W bazie danych można tworzyć pakiety o tej samej nazwie, jednak muszą one różnić się specyfikacją.",
-        ],
-        correct: [1]
-    },
-    {
-        id: 60,
-        question: "Proszę wskazać numer linii kodu, w której występuje błąd:\n1| DECLARE\n2| Liczba NUMBER;\n3| Mwyjatek EXCEPTION ;\n4| BEGIN\n5| SELECT COUNT(*) INTO liczba FROM Egzaminy WHERE Id_osrodek = 1;\n6| IF liczba 0 THEN\n7| EXECUTE mwyjatek ;\n8| END IF ;\n9| INSERT INTO Osrodki (Id_osrodek, Nazwa_o) VALUES (10, 'Politechnika Lubelska');\n10| EXCEPTION\n11| WHEN OTHERS THEN dbms_output.put_line ('Powstał nieznany wyjątek');\n12| WHEN mwyjatek THEN\n13| dbms_output.put_line ('Brak egzaminów w ośrodku');\n14| END;",
-        options: [
-            "7",
-            "9",
-            "11",
-            "3",
-        ],
-        correct: [0, 2]
-    },
-    {
-        id: 61,
-        question: "W jakim miejscu zapisane są definicje podprogramów składowanych?",
-        options: [
-            "W schemacie bazy danych jako jej obiekt",
-            "W pliku dyskowym zapisanym w miejscu określonym przez definiującego podprogram składowany",
-            "W pakiecie utworzonym przez użytkownika, zapisanym jako obiekt bazy danych",
-            "W pakiecie predefiniowanym o nazwie STANDARD",
-        ],
-        correct: [0]
-    },
-    {
-        id: 62,
+        id: 41,
         question: "Jaki wyjątek (lub wyjątki) mogą powstać podczas wykonania polecenia SELECT INTO?",
         options: [
             "INVALID_SELECT",
             "Instrukcja ta nigdy nie powoduje powstanie wyjątku",
             "TOO_MANY_ROWS",
             "NO_DATA_FOUND",
-            "INVALID_CURSOR",
+            "INVALID_CURSOR\n💡 **Wyjaśnienie:** Proces przechwytywania awarii powołuje rezerwy wbudowane w kod Oracle, np. dla zdarzeń o znanym id `NO_DATA_FOUND`. Jeśli tworzymy własny wyjątek sprzęgający dany numer usterki do konkretnej nazwy, musimy zadeklarować go flagą oraz powiązać z systemowym parametrem komendy `PRAGMA EXCEPTION_INIT`. Obsługa wszystkich generycznie wrzuconych do potoku nieprzechwyconych incydentów polega domyślnie na wylistowaniu na ostatnim u dołu rankingu tzw. śmieciarki catchera `WHEN OTHERS`.",
         ],
         correct: [2, 3]
     },
     {
-        id: 63,
+        id: 42,
         question: "Czym się charakteryzuje słaba zmienna kursora?",
         options: [
             "Można z nią skojarzyć dowolne zapytanie",
             "Jej deklaracja zawiera definicję typu danych, który opisuje strukturę zbioru wynikowego zapytania skojarzonego z tą zmienną",
             "Można skojarzyć z nią tylko jedno zapytanie, dla którego struktura zbioru wynikowego jest zgodna z definicją typu danych określonego w deklaracji zmiennej",
-            "Można skojarzyć z nią tylko takie zapytanie, dla którego struktura zbioru wynikowego jest zgodna z definicją typu danych określonego w deklaracji zmiennej",
+            "Można skojarzyć z nią tylko takie zapytanie, dla którego struktura zbioru wynikowego jest zgodna z definicją typu danych określonego w deklaracji zmiennej\n💡 **Wyjaśnienie:** Architektura kodu bazuje tu na regułach wymiarowania referencyjnego. Deklarujące ujęcie predykatu pomocniczego `%ROWTYPE` bezbłędnie przesyła schemat relacyjny pobranej bazy czy kursora do deklarowanej w PL/SQL zmiennej. Reguły te wymuszają także trzymanie zadeklarowanych nowości logicznych dla procedur składowych podprogramów funkcji i procedur tuż u dołu przed sekcją otwarcia bloku roboczego `BEGIN`.",
         ],
         correct: [0]
     },
     {
-        id: 64,
+        id: 43,
         question: "Czy poniższy kod PL/SQL pozwala wyświetlić odpowiedni komunikat w przypadku, gdy student o nazwisku Kot nie istnieje w tabeli Studenci?\nDECLARE\ncursor c1 IS SELECT ID student, Nazwisko, Imie FROM Studenci\nWHERE UPPER (Nazwisko) = 'KOT' ;\nvc1 c1%ROWTYPE;\nBEGIN\nOPEN c1 ;\nFETCH c1 INTO vc1 ;\nIF C1%FOUND THEN\nDBMS_OUTPUT.PUT_LINE('Nie ma studenta o podanym nazwisku');\nEND IF ;\nCLOSE c1 ;\nEXCEPTION\nWHEN NO_DATA_FOUND THEN\nDBMS_OUTPUT.PUT_LINE('Nie ma studenta o podanym nazwisku') ;",
         options: [
             "Tak",
-            "Nie",
+            "Nie\n💡 **Wyjaśnienie:** Proces przechwytywania awarii powołuje rezerwy wbudowane w kod Oracle, np. dla zdarzeń o znanym id `NO_DATA_FOUND`. Jeśli tworzymy własny wyjątek sprzęgający dany numer usterki do konkretnej nazwy, musimy zadeklarować go flagą oraz powiązać z systemowym parametrem komendy `PRAGMA EXCEPTION_INIT`. Obsługa wszystkich generycznie wrzuconych do potoku nieprzechwyconych incydentów polega domyślnie na wylistowaniu na ostatnim u dołu rankingu tzw. śmieciarki catchera `WHEN OTHERS`.",
         ],
         correct: [1]
     },
     {
-        id: 65,
+        id: 44,
         question: "Wyjątki NO_DATA_FOUND I INVALID_NUMBER wymagają tego samego sposobu obsługi w tym samym bloku np. wyświetlenia komunikatu o tej samej treści (obsługa ma dotyczyć wyłącznie tych dwóch wyjątków). Jak wykonać obsługę tej sytuacji?",
         options: [
             "WHEN NO_DATA_FOUND THEN\nBlok_obsługi_1;\nWHEN INVALID_NUMBER THEN\nBlok_obsługi_1;",
             "WHEN NO_DATA_FOUND OR INVALID_NUMBER THEN\nBlok_obsługi_1;",
             "WHEN NO_DATA_FOUND AND INVALID_NUMBER THEN\nBlok_obsługi_1;",
-            "WHEN OTHERS THEN\nBlok_obsługi_1;",
+            "WHEN OTHERS THEN\nBlok_obsługi_1;\n💡 **Wyjaśnienie:** Proces przechwytywania awarii powołuje rezerwy wbudowane w kod Oracle, np. dla zdarzeń o znanym id `NO_DATA_FOUND`. Jeśli tworzymy własny wyjątek sprzęgający dany numer usterki do konkretnej nazwy, musimy zadeklarować go flagą oraz powiązać z systemowym parametrem komendy `PRAGMA EXCEPTION_INIT`. Obsługa wszystkich generycznie wrzuconych do potoku nieprzechwyconych incydentów polega domyślnie na wylistowaniu na ostatnim u dołu rankingu tzw. śmieciarki catchera `WHEN OTHERS`.",
         ],
         correct: [1]
     },
     {
-        id: 66,
-        question: "Co można umieścić w specyfikacji pakietu, dla którego nie istnieje ciało pakietu?",
-        options: [
-            "Deklarację wyjątku",
-            "Deklarację kursora",
-            "Deklarację typu danych",
-            "Deklarację stałej",
-            "Deklarację zmiennej",
-        ],
-        correct: [0, 1, 2, 3, 4]
-    },
-    {
-        id: 67,
-        question: "Twoim zadaniem jest utworzyć pakiet o nazwie Pckg_Validate, który będzie udostępniał typy kolekcji oraz funkcje walidujące dane. Przyjmując założenie, że pakiet ten nie istnieje jeszcze w bazie danych, jakie polecenia wykonasz, aby utworzyć ten pakiet? Wskaż odpowiedź, która opisuje poprawny sposób tworzenia tego pakietu.",
-        options: [
-            "CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
-            "CREATE OR REPLACE PACKAGE Pckg_Validate",
-            "Najpierw CREATE OR REPLACE PACKAGE Pckg_Validate, potem CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
-            "Najpierw CREATE PACKAGE Pckg_Validate, potem CREATE PACKAGE BODY Pckg_Validate",
-        ],
-        correct: [2]
-    },
-    {
-        id: 68,
-        question: "Instrukcja otwarcia kursora jawnego (OPEN) spowoduje powstanie wyjątku, jeśli:",
-        options: [
-            "Zbiór wynikowy powstały po wykonaniu instrukcji SELECT, definiującej kursor, jest pusty",
-            "Połączenie z bazą danych zostało utracone",
-            "Kursor został już uprzednio otwarty",
-            "Instrukcja SELECT definiująca kursor nie jest poprawna składniowo",
-        ],
-        correct: [2]
-    },
-    {
-        id: 69,
+        id: 45,
         question: "Wskaż poprawny sposób deklarowania zmiennej rekordowej o nazwie My Rec w bloku PL/SQL:",
         options: [
             "My Rec ROWTYPE (Id NUMBER(5), Name VARCHAR2(30));",
             "TYPE tMy_Rec IS RECORD (Id NUMBER(5), Name VARCHAR2(30)); My_Rec tMy_Rec;",
             "TYPE tMy_Rec AS OBJECT (Id NUMBER(5), Name VARCHAR2(30)); My_Rec tMy_Rec;",
-            "My Rec IS RECORD (Id NUMBER(5), Name VARCHAR2(30));",
+            "My Rec IS RECORD (Id NUMBER(5), Name VARCHAR2(30));\n💡 **Wyjaśnienie:** Architektura kodu bazuje tu na regułach wymiarowania referencyjnego. Deklarujące ujęcie predykatu pomocniczego `%ROWTYPE` bezbłędnie przesyła schemat relacyjny pobranej bazy czy kursora do deklarowanej w PL/SQL zmiennej. Reguły te wymuszają także trzymanie zadeklarowanych nowości logicznych dla procedur składowych podprogramów funkcji i procedur tuż u dołu przed sekcją otwarcia bloku roboczego `BEGIN`.",
         ],
         correct: [1]
     },
     {
-        id: 70,
+        id: 46,
         question: "Który z atrybutów kursora jawnego można wykorzystać do kontroli istnienia rekordów pobranych poleceniem SELECT, zdefiniowanym w deklaracji kursora:",
         options: [
             "%FOUND",
             "%ROWCOUNT",
             "%NOTFOUND",
-            "%ISOPEN",
+            "%ISOPEN\n💡 **Wyjaśnienie:** Kursory jawne uruchamia się dla bezpiecznego powielania operacji na zapytaniach o dużej ilości wierszy z bazy. Chronią aplikację bazodanową przed wyjątkami `TOO_MANY_ROWS` w tradycyjnym `SELECT INTO` i pozwalają badać w pętlach m.in. atrybuty stanu bazy takie jak `%NOTFOUND` w przypadku braku nowych wierszy.",
         ],
         correct: [0, 2]
     },
     {
-        id: 71,
+        id: 47,
         question: "Które instrukcje, dotyczące kursora jawnego, realizowane są przez pętlę kursora?",
         options: [
             "CLOSE",
             "OPEN",
             "DECLARE CURSOR",
-            "FETCH",
+            "FETCH\n💡 **Wyjaśnienie:** Kursory jawne uruchamia się dla bezpiecznego powielania operacji na zapytaniach o dużej ilości wierszy z bazy. Chronią aplikację bazodanową przed wyjątkami `TOO_MANY_ROWS` w tradycyjnym `SELECT INTO` i pozwalają badać w pętlach m.in. atrybuty stanu bazy takie jak `%NOTFOUND` w przypadku braku nowych wierszy.",
         ],
         correct: [0, 1, 3]
     },
     {
-        id: 72,
+        id: 48,
         question: "Wskaż poprawny sposób deklarowania stałej o nazwie My_Constant w bloku PL/SQL:",
         options: [
             "My Constant IS CONSTANT NUMBER(1) := 5;",
             "My Constant CONSTANT NUMBER(1) NOT NULL := 10;",
             "My Constant CONSTANT NUMBER(1) := 10;",
-            "My Constant CONSTANT NUMBER(1) := 5;",
+            "My Constant CONSTANT NUMBER(1) := 5;\n💡 **Wyjaśnienie:** Wybrana odpowiedź wprost odzwierciedla prawidłową, standardowo rekomendowaną ze sztuki i narzucaną w dokumentacjach architektoniczną konstrukcję ze środowisk od RDBMS dającą poprawnie funkcjonujący w bazie skrypt PL/SQL bez obciążeń na spadek spójności ani powodowaniach do przerwań.",
         ],
         correct: [3]
     },
     {
-        id: 73,
-        question: "Dokonaj analizy poniższego kodu i odpowiedz na następujące pytanie. Jakie wartości zostaną odpowiednio wyświetlone w wyniku wykonania instrukcji w liniach 10 i 11?\n1| DECLARE\n2| TYPE t_col_courses IS TABLE OF NUMBER;\n3| col_courses t_col_courses := t_col_courses();\n4| BEGIN\n5| FOR K IN 1..10 LOOP\n6| col_courses.EXTEND ;\n7| col_courses(k) := k ;\n8| END LOOP;\n9| col_courses.DELETE (2,4);\n10| DBMS_OUTPUT.PUT_LINE(col_courses.COUNT);\n11| DBMS_OUTPUT.PUT_LINE(col_courses. LAST) ;\n12| END;\nWskaż poprawne:",
-        options: [
-            "6 i 10",
-            "7 i 10",
-            "8 i 10",
-        ],
-        correct: [1]
-    },
-    {
-        id: 74,
-        question: "W jakim celu wykorzystuje się kursory? Wskaż zdanie, które najlepiej oddaje celowość zastosowania kursorów.",
-        options: [
-            "Umożliwiają wielokrotne powtarzanie tych samych operacji z wykorzystaniem różnych danych",
-            "Umożliwiają przetwarzanie danych z wykorzystaniem wielu wierszy będących wynikiem zapytania",
-            "Umożliwiają pobranie wiersza danych i zapisanie ich w zmiennej",
-            "Umożliwiają wykonanie zapytania do bazy danych",
-        ],
-        correct: [1]
-    },
-    {
-        id: 75,
-        question: "Czy poniższy kod PL/SQL jest poprawny z punktu widzenia składni:\n1| DECLARE\n2| FUNCTION Count_Exams (sid studenci.ID_student%TYPE) RETURN NUMBER IS exnr NUMBER ;\n3| BEGIN\n4| SELECT COUNT(*) INTO exnr FROM Egzaminy\n5| WHERE ID student = sid;\n6| RETURN exnr;\n7| END Count_Exams ;\n8| CURSOR c1 IS SELECT ID_student, Nazwisko, Imie FROM Studenci WHERE UPPER (Nazwisko)='MURYJAS';\n9| BEGIN\n10| FOR vc1 IN c1 LOOP\n11| DBMS_OUTPUT.PUT_LINE('ID - ' || Count_Exams (vc1.ID_student) );\n12| END LOOP;\nEND;",
-        options: [
-            "Tak",
-            "Nie",
-        ],
-        correct: [1]
-    },
-    {
-        id: 76,
-        question: "Dokonaj analizy poniższego kodu i odpowiedz na następujące pytanie. Jakie wartości zostaną odpowiednio wyświetlone w wyniku wykonania instrukcji w liniach 10 i 11?\nDECLARE\nTYPE t_col_courses IS TABLE OF NUMBER;\ncol_courses t_col_courses := t_col_courses();\nBEGIN\nFOR K IN 1..10 LOOP\ncol_courses.EXTEND ;\ncol_courses(k) := 2*k ;\nEND LOOP;\ncol_courses.EXTEND(3,3);\nDBMS_OUTPUT.PUT_LINE(col_courses. COUNT);\nDBMS_OUTPUT.PUT_LINE(col_courses (12)) ;\nEND;",
-        options: [
-            "13 i 20",
-            "13 i 3",
-            "13 i 6",
-        ],
-        correct: [2]
-    },
-    {
-        id: 77,
-        question: "Twoim zadaniem jest utworzyć pakiet o nazwie Pckg_Validate, który będzie udostępniał typy kolekcji oraz funkcje walidujące dane. Przyjmując założenie, że pakiet ten nie istnieje jeszcze w bazie danych, jakie polecenia wykonasz, aby utworzyć ten pakiet? Wskaż odpowiedź, która opisuje poprawny sposób tworzenia tego pakietu.",
-        options: [
-            "CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
-            "Najpierw CREATE PACKAGE Pckg_Validate, potem CREATE PACKAGE BODY Pckg_Validate",
-            "Najpierw CREATE OR REPLACE PACKAGE Pckg_Validate, potem CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
-            "CREATE OR REPLACE PACKAGE Pckg_Validate",
-        ],
-        correct: [2]
-    },
-    {
-        id: 78,
+        id: 49,
         question: "Jaka wartość zostanie wyświetlona w wyniku wykonania instrukcji znajdującej się w 12 linii poniższego kodu?\nDECLARE\nTYPE NT_Exams IS TABLE OF INTEGER ;\nvex NT_Exams := NT_Exams ();\nBEGIN\nFOR i IN 1..10 LOOP\nvex.extend ;\nvex(i) := i;\nEND LOOP;\nFOR i IN 1..10 LOOP\nvex.DELETE (i*2) ;\nEND LOOP;\nDBMS_OUTPUT.PUT_LINE('#Elements is ' || vex.COUNT);\nEND;",
         options: [
             "5",
             "20",
             "0",
-            "10",
+            "10\n💡 **Wyjaśnienie:** Kolekcje różnią się organizacją pod względem gęstości wierszy. Tablice asocjacyjne wspierają elastyczność i pozwalają na indeksy ujemne (poprzez indeksy oparte o PLS_INTEGER), a VARRAY to ze swej natury tablica sztywna, nierozszerzalna ponad założony limit i gęsta - dlatego nie można na niej wybiórczo usunąć pojedynczego elementu ze środka rzędu używając polecenia typu DELETE(indeks).",
         ],
         correct: [0]
     },
     {
-        id: 79,
+        id: 50,
         question: "W jakiej sytuacji tworzona jest tylko specyfikacja pakietu w bazie danych, tj. nie tworzy się ciała pakietu?",
         options: [
             "Jeżeli specyfikacja zawiera tylko deklarację wyprzedzającą podprogramu PL/SQL",
             "Jeżeli specyfikacja zawiera tylko deklarację zmiennej lub stałej.",
             "Jeżeli specyfikacja zawiera tylko deklarację kursora",
             "Jeżeli specyfikacja zawiera tylko deklarację typu danych",
-            "Jeżeli specyfikacja zawiera tylko deklarację wyjątku",
+            "Jeżeli specyfikacja zawiera tylko deklarację wyjątku\n💡 **Wyjaśnienie:** Cykl budowy obiektowej narzuca systematykę w Oracle - domyślnie instaluje się publiczną specyfikację poleceniem `CREATE OR REPLACE PACKAGE` z pustymi deklaracjami, by dopiero w drugiej fazie dostarczyć dedykowaną logikę za pomocą polecenia `CREATE OR REPLACE PACKAGE BODY`, modyfikującego algorytm bez usuwania ustawień bazy.",
         ],
         correct: [1, 3, 4]
     },
     {
-        id: 80,
+        id: 51,
         question: "Proszę wskazać obowiązkowe sekcje bloku PL/SQL:",
         options: [
             "Sekcja obsługi wyjątków (EXCEPTION)",
             "Sekcja wykonawcza (BEGIN)",
             "Sekcja wywołania pakietów",
             "Sekcja wywołania funkcji i procedur",
-            "Sekcja deklaracyjna (DECLARE)",
+            "Sekcja deklaracyjna (DECLARE)\n💡 **Wyjaśnienie:** Wybrana odpowiedź wprost odzwierciedla prawidłową, standardowo rekomendowaną ze sztuki i narzucaną w dokumentacjach architektoniczną konstrukcję ze środowisk od RDBMS dającą poprawnie funkcjonujący w bazie skrypt PL/SQL bez obciążeń na spadek spójności ani powodowaniach do przerwań.",
         ],
         correct: [1]
     },
     {
-        id: 81,
+        id: 52,
         question: "Wskaż kolekcję, która jest lub może być rzadka:",
         options: [
             "Kolekcja typu VARRAY",
             "Kolekcja typu tablica zagnieżdżona",
-            "Kolekcja typu tablica asocjacyjna",
+            "Kolekcja typu tablica asocjacyjna\n💡 **Wyjaśnienie:** Kolekcje różnią się organizacją pod względem gęstości wierszy. Tablice asocjacyjne wspierają elastyczność i pozwalają na indeksy ujemne (poprzez indeksy oparte o PLS_INTEGER), a VARRAY to ze swej natury tablica sztywna, nierozszerzalna ponad założony limit i gęsta - dlatego nie można na niej wybiórczo usunąć pojedynczego elementu ze środka rzędu używając polecenia typu DELETE(indeks).",
         ],
         correct: [1, 2]
     },
     {
-        id: 82,
-        question: "Proszę wskazać numer linii kodu, w której występuje błąd:\n1|DECLARE\n2|v_Id VARCHAR2(3) NOT NULL := 'EAIE' ;\n3|V_nr_EKUK NUMBER (1) NOT NULL DEFAULT -9;\n4|Min_mod CONSTANT NUMBER(1) := := 10;\n5|BEGIN\n6|NULL;\n7|END;",
-        options: [
-            "4",
-            "3",
-            "6",
-            "2",
-        ],
-        correct: [0, 3]
-    },
-    {
-        id: 83,
+        id: 53,
         question: "Który z niżej wymienionych wyjątków może powstać podczas wykonywania poniższego kodu:\n1| declare\n2| CURSOR c1 is SELECT Id_Student, Nazwisko, Imie FROM Studenci ;\n3| vc1 c1%ROWTYPE;\n4| vdate DATE;\n5| begin\n6| FOR vc1 IN c1 LOOP\n7| SELECT MAX(Data_Egzamin) INTO vdate FROM Egzaminy WHERE Id_Student = vc1.Id_S\n8| dbms_output.put_line(vc1.Id_Student || ' - ' || to_char(vdate, 'yyyy-mm-dd')) ;\n9| END LOOP;\n10| end;",
         options: [
             "INVALID_CURSOR",
             "CURSOR_ALREADY_OPEN",
             "NO_DATA_FOUND",
             "Żaden wyjątek nie powstanie podczas wykonywania tego kodu PL/SQL",
-            "TOO_MANY_ROWS",
+            "TOO_MANY_ROWS\n💡 **Wyjaśnienie:** Proces przechwytywania awarii powołuje rezerwy wbudowane w kod Oracle, np. dla zdarzeń o znanym id `NO_DATA_FOUND`. Jeśli tworzymy własny wyjątek sprzęgający dany numer usterki do konkretnej nazwy, musimy zadeklarować go flagą oraz powiązać z systemowym parametrem komendy `PRAGMA EXCEPTION_INIT`. Obsługa wszystkich generycznie wrzuconych do potoku nieprzechwyconych incydentów polega domyślnie na wylistowaniu na ostatnim u dołu rankingu tzw. śmieciarki catchera `WHEN OTHERS`.",
         ],
         correct: [3]
     },
     {
-        id: 84,
+        id: 54,
         question: "Jaki będzie rezultat wykonania poniższego kodu PL/SQL? Wskaż odpowiedź, w której zaprezentowano przykładowe dane wynikowe.\n1| declare\n2| CURSOR c1 is SELECT Id_Student, Nazwisko, Imie FROM Studenci ;\n3| vc1 c1%ROWTYPE;\n4| vdate DATE;\n5| begin\n6| FOR vc1 IN c1 LOOP\n7| begin\n8| SELECT MAX(Data_Egzamin) INTO vdate FROM Egzaminy WHERE Id_Stu\n9| dbms_output.put_line(vc1.Id_Student || ' - ' || to_char(vdate, 'yyyy-mm-dd\"))\n10| exception\n11| WHEN NO_DATA_FOUND THEN\n12| dbms_output.put_line(vc1.Id_Student || ' - ' || ' brak egzaminów');\n13| end;\n14| END LOOP;\n15| end;",
         options: [
             "0000020 - 2013-10-21\n0987654 - 2020-10-15\n9876543 -\n0909091 - 2022-12-06",
             "0000020 2013-10-21\n0987654-2020-10-15\n9876543 - brak egzaminów\n0909091 - 2022-12-06",
-            "0000020 - 2013-10-21\n0987654 - 2020-10-15\n9876543-0\n0909091 2022-12-06",
+            "0000020 - 2013-10-21\n0987654 - 2020-10-15\n9876543-0\n0909091 2022-12-06\n💡 **Wyjaśnienie:** Ważną właściwością grupowych zapytań SQL (używających np. MAX, SUM, COUNT) jest to, że nie rzucają błędu braku danych (NO_DATA_FOUND). Jeśli rekordy nie przyniosą wyników, funkcja uwzględniająca liczbę rzędów – COUNT, zwróci czyste i bezkonfliktowe wielkościowe 0. Natomiast zastosowana fukcja kalkulacyjna jak SUM narzuci na pustą wartość zwyczajny systemowy logiczy NULL.",
         ],
         correct: [0]
     },
     {
-        id: 85,
-        question: "Która kolekcja jest zawszę gęsta?",
-        options: [
-            "Kolekcja typu VARRAY",
-            "Kolekcja typu NESTED TABLE",
-            "Kolekcja typu tablica asocjacyjna",
-        ],
-        correct: [0]
-    },
-    {
-        id: 86,
+        id: 55,
         question: "Twoim zadaniem jest zdefiniowanie funkcji PL/SQL, która będzie dostępna dla innych użytkowników bazy danych podczas tworzenia kodu PL/SQL. W jaki sposób to zrobisz? Wskaż tę odpowiedź (te odpowiedzi), które umożliwiają wykonanie tego zadania.",
         options: [
             "Należy utworzyć blok PL/SQL, w którego części deklaracyjnej znajdzie się definicja wymaganej funkcji. Następnie należy zapisać ten blok w pakiecie, utworzonym w bazie danych.",
             "Należy utworzyć w bazie danych obiekt będący funkcją przy pomocy polecenia CREATE FUNCTION, podając w nim definicję wymaganej funkcji.",
             "Należy utworzyć blok PL/SQL, w którego części deklaracyjnej znajdzie się definicja wymaganej funkcji. Następnie należy zapisać plik zawierający ten blok w bazie danych.",
             "Należy utworzyć w bazie danych pakiet, w którego specyfikacji znajdzie się deklaracja wymaganej funkcji. Następnie w ciele pakietu należy zdefiniować kod źródłowy dla tej funkcji.",
-            "Należy utworzyć w bazie danych specyfikację pakietu, w której znajdzie się definicja wymaganej funkcji",
+            "Należy utworzyć w bazie danych specyfikację pakietu, w której znajdzie się definicja wymaganej funkcji\n💡 **Wyjaśnienie:** Wybrana odpowiedź wprost odzwierciedla prawidłową, standardowo rekomendowaną ze sztuki i narzucaną w dokumentacjach architektoniczną konstrukcję ze środowisk od RDBMS dającą poprawnie funkcjonujący w bazie skrypt PL/SQL bez obciążeń na spadek spójności ani powodowaniach do przerwań.",
         ],
         correct: [1, 3]
     },
     {
-        id: 87,
-        question: "Które instrukcje, dotyczące kursora, realizowane są przez pętlę kursora?",
-        options: [
-            "definicja kursora",
-            "zamknięcie kursora",
-            "otwarcie kursora",
-            "pobranie wiersza z kursora i zapisanie go w zmiennej rekordowej",
-        ],
-        correct: [1, 2, 3]
-    },
-    {
-        id: 88,
-        question: "Wskaż sposób skojarzenia błędu o numerze -1 z nazwą wyjątku DUPLICATE_VALUES:",
-        options: [
-            "declare\nPRAGMA EXCEPTION_INIT(duplicate_values, -1);\nduplicate_values exception ;\nbegin\nnull;\nend;",
-            "declare\nPRAGMA EXCEPTION_INIT(duplicate_values, -1);\nbegin\nnull;\nend;",
-            "declare\nduplicate_values exception;\nPRAGMA EXCEPTION_INIT(duplicate_values, -1);\nbegin\nnull;\nend;",
-        ],
-        correct: [2]
-    },
-    {
-        id: 89,
-        question: "Które instrukcje, dotyczące kursora, realizowane są przez pętlę kursora?",
-        options: [
-            "pobranie wiersza z kursora i zapisanie go w zmiennej rekordowej",
-            "zamknięcie kursora",
-            "definicja kursora",
-            "otwarcie kursora",
-        ],
-        correct: [0, 1, 3]
-    },
-    {
-        id: 90,
-        question: "Wskaż prawidłowy kod PL/SQL, umożliwiający wyświetlenie identyfikatora studenta, który nie zdawał żadnego egzaminu? Przyjmij założenie, że jeśli student zdawał egzamin to otrzymał z niego co najmniej 2 punkty.",
-        options: [
-            "DECLARE\nCURSOR C1 IS SELECT Id_Student, Nazwisko, Imie FROM Studenci ; CURSOR C2(ids studenci.id_student TYPE) IS\nBEGIN\nSELECT COUNT(Punkty) Total FROM Egzaminy WHERE Id_student ids;\nFOR vcl IN c1 LOOP\nFOR vc2 IN c2(vc1.Id_Student) LOOP\nIF vc2.Total IS NULL THEN\nDBMS_OUTPUT.PUT_LINE('Student o ID = ' || vc1.Id_Student || nie zdawał egzaminu');\nEND IF;\nEND LOOP;\nEND;\nEND LOOP;",
-            "DECLARE\nCURSOR C1 IS SELECT Id Student, Nazwisko, Imie FROM Studenci ; CURSOR C2(ids studenci.id_student%TYPE) IS\nBEGIN\nSELECT COUNT(Punkty) Total FROM Egzaminy WHERE Id student = ids;\nFOR vc1 IN c1 LOOP\nFOR vc2 IN c2(vc1.Id_Student) LOOP\nIF vc2.Total = 0 THEN\nDBMS_OUTPUT.PUT_LINE('Student o ID || vc1.Id_Student || nie zdawał egzaminu');\nEND IF;\nEND LOOP;",
-            "END LOOP;\nEND;\nDECLARE\nCURSOR C1 IS SELECT Id Student, Nazwisko, Imie FROM Studenci ;\nCURSOR C2(ids studenci.id_student TYPE) IS\nBEGIN\nSELECT SUM(Punkty) Total FROM Egzaminy WHERE Id_student ids;\nFOR vc1 IN c1 LOOP\nFOR vc2 IN c2(vc1. Id_Student) LOOP\nIF vc2.Total IS NULL THEN\nDBMS_OUTPUT.PUT_LINE('Student o ID = || vc1.Id_Student || nie zdawał egzaminu');\nEND IF;\nEND LOOP;\nEND LOOP;\nEND;",
-            "DECLARE\nCURSOR C1 IS SELECT Id Student, Nazwisko, Imie FROM Studenci ; CURSOR C2(ids studenci.id_student TYPE) IS\nBEGIN\nSELECT SUM(Punkty) Total FROM Egzaminy WHERE Id_student = ids;\nFOR vc1 IN c1 LOOP\nFOR vc2 IN c2(vc1.Id_Student) LOOP\nIF vc2.Total @ THEN\nDBMS_OUTPUT.PUT_LINE('Student o ID || vc1.Id_Student || nie zdawał egzaminu');\nEND IF;\nEND LOOP;\nEND LOOP;",
-        ],
-        correct: [1, 2]
-    },
-    {
-        id: 91,
+        id: 56,
         question: "Który z poniższych kodów PL/SQL umożliwia wyświetlenie komunikatu informującego, iż dany student nie przystąpił jeszcze do żadnego egzaminu?",
         options: [
             "declare\nCURSOR c1 is SELECT Id_Student, Nazwisko, Imie FROM Studenci;\nvnum NUMBER;\nno_data_found EXCEPTION;\nbegin\nFOR vc1 IN c1 LOOP\nbegin\nSELECT DISTINCT 1 INTO vnum FROM Egzaminy WHERE Id Student = vc1.Id_Student;\n dbms_output.put_line(vc1.Id_Student || ' - istnieje egzamin' );\nexception\nwhen NO_DATA_FOUND then\ndbms_output.put_line(vc1.Id_Student || ' - brak egzaminów\");\nend;\nEND LOOP;\n end;",
             "declare\nCURSOR c1 is SELECT Id_Student, Nazwisko, Imie FROM Studenci;\nvnum NUMBER;\nno_data_found EXCEPTION;\nbegin\nFOR vc1 IN c1 LOOP\nbegin\nSELECT DISTINCT 1 INTO vnum FROM Egzaminy WHERE Id_Student = vc1.Id_Student;\n dbms_output.put_line(vc1.Id_Student || ' - istnieje egzamin' );\nexception\nwhen STANDARD.NO_DATA_FOUND then\ndbms_output.put_line(vc1.Id_Student || ' - brak egzaminów');\nend;\nEND LOOP;\nend;",
-            "declare\nCURSOR c1 is SELECT Id Student, Nazwisko, Imie FROM Studenci ;\nvnum NUMBER;\nno_data_found EXCEPTION;\nbegin\nFOR vc1 IN c1 LOOP\nbegin\nSELECT DISTINCT 1 INTO vnum FROM Egzaminy WHERE Id_Student = vc1.Id_Student;\n IF vnum IS NOT NULL THEN\ndbms_output.put_line(vc1.Id_Student || ' - istnieje egzamin');\nELSE\ndbms_output.put_line(vc1.Id_Student || ' - brak egzaminów\");\nEND IF;\nend;\nEND LOOP;\n end;",
+            "declare\nCURSOR c1 is SELECT Id Student, Nazwisko, Imie FROM Studenci ;\nvnum NUMBER;\nno_data_found EXCEPTION;\nbegin\nFOR vc1 IN c1 LOOP\nbegin\nSELECT DISTINCT 1 INTO vnum FROM Egzaminy WHERE Id_Student = vc1.Id_Student;\n IF vnum IS NOT NULL THEN\ndbms_output.put_line(vc1.Id_Student || ' - istnieje egzamin');\nELSE\ndbms_output.put_line(vc1.Id_Student || ' - brak egzaminów\");\nEND IF;\nend;\nEND LOOP;\n end;\n💡 **Wyjaśnienie:** Ważną właściwością grupowych zapytań SQL (używających np. MAX, SUM, COUNT) jest to, że nie rzucają błędu braku danych (NO_DATA_FOUND). Jeśli rekordy nie przyniosą wyników, funkcja uwzględniająca liczbę rzędów – COUNT, zwróci czyste i bezkonfliktowe wielkościowe 0. Natomiast zastosowana fukcja kalkulacyjna jak SUM narzuci na pustą wartość zwyczajny systemowy logiczy NULL.",
         ],
         correct: [1]
     },
