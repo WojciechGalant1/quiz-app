@@ -8,1873 +8,990 @@ export interface QuizQuestion {
 export const quizData: QuizQuestion[] = [
     {
         id: 1,
-        question: "Które stwierdzenia mają charakter behawioralnej definicji SI (ocena po efektach)?",
+        question: "Wskaż poprawną postać instrukcji SELECT  w języku PL/SQL, umieszczoną w części wykonawczej bloku PL/SQL (w zadaniu wykorzystano przykład bazy danych używanej na zajęciach laboratoryjnych).",
         options: [
-            "O przynależności do SI decyduje tylko język programowania.",
-            "System uznajemy za inteligentny, jeśli jego zachowanie jest nieodróżnialne od ludzkiego w danym zadaniu.",
-            "Racjonalność oceniana jest względem funkcji użyteczności/miary osiągnięć.",
-            "Wymagana jest świadomość maszyny, inaczej nie jest to SI.",
-            "SI definiuje wyłącznie wewnętrzna implementacja, a nie wyniki.",
+            "SELECT Id_Student, Nazwisko, Imie FROM Studenci ;",
+            "CURSOR c1 IS SELECT Id_Student, Nazwisko, Imie FROM Studenci ;",
+            "SELECT Id_Student, Nazwisko, Imie INTO vid, vnazwisko, vimie FROM Studenci ;",
         ],
-        correct: [1, 2]
+        correct: [2]
     },
     {
         id: 2,
-        question: "Zastosowania SI w energetyce obejmują:",
+        question: "W jakim celu wykorzystuje się kursory? Wskaż zdanie, które najlepiej oddaje celowość zastosowania kursorów.",
         options: [
-            "Tworzenie darmowej energii z próżni dzięki głębokim sieciom.",
-            "Ominięcie praw Kirchhoffa przez strojenie hiperparametrów.",
-            "Zamianę prądu zmiennego w stały bez przekształtników — samym algorytmem.",
-            "Wykrywanie anomalii i przewidywanie awarii w sieciach przesyłowych.",
-            "Prognozowanie obciążenia sieci i produkcji OZE.",
+            "Umożliwiają pobranie wiersza danych i zapisanie ich w zmiennej",
+            "Umożliwiają wielokrotne powtarzanie tych samych operacji z wykorzystaniem różnych danych",
+            "Umożliwiają przetwarzanie danych z wykorzystaniem wielu wierszy będących wynikiem zapytania",
+            "Umożliwiają wykonanie zapytania do bazy danych",
         ],
-        correct: [3, 4]
+        correct: [2]
     },
     {
         id: 3,
-        question: "Jaki jest sens eksperymentu myślowego „chiński pokój” (Searle’a) w dyskusji o definicji SI?",
+        question: "Twoim zadaniem jest utworzyć pakiet o nazwie Pckg_Validate, który będzie udostępniał typy kolekcji oraz funkcje walidujące dane. Przyjmując założenie, że pakiet ten nie istnieje jeszcze w bazie danych, jakie polecenia wykonasz, aby utworzyć ten pakiet? Wskaz odpowiedź, która opisuje poprawny sposób tworzenia tego pakietu.",
         options: [
-            "Teza, że rozumienie wynika wyłącznie z dużej mocy obliczeniowej (FLOPS).",
-            "Ma pokazać, że czysta manipulacja symbolami może wystarczyć do zdań „inteligentnych” na zewnątrz, ale nie implikuje rozumienia",
-            "Przykład, że logika rozmyta zawsze daje poprawne tłumaczenia zdań.",
-            "To dowód matematyczny, że żadna maszyna nie może przejść testu Turinga.",
-            "Procedura inżynierska kalibracji tłumacza maszynowego dla języka chińskiego.",
+            "CREATE OR REPLACE PACKAGE Pckg_Validate",
+            "Najpierw CREATE PACKAGE Pckg_Validate, potem CREATE PACKAGE BODY Pckg_Validate",
+            "CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
+            "Najpierw CREATE OR REPLACE PACKAGE Pckg_Validate, potem CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
         ],
-        correct: [1]
+        correct: [3]
     },
     {
         id: 4,
-        question: "Które przykłady opisują pętlę percepcja–działanie?",
+        question: "Twoim zadaniem jest zmodyfikowanie kodu PL/SQL w funkcji składowanej SF_Validate istniejącej już w bazie danych. Które z poniższych polecenie wykorzystasz do tego celu?",
         options: [
-            "Robot lokalizuje przeszkodę na obrazie i hamuje, by uniknąć kolizji.",
-            "Kalkulator wykonujący 2+2 na żądanie bez stanu i strategii.",
-            "Archiwizator ZIP kompresujący folder bez żadnych decyzji.",
-            "Skrypt, który drukuje „Hello World” bez wejścia.",
-            "Agent giełdowy przetwarza strumień notowań i aktualizuje portfel zgodnie z polityką.",
-        ],
-        correct: [0, 4]
-    },
-    {
-        id: 5,
-        question: "Przyporządkuj przykłady do paradygmatów: nadzorowane, nienadzorowane, samonadzorowane, RL.",
-        options: [
-            "Policy gradient / Q-learning → uczenie ze wzmocnieniem (RL).",
-            "Maskowane modelowanie języka (MLM) → uczenie samonadzorowane.",
-            "K-means / klasteryzacja cech → uczenie nienadzorowane.",
-            "Klasyfikacja obrazów z etykietami → uczenie nadzorowane.",
-            "Autoenkoder rekonstrukcyjny → uczenie nienadzorowane/samonadzorowane.",
-        ],
-        correct: [0, 1, 2, 3, 4]
-    },
-    {
-        id: 6,
-        question: "Które przykłady obrazują szkodę potencjalnie wywołaną przez systemy SI?",
-        options: [
-            "Obniżenie zużycia energii centrum danych dzięki optymalizacji chłodzenia.",
-            "Dyskryminacja grup chronionych w decyzjach kredytowych.",
-            "Błędne rozpoznanie tożsamości w systemach nadzoru prowadzące do zatrzymań.",
-            "Zwiększenie trafności rekomendacji przy pełnym poszanowaniu prywatności.",
-            "Przejrzyste raporty metryk publikowane po wdrożeniu.",
-        ],
-        correct: [1, 2]
-    },
-    {
-        id: 7,
-        question: "Które obszary i kompetencje sensownie mieszczą się w definicyjnym zakresie SI?",
-        options: [
-            "Planowanie i podejmowanie decyzji.",
-            "Przeszukiwanie i optymalizacja heurystyczna.",
-            "Uczenie maszynowe.",
-            "Percepcja i integracja sensoryczna.",
-            "Reprezentacja wiedzy i wnioskowanie.",
-        ],
-        correct: [0, 1, 2, 3, 4]
-    },
-    {
-        id: 8,
-        question: "W jakim celu agent utrzymuje model świata?",
-        options: [
-            "Ponieważ model świata jest wymagany nawet w środowiskach statycznych bez dynamiki.",
-            "Wyłącznie po to, by przechowywać zrzuty ekranu GUI.",
-            "Aby przewidywać efekty akcji i planować sekwencje działań przed ich wykonaniem.",
-            "Aby lepiej radzić sobie z niepewnością i częściową obserwowalnością.",
-            "Aby zastąpić percepcję losowym zgadywaniem.",
-        ],
-        correct: [2, 3]
-    },
-    {
-        id: 9,
-        question: "(Python) Które polecenia tworzą środowisko?",
-        options: [
-            "pip create proj",
-            "environment -m venv proj",
-            "proj\Scripts\activate.bat",
-            ".\proj\Scripts\Activate.ps1",
-            "python -m venv proj",
-        ],
-        correct: [4]
-    },
-    {
-        id: 10,
-        question: "(Python/pandas) Jak policzyć liczność grup pandas.DataFrame df według Age (ile osób w każdym wieku)?",
-        options: [
-            "df.value counts()",
-            "df.groupby(\"Age\").len()",
-            "df.groupby(\"Age\")[\"Name\"].count()",
-            "df.groupby(\"Age\").size()",
-            "df.count(\"Age\")",
-        ],
-        correct: [2, 3]
-    },
-    {
-        id: 11,
-        question: "(Python) Które stwierdzenia o tuple są prawdziwe?",
-        options: [
-            "Rozpakowywanie: a, b = (10, 20) przypisze a=10, b=20.",
-            "Każda krotka może być kluczem w słowniku, nawet jeśli zawiera listy.",
-            "tuple posiada metody append i remove.",
-            "Krotki nie można indeksować (np. t[0] rzuca wyjątek).",
-            "(1,) to krotka jednoelementowa; (1) to tylko liczba w nawiasie.",
-        ],
-        correct: [0, 4]
-    },
-    {
-        id: 12,
-        question: "(Python) Co zwróci: d = {\"a\": 1, \"b\": 2}; d.get(\"c\", 0)?",
-        options: [
-            "0",
-            "Zgłosi KeyError, bo klucza \"c\" nie ma.",
-            "\"c\"",
-            "None",
-            "2",
+            "CREATE OR REPLACE FUNCTION SF_Validate",
+            "MODIFY FUNCTION SF_Validate",
+            "ALTER FUNCTION BY REPLACING SF_Validate",
+            "CREATE OR MODIFY FUNCTION SF_Validate",
+            "CREATE FUNCTION SF_Validate",
+            "ALTER FUNCTION SF_Validate",
         ],
         correct: [0]
     },
     {
-        id: 13,
-        question: "(Python/pandas) Jak przefiltrować wiersze pandas.DataFrame df z Age > 25?",
+        id: 6,
+        question: "Procedura PL/SQL została zdefiniowana w następujący sposób:\nPROCEDURE dodaj_przedmiot (n_nazwa VARCHAR2 DEFAULT 'Informatyka',\nn_opis VARCHAR2) IS\nBEGIN\nINSERT INTO Przedmioty VALUES(n_nazwa, n_opis);\nEND dodaj przedmiot;\nProszę wskazać poprawne wywołanie tej procedury:",
         options: [
-            "df.select(\"Age > 25\")",
-            "df.filter(lambda r: r[\"Age\"] > 25)",
-            "df.query(\"Age > 25\")",
-            "df.where(df[\"Age\"] <= 25)",
-            "df[df[\"Age\"] > 25]",
-        ],
-        correct: [2, 4]
-    },
-    {
-        id: 14,
-        question: "Które statystyki odporne (robust) warto rozważyć przy obecności outlierów?",
-        options: [
-            "Kwantyle są bezużyteczne w ocenie rozkładów.",
-            "Średnia arytmetyczna zawsze lepsza od mediany przy długim ogonie.",
-            "Odchylenie standardowe jest niewrażliwe na outliery.",
-            "Percentyle (np. 5., 95.) zamiast min/max.",
-            "Mediana i median absolute deviation (MAD).",
-        ],
-        correct: [3, 4]
-    },
-    {
-        id: 15,
-        question: "Które metody to wrappery (używają modelu do oceny podzbiorów cech)?",
-        options: [
-            "Sekwencyjna selekcja cech (SFS/SBS).",
-            "RFE (Recursive Feature Elimination).",
-            "ANOVA.",
-            "PCA.",
-            "VarianceThreshold.",
-        ],
-        correct: [0, 1]
-    },
-    {
-        id: 16,
-        question: "Które sytuacje sugerują konieczność czyszczenia etykiet kategorycznych (ujednolicanie, kodowanie)?",
-        options: [
-            "W kolumnie city: \"Warsaw\", \"warsaw\", \"Warszawa\" występują zamiennie.",
-            "Kolumna status ma słownikowo zdefiniowany zbiór etykiet i walidację wejścia.",
-            "Kolumna numeryczna bez braków i bez odchyleń ekstremalnych.",
-            "W kolumnie yes no: \"yes\", \"Yes\", \"Y\", \"1\" występują zamiennie.",
-            "Wszystkie wartości są typu category z narzuconą listą kategorii.",
-        ],
-        correct: [0, 3]
-    },
-    {
-        id: 17,
-        question: "Po wdrożeniu modelu, które praktyki związane z danymi są kluczowe, aby utrzymać jakość rozwiązania?",
-        options: [
-            "Przyrostowe etykietowanie nowych przykładów i okresowe odświeżanie zbioru train do retrenowania.",
-            "Trwałe łączenie zbiorów train i test w jeden plik, żeby „uśrednić” rozkłady.",
-            "Zamrożenie wersji danych na stałe i zakaz aktualizacji.",
-            "Wyłączanie logowania danych wejściowych, by zmniejszyć koszty monitoringu.",
-            "Monitorowanie dystrybucji cech i metryk oraz zbieranie sprzężenia zwrotnego.",
-        ],
-        correct: [0, 4]
-    },
-    {
-        id: 18,
-        question: "Które przykłady wskazują na wartości sentinelowe (umowne liczby używane do oznaczenia braku w danych), wymagające zamiany na braki?",
-        options: [
-            "height cm=170 jako typowa wartość pomiaru.",
-            "age=999 oznacza brak wieku w systemie źródłowym.",
-            "count=1 dla pojedynczego zakupu.",
-            "salary=-1 używane do oznaczenia nieznanej płacy.",
-            "temperature C=0 w danych meteorologicznych zimą.",
-        ],
-        correct: [1, 3]
-    },
-    {
-        id: 19,
-        question: "Kiedy label encoding może być niebezpieczny dla modeli liniowych?",
-        options: [
-            "Gdy kategorie są uporządkowane (np. S < M < L).",
-            "Gdy kategorie są nominalne (bez porządku) — liczby wprowadzają sztuczną rangę.",
-            "Gdy model interpretuje różnice numeryczne jako odległości między kategoriami.",
-            "Gdy używamy wyłącznie drzew decyzyjnych.",
-            "Gdy cecha ma tylko dwie klasy binarne.",
-        ],
-        correct: [1, 2]
-    },
-    {
-        id: 20,
-        question: "Normalizacja min–max to:",
-        options: [
-            "Sortowanie rosnące i indeksowanie rangami.",
-            "Przekształcenie x7→ x−µ.",
-            "Przekształcenie x7→ x−min do zakresu [0,1].",
-            "Logarytmowanie naturalne log(x).",
-            "Standaryzacja odchyleń do wartości 1 wyłącznie dla kategorii.",
-        ],
-        correct: [2]
-    },
-    {
-        id: 21,
-        question: "Które operacje powinny poprzedzać PCA i skalowanie?",
-        options: [
-            "Najpierw mieszanie wierszy, by „ukryć” outliery.",
-            "Najpierw standaryzacja, potem dopiero usuwanie duplikatów.",
-            "Najpierw PCA na surowych danych z NaN, potem imputacja.",
-            "Usunięcie duplikatów i uzupełnienie braków.",
-            "Rozwiązanie konfliktów typów (np. rzutowanie kolumn na numeryczne).",
-        ],
-        correct: [3, 4]
-    },
-    {
-        id: 22,
-        question: "Hashing encoding ma następujące cechy:",
-        options: [
-            "Rzutuje kategorie do przestrzeni o stałym wymiarze, co może powodować kolizje.",
-            "Wymaga pełnej listy kategorii przed dopasowaniem.",
-            "Gwarantuje brak kolizji dla dowolnej liczby kategorii.",
-            "Jest identyczny z one–hot encodingiem.",
-            "Nie wymaga słownika wszystkich kategorii.",
-        ],
-        correct: [0, 4]
-    },
-    {
-        id: 23,
-        question: "Które stwierdzenia o wielokrotnej imputacji (np. MICE) są prawdziwe?",
-        options: [
-            "Nie wymaga żadnych założeń o mechanizmie braków.",
-            "Zawsze gwarantuje wyższą dokładność niż brak imputacji.",
-            "Generuje kilka kompletnych wersji zbioru, trenuje na każdej i łączy wyniki.",
-            "Jest identyczna z KNN-imputacją.",
-            "Może lepiej odzwierciedlać niepewność imputacji niż pojedyncza średnia/mediana.",
-        ],
-        correct: [2, 4]
-    },
-    {
-        id: 24,
-        question: "(Python/sklearn,pandas) Które polecenia uzupełnią braki w kolumnie \"age\" dla pandas.DataFrame df medianą?",
-        options: [
-            "Użyj sklearn.impute.SimpleImputer(strategy=\"median\") dopasowanego na train, a potem zastosuj do test.",
-            "Policz medianę na train i wypełnij:med = df train[\"age\"].median(); df train[\"age\"] = df train[\"age\"].fillna(med); dftest[\"age\"] = df_test[\"age\"].fillna(med);",
-            "med = df[\"age\"].median(); df[\"age\"] = df[\"age\"].fillna(med) przed podziałem na train/test.",
-            "df.fillna(method=\"drop\").",
-            "df[\"age\"].fillna(df[\"age\"].mean()) liczone na połączonych train+test.",
-        ],
-        correct: [0, 1]
-    },
-    {
-        id: 25,
-        question: "(Python) Które sytuacje wskazują na niestabilne typy danych wymagające konwersji?",
-        options: [
-            "Kolumna category z ustalonymi etykietami.",
-            "Kolumna int64 z wartościami 0/1.",
-            "Kolumna float64 z ułamkami dziesiętnymi.",
-            "Kolumna logiczna zawiera \"True\", \"FALSE\", 1, 0.",
-            "Kolumna liczbowa zapisana jako object z wartościami \"1,5\" i \"2.0\".",
-        ],
-        correct: [3, 4]
-    },
-    {
-        id: 26,
-        question: "(Python/sklearn) Które techniki służą do detekcji anomalii w danych wielowymiarowych?",
-        options: [
-            "LabelEncoder na zmiennej celu.",
-            "One-Hot Encoding.",
-            "Isolation Forest.",
-            "LOF (Local Outlier Factor).",
-            "StandardScaler.",
-        ],
-        correct: [2, 3]
-    },
-    {
-        id: 27,
-        question: "Jakie są dobre praktyki przy wykonywaniu podziału danych na train/val/test?",
-        options: [
-            "Łączenie danych z testu do walidacji, by zwiększyć jakość oceny.",
-            "Losowy podział z utrzymaniem rozkładu klas (stratyfikacja) w klasyfikacji.",
-            "Wspólne skalowanie/enkodowanie dopasowane przed podziałem danych.",
-            "Używanie tych samych obserwacji jednocześnie w treningu i teście.",
-            "W szeregach czasowych — zachowanie porządku czasowego.",
-        ],
-        correct: [1, 4]
-    },
-    {
-        id: 28,
-        question: "Czym ML różni się od programowania tradycyjnego?",
-        options: [
-            "ML polega wyłącznie na zwiększaniu częstotliwości CPU.",
-            "ML zawsze działa bez funkcji celu/straty.",
-            "W tradycyjnym podejściu: reguły + dane → wyniki; w ML: dane + wyniki (etykiety) → reguły/model.",
-            "ML uczy parametry z danych i może adaptować się po wdrożeniu; kod regułowy działa według ręcznie zapisanej logiki.",
-            "Programowanie tradycyjne nie korzysta z danych wejściowych.",
-        ],
-        correct: [2, 3]
-    },
-    {
-        id: 29,
-        question: "Jakie są typowe źródła błędów w danych wejściowych ML?",
-        options: [
-            "Brakujące wartości, literówki/niejednolite formaty, zmienne o wielu znaczeniach.",
-            "Zmiany definicji pól w czasie i różne jednostki miary.",
-            "Błędy i niespójne kryteria etykietowania.",
-            "Skrajnie niezbalansowane klasy bez odpowiednich metryk/technik.",
-            "Zależności czasowe ignorowane przy losowym mieszaniu próbek.",
-        ],
-        correct: [0, 1, 2, 3, 4]
-    },
-    {
-        id: 30,
-        question: "Co najlepiej opisuje overfitting i underfitting?",
-        options: [
-            "Underfitting: wysoki błąd zarówno na treningu, jak i na walidacji/testach.",
-            "Overfitting i underfitting to wyłącznie problemy sprzętowe (CPU/GPU).",
-            "Overfitting to sytuacja, gdy model nie nauczył się niczego na obu zbiorach.",
-            "Underfitting oznacza zawsze perfekcyjny wynik na zbiorze testowym.",
-            "Overfitting: niski błąd na treningu, wysoki błąd na walidacji/testach.",
-        ],
-        correct: [0, 4]
-    },
-    {
-        id: 31,
-        question: "Które techniki należą do Transfer Learningu?",
-        options: [
-            "Fine-tuning części/całości sieci pretrenowanej.",
-            "Adaptacja domenowa.",
-            "Wyłącznie regularyzacja L2 bez przenoszenia parametrów/cech.",
-            "Feature extraction z zamrożonym szkieletem i nową warstwą klasyfikacyjną.",
-            "Losowe inicjalizowanie wag za każdym razem bez wykorzystania wiedzy źródłowej.",
-        ],
-        correct: [0, 1, 3]
-    },
-    {
-        id: 32,
-        question: "Czym jest empiryczna minimalizacja ryzyka w ML?",
-        options: [
-            "Przetwarzaniem grafiki w celu zmniejszenia aliasingu.",
-            "Procesem kompresji, który minimalizuje rozmiar pliku CSV.",
-            "Wyborem modelu o największej liczbie parametrów niezależnie od jakości.",
-            "Zastąpieniem danych treningowych losowym szumem o zerowej średniej.",
-            "Minimalizacją średniej straty na próbie treningowej jako przybliżenia ryzyka oczekiwanego.",
-        ],
-        correct: [4]
-    },
-    {
-        id: 33,
-        question: "Która definicja najlepiej opisuje uczenie maszynowe (ML)?",
-        options: [
-            "Standard zapisu grafiki wektorowej do prezentacji wyników.",
-            "Zbiór ręcznie zapisanych reguł, które nigdy nie zmieniają się pod wpływem danych.",
-            "Proces zwiększania taktowania CPU w celu przyspieszenia programu.",
-            "Dziedzina, w której systemy poprawiają swoje działanie na podstawie doświadczenia, mierzonego według miary jakości.",
-            "Synonim programowania obiektowego z dziedziczeniem wielokrotnym.",
-        ],
-        correct: [3]
-    },
-    {
-        id: 34,
-        question: "Uczenie aktywne (Active Learning) to:",
-        options: [
-            "Mechanizm federacyjnego przesyłania gradientów na serwer.",
-            "Zawsze wybieranie najłatwiejszych przykładów do anotacji.",
-            "Wyłącznie trenowanie na danych bez etykiet.",
-            "Procedura losowego usuwania etykiet.",
-            "Strategia iteracyjnego wybierania najbardziej informatywnych przykładów do etykietowania, aby zminimalizować jej koszt.",
-        ],
-        correct: [4]
-    },
-    {
-        id: 35,
-        question: "Które stwierdzenia o stratyfikacji w k-fold są prawdziwe?",
-        options: [
-            "Stratyfikacja wymaga, by ten sam przykład znalazł się w wielu foldach naraz.",
-            "W regresji stratyfikacja zawsze rozdziela obserwacje według identycznych wartości ciągłych bez binowania.",
-            "Stratyfikacja to wyłącznie technika Reinforcement Learning do doboru akcji.",
-            "Stratyfikacja polega na mieszaniu etykiet między foldami.",
-            "Stratyfikacja jest zabroniona w problemach z niezbalansowanymi klasami.",
-        ],
-        correct: []
-    },
-    {
-        id: 36,
-        question: "(Python/sklearn) Co oznacza hiperparametr α w Ridge i Lasso?",
-        options: [
-            "Liczbę epok gradientu — większe α to dłuższy trening.",
-            "Siłę regularyzacji: większe α silniej karze duże wagi.",
-            "Współczynnik uczenia learning rate jak w boostingu.",
-            "Liczbę drzew w RandomForestRegressor.",
-            "Stopień wielomianu w PolynomialFeatures.",
-        ],
-        correct: [1]
-    },
-    {
-        id: 37,
-        question: "(Python/sklearn) Które z poniższych to liniowe klasyfikatory w scikit-learn?",
-        options: [
-            "LinearSVC",
-            "DecisionTreeClassifier",
-            "KNeighborsClassifier",
-            "LogisticRegression",
-            "Perceptron",
-        ],
-        correct: [0, 3, 4]
-    },
-    {
-        id: 38,
-        question: "(Python/sklearn) Które zdanie najlepiej opisuje rolę i interfejs scikit-learn?",
-        options: [
-            "Obsługuje jedynie modele wizualizacji, a nie uczenia.",
-            "Wymaga GPU i służy wyłącznie do głębokich sieci neuronowych.",
-            "Wymaga ręcznego pisania pętli treningowych w stylu for epoch in range(...) dla każdego modelu.",
-            "Zapewnia spójny interfejs estymatorów (fit/transform/predict) oraz narzędzia jak Pipeline, GridSearchCV i walidację krzyżową, ułatwiając budowę kompletnych workflow.",
-            "Nie posiada wsparcia dla walidacji krzyżowej ani doboru hiperparametrów.",
-        ],
-        correct: [3]
-    },
-    {
-        id: 39,
-        question: "(Python) Dopasuj bibliotekę do zadania/zastosowania.",
-        options: [
-            "XGBoost/LightGBM/CatBoost → gradient boosting z wrapperami API kompatybilnymi z sklearn i opcjonalnym wsparciem",
-            "Optuna → automatyczna optymalizacja hiperparametrów z integracją sklearn i callbackami.",
-            "MLflow → śledzenie eksperymentów, artefaktów i rejestr modeli.",
-            "skorch → adapter ujednolicający modele PyTorch do interfejsu sklearn.",
-            "imbalanced-learn (imblearn) → techniki radzenia sobie z niezbalansowanymi klasami i integracja z sklearn.Pipeline.",
-        ],
-        correct: [0, 1, 2, 3, 4]
-    },
-    {
-        id: 40,
-        question: "Które charakterystyki reguł Horn są poprawne?",
-        options: [
-            "Dobrze wspierają wnioskowanie do przodu i do tyłu.",
-            "Efektywne wnioskowanie (względem ogólnej logiki pierwszego rzędu) w wielu zadaniach praktycznych.",
-            "Są podstawą Datalogu i wielu systemów regułowych.",
-            "Postać: A←B ∧···∧B (konkluzja i koniunkcja przesłanek).",
-            "Specjalny przypadek: fakty (brak przesłanek) i cele (brak konkluzji).",
-        ],
-        correct: [0, 1, 2, 3, 4]
-    },
-    {
-        id: 41,
-        question: "Które twierdzenia o zaletach/ograniczeniach typów wiedzy są prawdziwe?",
-        options: [
-            "Wiedza proceduralna zawsze gwarantuje optymalność rozwiązania niezależnie od problemu.",
-            "Wiedza deklaratywna jest nieużyteczna do wyjaśnień — tylko proceduralna umożliwia interpretację.",
-            "Wiedza heurystyczna jest zabroniona w planowaniu, bo nigdy nie przyspiesza przeszukiwania.",
-            "Wiedza deklaratywna nie może współistnieć z proceduralną w jednym systemie.",
-            "Heurystyki nie mogą być uczone z danych — muszą być ręcznie wpisywane.",
-        ],
-        correct: []
-    },
-    {
-        id: 42,
-        question: "Czym charakteryzuje się wiedza deklaratywna w systemach SI?",
-        options: [
-            "Nie może być zapisana w logice — tylko w pseudokodzie.",
-            "To procedury i kroki „jak coś zrobić” zakodowane w algorytmie.",
-            "To wyłącznie wagi sieci neuronowej bez warstwy semantycznej.",
-            "Opisuje fakty i relacje o świecie, niezależnie od algorytmu użycia.",
-            "Zawsze musi mieć formę sieci Bayesa — inne formy są niepoprawne.",
-        ],
-        correct: [3]
-    },
-    {
-        id: 43,
-        question: "Ontologie w stylu Web Ontology Language/Description Logics: wskaż poprawne twierdzenia.",
-        options: [
-            "Rozróżniają wiedzę terminologiczną (TBox) i asercyjną (ABox).",
-            "Wymagają zamkniętego świata jak w relacyjnych bazach danych.",
-            "Przyjmują zwykle open-world assumption i monotoniczność.",
-            "Nie wspierają klas i relacji — tylko fakty atomowe.",
-            "Wnioskowanie jest zawsze wielomianowe niezależnie od profilu Web Ontology Language.",
+            "dodaj_ przedmiot(n_opis => NULL);",
+            "dodaj przedmiot('Algorytmy');",
+            "dodaj_ przedmiot('Algorytmy', 'Opis algorytmów\");",
+            "dodaj_przedmiot;",
         ],
         correct: [0, 2]
     },
     {
-        id: 44,
-        question: "Klauzule Horna i programowanie w logice (Datalog/Prolog): wskaż prawdziwe.",
+        id: 7,
+        question: "Która kolekcja jest zawszę gęsta?",
         options: [
-            "Prolog nie używa unifikacji w dopasowaniu wzorców.",
-            "Klauzule Horna nie mogą reprezentować reguł IF–THEN.",
-            "Datalog dopuszcza funkcje o nieskończonej głębokości, gwarantując terminację.",
-            "Klauzula Horna ma co najwyżej jedną literę dodatnią.",
-            "Wnioskowanie może używać SLD-resolution z unifikacją.",
+            "Kolekcja typu VARRAY",
+            "Kolekcja typu tablica asocjacyjna",
+            "Kolekcja typu NESTED TABLE",
         ],
-        correct: [3, 4]
+        correct: [0]
     },
     {
-        id: 45,
-        question: "(Python) Wskaż typowe błędy modelowania w bazie reguł.",
+        id: 8,
+        question: "Procedura PL/SQL została zdefiniowana w następujący sposób:\nPROCEDURE dodaj_przedmiot (n_nazwa VARCHAR2 DEFAULT 'Informatyka', n_opis VARCHAR2) IS\nBEGIN\nINSERT INTO Przedmioty VALUES(n_nazwa, n_opis);\nEND dodaj przedmiot;\nProszę wskazać poprawne wywołanie tej procedury:",
         options: [
-            "Rozdzielenie wiedzy na fakty i reguły bazowe.",
-            "Zadawanie zapytań po nasyceniu bazy.",
-            "Stosowanie rekurencji do osiągalności w grafie.",
-            "Niespójna arność tego samego predykatu w różnych faktach.",
-            "Użycie zmiennych w faktach ugruntowanych.",
+            "dodaj przedmiot('Algorytmy','Opis algorytmów\");",
+            "dodaj przedmiot;",
+            "dodaj przedmiot('Algorytmy');",
+            "dodaj_ przedmiot(n_opis => NULL);",
         ],
-        correct: [3, 4]
+        correct: [0, 3]
     },
     {
-        id: 46,
-        question: "(Python) Jaka jest rola substytucji w procesie wyprowadzania nowych faktów?",
+        id: 9,
+        question: "W jaki sposób można sprawdzić poprawność semantyczną obsługi wyjątku?",
         options: [
-            "Zamienia fakty na reguły bazowe.",
-            "Dodaje negacje do każdej przesłanki.",
-            "Zastępuje zmienne w głowie reguły wartościami wyznaczonymi przez dopasowanie ciała do faktów.",
-            "Zawsze zwraca listę wszystkich faktów w bazie.",
-            "Zastępuje predykaty losowymi innymi predykatami.",
+            "Poprzez kompilację bloku PL/SQL, zawierającego kod obsługi wyjątku",
+            "Poprzez wykonanie tylko tej instrukcji, która powoduje powstanie wyjątku",
+            "Poprzez analizę poprawności składni kodu PL/SQL, zawierającego instrukcję powodującą powstanie wyjątku oraz jego obsługę",
+            "Poprzez uruchomienie (wykonanie) bloku PL/SQL, zawierającego instrukcję powodującą powstanie wyjątku oraz jego obsługę",
+        ],
+        correct: [3]
+    },
+    {
+        id: 10,
+        question: "Proszę wskazać predefiniowane nazwy wyjątków:",
+        options: [
+            "INVALID_CURSOR",
+            "DUP_VAL_ON_INDEX",
+            "NO_DATA_FOUND",
+            "TOO_MANY_ROWS",
+            "DUP_VAL_ON_COLUMN",
+            "TO_MANY_DATA",
+        ],
+        correct: [0, 1, 2, 3]
+    },
+    {
+        id: 11,
+        question: "W jakim celu wykorzystuje się kursory? Wskaż zdanie, które najlepiej oddaje celowość zastosowania kursorów.",
+        options: [
+            "Umożliwiają wielokrotne powtarzanie tych samych operacji z wykorzystaniem różnych danych",
+            "Umożliwiają wykonanie zapytania do bazy danych",
+            "Umożliwiają pobranie wiersza danych i zapisanie ich w zmiennej",
+            "Umożliwiają przetwarzanie danych z wykorzystaniem wielu wierszy będących wynikiem zapytania",
+        ],
+        correct: [3]
+    },
+    {
+        id: 12,
+        question: "Które polecenie spowoduje skompilowanie ciała istniejącego pakietu o nazwie Pckg_Validate?",
+        options: [
+            "ALTER PACKAGE Pckg_Validate COMPILE",
+            "ALTER PACKAGE Pckg_Validate COMPILE SPECIFICATION",
+            "ALTER PACKAGE Pckg_Validate COMPILE BODY",
+            "ALTER PACKAGE Pckg_Validate COMPILE PACKAGE",
         ],
         correct: [2]
     },
     {
-        id: 47,
-        question: "(Python) Kiedy unifikacja parent(’?x’,’ola’) ze zmienną ’?x’ z parent(’eva’,’ola’) powiedzie się i jaką da substytucję?",
+        id: 13,
+        question: "Twoim zadaniem jest zmodyfikowanie kodu PL/SQL w funkcji składowanej SF_Validate istniejącej już w bazie danych. Które z poniższych polecenie wykorzystasz do tego celu?",
         options: [
-            "Nie powiedzie się, bo fakt jest ugruntowany.",
-            "Powiedzie się z substytucją: ?x -> ’eva’ .",
-            "Powiedzie się tylko przy odwróconej kolejności argumentów.",
-            "Nie powiedzie się, bo wzorzec zawiera zmienną.",
-            "Powiedzie się z substytucją: ?x -> ’ola’ .",
+            "CREATE OR MODIFY FUNCTION SF_Validate",
+            "CREATE OR REPLACE FUNCTION SF_Validate",
+            "MODIFY FUNCTION SF_Validate",
+            "ALTER FUNCTION SF_Validate",
+            "ALTER FUNCTION BY REPLACING SF_Validate",
+            "CREATE FUNCTION SF_Validate",
         ],
         correct: [1]
     },
     {
-        id: 48,
-        question: "(Python) Jak interpretować grandparent(X,Z) :- parent(X,Y), parent(Y,Z)?",
+        id: 14,
+        question: "Wskaż sposób skojarzenia błędu o numerze -1 z nazwą wyjątku DUPLICATE_VALUES:",
         options: [
-            "Jeśli X nie jest rodzicem Y, to X jest dziadkiem Z.",
-            "Reguła jest tautologią niezależną od faktów.",
-            "Jeśli X jest dziadkiem Z, to X jest rodzicem Y i Y jest rodzicem Z.",
-            "Jeśli X jest rodzicem Y i Y jest rodzicem Z, to X jest dziadkiem Z.",
-            "Jeśli Y = Z, to X = Z.",
+            "declare\n PRAGMA EXCEPTION_INIT(duplicate_values, -1); duplicate_values exception;\nbegin\n null;\nend;",
+            "declare\nduplicate_values exception;\nPRAGMA EXCEPTION_INIT(duplicate_values, -1);\nbegin\nnull;\nend;",
+        ],
+        correct: [1]
+    },
+    {
+        id: 15,
+        question: "Twoim zadaniem jest zmodyfikować definicję funkcji udostępnianej w istniejącym pakiecie o nazwie Pckg_Validate. Jakie polecenie musisz zdefiniować, aby wykonać to zadanie? Wskaż odpowiedź, która opisuje poprawny sposób wykonania tej modyfikacji.",
+        options: [
+            "CREATE OR REPLACE PACKAGE Pckg_Validate",
+            "Najpierw CREATE PACKAGE Pckg_Validate, potem CREATE PACKAGE BODY Pckg_Validate",
+            "Najpierw CREATE OR REPLACE PACKAGE Pckg_Validate, potem CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
+            "CREATE PACKAGE BODY Pckg_Validate",
+            "CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
+        ],
+        correct: [4]
+    },
+    {
+        id: 16,
+        question: "W jakim celu wykorzystuje się kursory? Wskaż zdanie, które najlepiej oddaje celowość zastosowania kursorów.",
+        options: [
+            "Umożliwiają wielokrotne powtarzanie tych samych operacji z wykorzystaniem różnych danych",
+            "Umożliwiają wykonanie zapytania do bazy danych",
+            "Umożliwiają pobranie wiersza danych i zapisanie ich w zmiennej",
+            "Umożliwiają przetwarzanie danych z wykorzystaniem wielu wierszy będących wynikiem zapytania",
+        ],
+        correct: [3]
+    },
+    {
+        id: 17,
+        question: "W którym momencie wykonywane jest zapytanie zdefiniowane w deklaracji kursora jawnego?",
+        options: [
+            "Podczas sprawdzania czy kursor został otwarty przy pomocy atrybutu %ISOPEN",
+            "Podczas sprawdzania wartości atrybutu %FOUND",
+            "Podczas wykonania instrukcji otwarcia kursora",
+            "Podczas sprawdzania wartości atrybutu %NOTFOUND",
+            "Podczas pobierania danych do zmiennej przy pomocy instrukcji FETCH",
+        ],
+        correct: [2]
+    },
+    {
+        id: 18,
+        question: "Wskaż zdanie prawdziwe dotyczące pakietów definiowanych w bazie danych ORACLE.",
+        options: [
+            "Każdy pakiet składa się ze specyfikacji i ciała.",
+            "Każdy pakiet musi składać się ze specyfikacji i opcjonalnie może posiadać ciało.",
+            "W bazie danych można tworzyć pakiety o tej samej nazwie, jednak muszą one różnić się specyfikacją.",
+            "Każdy pakiet musi zawierać co najmniej jeden podprogram PL/SQL.",
+            "Każdy pakiet musi mieć unikalną nazwę w bazie danych.",
+        ],
+        correct: [1]
+    },
+    {
+        id: 19,
+        question: "W której z sekcji bloku PL/SQL można zagnieżdżać kolejne bloki?",
+        options: [
+            "Tylko w sekcji EXCEPTION",
+            "Tylko w sekcji BEGIN lub EXCEPTION",
+            "Tylko w sekcji BEGIN",
+            "W każdej sekcji tj. w części DECLARE, BEGIN, EXCEPTION",
+        ],
+        correct: [1]
+    },
+    {
+        id: 20,
+        question: "Wskaż poprawny sposób deklarowania zmiennej rekordowej o nazwie My_Rec w bloku PL/SQL:",
+        options: [
+            "TYPE tMy_Rec AS OBJECT (Id NUMBER(5), Name VARCHAR2(30));\nMy_Rec tMy_Rec;",
+            "My Rec IS RECORD (Id NUMBER(5), Name VARCHAR2(30));",
+            "My Rec ROWTYPE (Id NUMBER(5), Name VARCHAR2(30));",
+            "TYPE tMy_Rec IS RECORD (Id NUMBER(5), Name VARCHAR2(30)); My_Rec tMy_Rec;",
+        ],
+        correct: [3]
+    },
+    {
+        id: 21,
+        question: "Twoim zadaniem jest zmodyfikować definicję funkcji udostępnianej w istniejącym pakiecie o nazwie\nPckg_Validate. Jakie polecenie musisz zdefiniować, aby wykonać to zadanie? Wskaż odpowiedź, która opisuje poprawny sposób wykonania tej modyfikacji.",
+        options: [
+            "CREATE PACKAGE BODY Pckg_Validate",
+            "Najpierw CREATE PACKAGE Pckg_Validate, potem CREATE PACKAGE BODY Pckg_Validate",
+            "CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
+            "CREATE OR REPLACE PACKAGE Pckg_Validate",
+            "Najpierw CREATE OR REPLACE PACKAGE Pckg_Validate, potem CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
+        ],
+        correct: [2]
+    },
+    {
+        id: 22,
+        question: "Twoim zadaniem jest zdefiniowanie typu kolekcji, który będzie dostępny dla innych użytkowników bazy danych podczas tworzenia kodu PL/SQL. W jaki sposób to zrobisz? Wskaż tę odpowiedź (te odpowiedzi), które umożliwiają wykonanie tego zadania.",
+        options: [
+            "Należy utworzyć w bazie danych pakiet, w którego specyfikacji znajdzie się deklaracja wymaganego typu kolekcji. Następnie w ciele pakietu należy zdefiniować typ danych dla elementów takiej kolekcji.",
+            "Należy utworzyć blok PL/SQL, w którego części deklaracyjnej znajdzie się definicja wymaganego typu kolekcji. Następnie należy zapisać plik zawierający ten blok w bazie danych.",
+            "Należy utworzyć w bazie danych specyfikację pakietu, w której znajdzie się definicja wymaganego typu kolekcji",
+            "Należy utworzyć w bazie danych obiekt będący typem danych przy pomocy polecenia CREATE TYPE AS OBJECT, podając w nim definicję typu kolekcji",
+            "Należy utworzyć blok PL/SQL, w którego części deklaracyjnej znajdzie się definicja wymaganego typu kolekcji. Następnie należy zapisać ten blok w specyfikacji pakietu, utworzonej w bazie danych.",
+        ],
+        correct: [2]
+    },
+    {
+        id: 23,
+        question: "Wskaż poprawną postać instrukcji SELECT w języku PL/SQL, umieszczoną w części wykonawczej bloku PL/SQL (w zadaniu wykorzystano przykład bazy danych używanej na zajęciach laboratoryjnych).",
+        options: [
+            "SELECT Id_Student, Nazwisko, Imie FROM Studenci;",
+            "SELECT Id_Student, Nazwisko, Imie INTO vid, vnazwisko, vimie FROM Studenci;",
+            "CURSOR c1 IS SELECT Id_Student, Nazwisko, Imie FROM Studenci ;",
+        ],
+        correct: [1]
+    },
+    {
+        id: 24,
+        question: "Wskaż poprawną postać instrukcji SELECT w języku PL/SQL, umieszczoną w części wykonawczej bloku PL/SQL (w zadaniu wykorzystano przykład bazy danych używanej na zajęciach laboratoryjnych).",
+        options: [
+            "CURSOR c1 IS SELECT Id_Student, Nazwisko, Imie FROM Studenci ;",
+            "SELECT Id_Student, Nazwisko, Imie FROM Studenci ;",
+            "SELECT Id Student, Nazwisko, Imie INTO vid, vnazwisko, vimie FROM Studenci;",
+        ],
+        correct: [2]
+    },
+    {
+        id: 25,
+        question: "Wskaż sposób skojarzenia błędu o numerze -1 z nazwą wyjątku DUPLICATE_VALUES:",
+        options: [
+            "declare\nPRAGMA EXCEPTION_INIT(duplicate_values, -1);\nduplicate_values exception ;\nbegin\nnull;\nend;",
+            "declare\nPRAGMA EXCEPTION_INIT(duplicate_values, -1);\nbegin\nnull;\nend;",
+            "declare\nduplicate_values exception ;\nPRAGMA EXCEPTION_INIT(duplicate_values, -1);\nbegin\nnull;\nend;",
+        ],
+        correct: [2]
+    },
+    {
+        id: 26,
+        question: "Proszę wskazać zdanie fałszywe dotyczące wyjątków:",
+        options: [
+            "Każdy błąd systemowy jest skojarzony z wyjątkiem\npredefiniowanym o odpowiedniej nazwie",
+            "Wyjątki użytkownika muszą mieć nazwy unikalne w tym samym bloku PL/SQL",
+            "Wyjątki użytkownika nie mogą mieć nazw identycznych z nazwami wyjątków predefiniowanych",
+            "Każdy wyjątek musi być obsłużony w tym samym bloku, w którym powstał",
+        ],
+        correct: [0, 2, 3]
+    },
+    {
+        id: 27,
+        question: "Twoim zadaniem jest utworzyć pakiet o nazwie Pckg_Validate, który będzie udostępniał typy kolekcji oraz funkcje walidujące dane. Przyjmując założenie, że pakiet ten nie istnieje jeszcze w bazie danych, jakie polecenia wykonasz, aby utworzyć ten pakiet? Wskaż odpowiedź, która opisuje poprawny sposób tworzenia tego pakietu.",
+        options: [
+            "CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
+            "Najpierw CREATE OR REPLACE PACKAGE Pckg_Validate, potem CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
+            "Najpierw CREATE PACKAGE Pckg_Validate, potem CREATE PACKAGE BODY Pckg_Validate",
+            "CREATE OR REPLACE PACKAGE Pckg_Validate",
+        ],
+        correct: [1]
+    },
+    {
+        id: 28,
+        question: "Które polecenie spowoduje skompilowanie ciała istniejącego pakietu o nazwie Pckg_Validate?",
+        options: [
+            "ALTER PACKAGE Pckg_Validate COMPILE SPECIFICATION",
+            "ALTER PACKAGE Pckg_Validate COMPILE BODY",
+            "ALTER PACKAGE Pckg_Validate COMPILE PACKAGE",
+            "ALTER PACKAGE Pckg_Validate COMPILE",
+        ],
+        correct: [1]
+    },
+    {
+        id: 29,
+        question: "Twoim zadaniem jest zdefiniowanie typu kolekcji, który będzie dostępny dla innych użytkowników bazy danych podczas tworzenia kodu PL/SQL. W jaki sposób to zrobisz? Wskaż tę odpowiedź (te odpowiedzi), które umożliwiają wykonanie tego zadania.",
+        options: [
+            "Należy utworzyć w bazie danych specyfikację pakietu, w której znajdzie się definicja wymaganego typu kolekcji",
+            "Należy utworzyć blok PL/SQL, w którego części deklaracyjnej znajdzie się definicja wymaganego typu kolekcji. Następnie należy zapisać ten blok w specyfikacji pakietu, utworzonej w bazie danych.",
+            "Należy utworzyć w bazie danych pakiet, w którego specyfikacji znajdzie się deklaracja wymaganego typu kolekcji. Następnie w ciele pakietu należy zdefiniować typ danych dla elementów takiej kolekcji.",
+            "Należy utworzyć w bazie danych obiekt będący typem danych przy pomocy polecenia CREATE TYPE AS OBJECT, podając w nim definicję typu kolekcji",
+            "Należy utworzyć blok PL/SQL, w którego części deklaracyjnej znajdzie się definicja wymaganego typu kolekcji. Następnie należy zapisać plik zawierający ten blok w bazie danych.",
+        ],
+        correct: [0]
+    },
+    {
+        id: 30,
+        question: "Jak spowodować powstanie wyjątku predefiniowanego NO_DATA_FOUND?",
+        options: [
+            "Otworzyć kursor, który nie pobierze żadnych rekordów z bazy danych",
+            "Wykonać instrukcję SELECT ... INTO, podając w niej warunek, który nigdy nie będzie spełniony.",
+            "Wykonać instrukcję FETCH dla kursora jawnego, który nie zawiera żadnych rekordów",
+            "Wykonać instrukcję RAISE NO_DATA_FOUND",
+        ],
+        correct: [1, 3]
+    },
+    {
+        id: 31,
+        question: "Jakie wyjątki powinno obsłużyć się w poniższym kodzie PL/SQL?\nDECLARE\n vx studenci.id_student%TYPE ;\nBEGIN\n SELECT ID student INTO vx FROM Studenci WHERE Nazwisko = 'Muryjas' ;\n IF vx IS NULL THEN\n DBMS_OUTPUT.PUT_LINE('This student does not exist');\nEND IF ;\nend ;",
+        options: [
+            "NO_DATA",
+            "TOO_MANY_VALUES",
+            "VALUE_ERROR",
+            "NO_DATA_FOUND",
+            "TOO_MANY_ROWS",
+        ],
+        correct: [3, 4]
+    },
+    {
+        id: 32,
+        question: "Który z atrybutów kursora jawnego powinien być wykorzystany jako pierwszy po instrukcji otwarciu kursora:",
+        options: [
+            "%ROWCOUNT",
+            "%FOUND",
+            "%NOTFOUND",
+            "%ISOPEN",
+        ],
+        correct: [3]
+    },
+    {
+        id: 33,
+        question: "Czy poniższy kod PL/SQL jest poprawny z punktu widzenia składni:\nDECLARE\nFUNCTION Count_Exams (sid studenci.ID_student%TYPE) RETURN NUMBER IS exnr NUMBER ;\nBEGIN\nSELECT COUNT(*) INTO exnr FROM Egzaminy\nWHERE ID student = sid;\nRETURN exnr;\nEND Count_Exams ;\nCURSOR c1 IS SELECT ID student, Nazwisko, Imie FROM Studenci WHERE UPPER (Nazwisko) = 'MURYJAS' ;\nBEGIN\nFOR vc1 IN c1 LOOP\nDBMS_OUTPUT.PUT_LINE('ID - ' || Count_Exams (vc1.ID_student) );\nEND LOOP;\nEND;",
+        options: [
+            "Tak",
+            "Nie",
+        ],
+        correct: [1]
+    },
+    {
+        id: 34,
+        question: "Podczas deklarowania zmiennej użyto atrybutu %ROWTYPE. Do czego odwołuje się ten atrybut?",
+        options: [
+            "Do definicji kursora (jego struktury)",
+            "Do zmiennej kursora",
+            "Do typu innej dowolnej zmiennej",
+            "Do typu innej zmiennej skalarnej",
+            "Do struktury tabeli",
+            "Do zmiennej rekordowej",
+        ],
+        correct: [0, 1, 4]
+    },
+    {
+        id: 35,
+        question: "W bloku PL/SQL zadeklarowano wyjątek użytkownika o nazwie NO_DATA_FOUND. W tym samym bloku użyto instrukcji SELECT ... INTO, która może spowodować powstanie wyjątku predefiniowanego NO_DATA_FOUND. W jaki sposób dokonać obsługi wyjątku predefiniowanego w sekcji EXCEPTION?",
+        options: [
+            "WHEN STANDARD.NO_DATA_FOUND THEN Blok_Obsługi;",
+            "WHEN SERVER.NO_DATA_FOUND THEN Blok_Obsługi;",
+            "WHEN NO_DATA_FOUND THEN Blok_Obsługi;",
+            "WHEN BUILT_IN.NO_DATA_FOUND THEN Blok_Obsługi;",
+        ],
+        correct: [0]
+    },
+    {
+        id: 36,
+        question: "Proszę wskazać numer linii kodu, w której występuje błąd:\n1| DECLARE\n2| Liczba NUMBER ;\n3| Mwyjatek EXCEPTION;\n4| BEGIN\n5| SELECT COUNT(*) INTO liczba FROM Egzaminy WHERE Id_osrodek = 1;\n6| IF liczba = 0 THEN\n7| EXECUTE mwyjatek ;\n8| END IF ;\n9|  INSERT INTO Osrodki (Id_osrodek, Nazwa_o) VALUES (10, 'Politechnika Lubelska');\n10| EXCEPTION\n11| WHEN OTHERS THEN dbms_output.put_line ('Powstał nieznany wyjątek');\n12| WHEN mwyjatek THEN\n13| dbms_output.put_line ('Brak egzaminów w ośrodku');\n14| END ;",
+        options: [
+            "9",
+            "11",
+            "3",
+            "7",
+        ],
+        correct: [1, 3]
+    },
+    {
+        id: 37,
+        question: "Podczas deklarowania zmiennej użyto atrybutu %ROWTYPE. Do czego odwołuje się ten atrybut?",
+        options: [
+            "Do struktury tabeli",
+            "Do zmiennej rekordowej",
+            "Do definicji kursora (jego struktury)",
+            "Do typu innej zmiennej skalarnej",
+            "Do zmiennej kursora",
+            "Do typu innej dowolnej zmiennej",
+        ],
+        correct: [0, 2, 4]
+    },
+    {
+        id: 38,
+        question: "Który rodzaj kolekcji wymaga stosowania indeksu numerycznego w celu odwoływania się do jej elementów?",
+        options: [
+            "Kolekcja typu NESTED TABLE",
+            "Kolekcja typu tablica asocjacyjna",
+            "Kolekcja typu VARRAY",
+        ],
+        correct: [0, 2]
+    },
+    {
+        id: 39,
+        question: "Która linia poniższego kodu będzie źródłem błędu?\n1| DECLARE\n2| exno NUMBER := 0;\n3| PROCEDURE Count_Exams (ids egzaminy.id_student%TYPE, exn NUMBER) IS\n4| BEGIN\n5| SELECT COUNT(*) INTO exn FROM Egzaminy WHERE ID_student = ids;\n6| END Count_Ex  ams;\n7| BEGIN\n8| Count_Exams ('0000001', exno) ;\n9| DBMS_OUTPUT.PUT_LINE('This student had || exno || exams' ) ;\n10| END;",
+        options: [
+            "5",
+            "8",
+            "2",
+            "9",
+        ],
+        correct: [0]
+    },
+    {
+        id: 40,
+        question: "Dla jakiego typu kolekcji metoda COUNT i LAST zwrócą tę samą wartość?",
+        options: [
+            "Kolekcji typu tablica asocjacyjna",
+            "Kolekcji VARRAY",
+            "Kolekcji NESTED TABLE",
+        ],
+        correct: [1]
+    },
+    {
+        id: 41,
+        question: "Jak spowodować powstanie wyjątku predefiniowanego NO_DATA_FOUND?",
+        options: [
+            "Wykonać instrukcję SELECT ... INTO, podając w niej warunek, który nigdy nie będzie spełniony.",
+            "Wykonać instrukcję RAISE NO_DATA_FOUND",
+            "Otworzyć kursor, który nie pobierze żadnych rekordów z bazy danych",
+            "Wykonać instrukcję FETCH dla kursora jawnego, który nie zawiera żadnych rekordów",
+        ],
+        correct: [0, 1]
+    },
+    {
+        id: 42,
+        question: "Który rodzaj kolekcji wymaga stosowania indeksu numerycznego w celu odwoływania się do jej elementów?",
+        options: [
+            "Kolekcja typu VARRAY",
+            "Kolekcja typu tablica asocjacyjna",
+            "Kolekcja typu NESTED TABLE",
+        ],
+        correct: [0, 2]
+    },
+    {
+        id: 43,
+        question: "Czym się charakteryzuje mocna zmienna kursora?",
+        options: [
+            "Można skojarzyć z nią tylko jedno zapytanie, dla którego struktura zbioru wynikowego jest zgodna z definicją typu danych określonego w deklaracji zmiennej",
+            "Można skojarzyć z nią tylko takie zapytanie, dla którego struktura zbioru wynikowego jest zgodna z definicją typu danych określonego w deklaracji zmiennej",
+            "Można z nią skojarzyć dowolne zapytanie",
+            "Jej deklaracja zawiera definicję typu danych, który opisuje strukturę zbioru wynikowego zapytania skojarzonego z tą zmienną",
+        ],
+        correct: [3]
+    },
+    {
+        id: 44,
+        question: "Wskaż numer linii, w której występuje błąd deklaracji zmiennej:\n1| declare\n2| cursor c1 is SELECT Id_Student, COUNT(*) FROM Egzaminy GROUP BY Id_Student;\n3| vc1 c1%ROWTYPE;\n4| vc2 c1%TYPE;\n5| vc3 vc1%TYPE;\n6| vc4 vc1%ROWTYPE;\n7| begin\n8| null;\n9| end;",
+        options: [
+            "4",
+            "3",
+            "6",
+            "5",
+        ],
+        correct: [0, 2]
+    },
+    {
+        id: 45,
+        question: "Instrukcja otwarcia kursora jawnego (OPEN) spowoduje powstanie wyjątku, jeśli:",
+        options: [
+            "Instrukcja SELECT definiująca kursor nie jest poprawna składniowo",
+            "Kursor został już uprzednio otwarty",
+            "Połączenie z bazą danych zostało utracone",
+            "Zbiór wynikowy powstały po wykonaniu instrukcji SELECT, definiującej kursor, jest pusty",
+        ],
+        correct: [1]
+    },
+    {
+        id: 46,
+        question: "Co można umieścić w specyfikacji pakietu, dla którego nie istnieje ciało pakietu?",
+        options: [
+            "Deklarację wyjątku",
+            "Deklarację kursora",
+            "Deklarację stałej",
+            "Deklarację zmiennej",
+            "Deklarację typu danych",
+        ],
+        correct: [0, 1, 2, 3, 4]
+    },
+    {
+        id: 47,
+        question: "Wskaż prawidłowy kod PL/SQL, umożliwiający wyświetlenie identyfikatora studenta, który nie zdawał żadnego egzaminu? Przyjmij założenie, że jeśli student zdawał egzamin to otrzymał z niego co najmniej 2 punkty.",
+        options: [
+            "DECLARE\nCURSOR C1 IS SELECT Id_Student, Nazwisko, Imie FROM Studenci ; CURSOR C2(ids studenci.id_student%TYPE) IS\nBEGIN\nSELECT COUNT(Punkty) Total FROM Egzaminy WHERE Id_student ids;\nFOR vc1 IN c1 LOOP\nFOR vc2 IN c2(vc1.Id_Student) LOOP\nIF vc2.Total = 0 THEN\nDBMS_OUTPUT.PUT_LINE('Student o ID = vc1.Id_Student || nie zdawał egzaminu');\nEND IF;\nEND LOOP;\nEND LOOP;\nEND;",
+            "DECLARE\nCURSOR C1 IS SELECT Id Student, Nazwisko, Imie FROM Studenci ;\nCURSOR C2(ids studenci.id_student%TYPE) IS\nBEGIN\nSELECT SUM(Punkty) Total FROM Egzaminy WHERE Id_student = ids;\nFOR vc1 IN c1 LOOP\nFOR vc2 IN c2(vc1.Id_Student) LOOP\nIF vc2. Total IS NULL THEN\nDBMS_OUTPUT.PUT_LINE('Student o ID= || vc1.Id_Student || nie zdawał egzaminu');\nEND IF ;\nEND LOOP;\nEND LOOP;\nEND;",
+            "DECLARE\nCURSOR C1 IS SELECT Id_Student, Nazwisko, Imie FROM Studenci ; CURSOR C2(ids studenci.id_student%TYPE) IS\nBEGIN\nSELECT SUM(Punkty) Total FROM Egzaminy WHERE Id_student = ids;\nFOR vc1 IN c1 LOOP\nFOR vc2 IN c2(vc1.Id_Student) LOOP\nIF vc2.Total = 0 THEN\nDBMS_OUTPUT.PUT_LINE('Student o ID= || vc1.Id_Student ||\nnie zdawał egzaminu');\nEND IF ;\nEND LOOP;\nEND LOOP;\nEND;",
+            "DECLARE\nCURSOR C1 IS SELECT Id_Student, Nazwisko, Imie FROM Studenci ; CURSOR C2(ids studenci.id_student%TYPE) IS\nBEGIN\nSELECT COUNT(Punkty) Total FROM Egzaminy WHERE Id_student = ids;\nFOR vc1 IN c1 LOOP\nFOR vc2 IN c2(vc1. Id_Student) LOOP\nIF vc2.Total IS NULL THEN\nDBMS_OUTPUT.PUT_LINE('Student o ID = ' || vc1.Id_Student || nie zdawał egzaminu');\nEND IF ;\nEND LOOP;\nEND LOOP;\nEND;",
+        ],
+        correct: [0, 1]
+    },
+    {
+        id: 48,
+        question: "Twoim zadaniem jest utworzyć pakiet o nazwie Pckg_Validate, który będzie udostępniał typy kolekcji oraz funkcje walidujące dane. Przyjmując założenie, że pakiet ten nie istnieje jeszcze w bazie danych, jakie polecenia wykonasz, aby utworzyć ten pakiet? Wskaż odpowiedź, która opisuje poprawny sposób tworzenia tego pakietu.",
+        options: [
+            "CREATE OR REPLACE PACKAGE Pckg_Validate",
+            "Najpierw CREATE PACKAGE Pckg_Validate, potem CREATE PACKAGE BODY Pckg_Validate",
+            "CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
+            "Najpierw CREATE OR REPLACE PACKAGE Pckg_Validate, potem CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
         ],
         correct: [3]
     },
     {
         id: 49,
-        question: "(Python) Które przykłady są poprawnymi regułami Horna?",
+        question: "W jakim miejscu zapisane są definicje podprogramów składowanych?",
         options: [
-            "grandparent(X,Z) :- parent(X,Y), parent(Y,Z).",
-            "parent(X,Y) ; sibling(X,Y) :- cousin(X,Y).",
-            "A(X) :- not B(X).",
-            ":- parent(X,Y).",
-            "ancestor(X,Z) :- parent(X,Z).",
-        ],
-        correct: [0, 4]
-    },
-    {
-        id: 50,
-        question: "(Python) Wskaż nieprawdziwe twierdzenia o unifikacji.",
-        options: [
-            "Unifikacja zawsze losowo wiąże tę samą zmienną z różnymi stałymi.",
-            "Unifikacja zwraca listę wszystkich faktów, nie substytucję.",
-            "Unifikacja ignoruje nazwy predykatów — liczą się tylko argumenty.",
-            "Unifikacja jest możliwa tylko, gdy arności się różnią.",
-            "Unifikacja wymaga, by fakt zawierał zmienne tak jak wzorzec.",
-        ],
-        correct: []
-    },
-    {
-        id: 51,
-        question: "(Python) Wskaż poprawne zdania o zmiennych w wzorcach atomów.",
-        options: [
-            "Zmienną można traktować jako łańcuch rozpoczynający się od ’?’ (np. ’?x’).",
-            "Zmiennych nie wolno używać w głowie reguły.",
-            "Ta sama zmienna może przyjmować różne wartości w tej samej substytucji.",
-            "Zmienna musi mieć typ liczbowy.",
-            "Zmienna może otrzymać wiązanie do stałej podczas unifikacji.",
-        ],
-        correct: [0, 4]
-    },
-    {
-        id: 52,
-        question: "(Python) Które stwierdzenia dot. reguł bazowych są poprawne?",
-        options: [
-            "Może służyć jako punkt startowy dla reguł rekurencyjnych.",
-            "Może współistnieć z regułami nierekurencyjnymi i rekurencyjnymi.",
-            "Reguła z pustym ciałem jest równoważna faktowi.",
-            "Zwiększa zbiór zmaterializowanych faktów jeszcze przed wnioskowaniem.",
-            "Nie wymaga unifikacji ciała przy wyprowadzaniu głowy.",
-        ],
-        correct: [0, 1, 2, 3, 4]
-    },
-    {
-        id: 53,
-        question: "Algorytm iteracyjnego przeszukiwania z heurystyką – na czym polega aktualizacja progu i kiedy algorytm kończy?",
-        options: [
-            "Próg to wyłącznie h(start); kończy, gdy wykorzysta całą pamięć.",
-            "Próg zmniejsza się w kolejnych iteracjach, aby przyspieszyć wyszukiwanie.",
-            "Próg to liczba węzłów w kolejce; rośnie o stałą liczbę w każdej iteracji.",
-            "Próg początkowy to f(start); wkażdej iteracji nowy próg to najmniejsz awartość f przekraczająca bieżący próg;algorytm kończy, gdy cel zostanie znaleziony w granicach progu.",
-            "Algorytm kończy dopiero po odwiedzeniu wszystkich stanów o f mniejszych od progu maksymalnego.",
-        ],
-        correct: [3]
-    },
-    {
-        id: 54,
-        question: "Wskaż niepoprawne stwierdzenia o heurystykach.",
-        options: [
-            "Lepsza (silniejsza) heurystyka zwykle zmniejsza liczbę rozwiniętych węzłów.",
-            "Heurystyka równa zero redukuje A* do przeszukiwania z kosztami.",
-            "Dopuszczalna heurystyka powinna zawsze przeszacowywać, aby szybciej skończyć.",
-            "Heurystyka może wynikać z relaksacji ograniczeń problemu (np. ignorowanie kolizji).",
-            "Jeśli heurystyka jest stała i równa temu samemu dodatniemu numerowi dla wszystkich stanów, to A* zawsze będzie optymalne",
-        ],
-        correct: [2, 4]
-    },
-    {
-        id: 55,
-        question: "Wskaż niepoprawne kojarzenia typu problemu i algorytmu.",
-        options: [
-            "Deterministyczny, wieloetapowy → graf AND-OR jest konieczny.",
-            "Deterministyczny, wieloetapowy → A* z admisyjną heurystyką.",
-            "Niedeterministyczny, wieloetapowy → wyszukiwanie w AND-OR z warunkowaniem.",
-            "Deterministyczny, jednoetapowy → wybór argmax po funkcji oceny.",
-            "Niedeterministyczny, wieloetapowy → zwykły A* bez żadnych zmian zawsze tworzy poprawny plan warunkowy.",
-        ],
-        correct: [0, 4]
-    },
-    {
-        id: 56,
-        question: "Które stwierdzenia o planie równoległym w GraphPlan są prawdziwe?",
-        options: [
-            "Akcje na tym samym poziomie mogą być wykonywane równolegle, jeśli nie są mutex.",
-            "Jeśli dwie akcje dotyczą rozłącznych faktów, to z definicji są mutex.",
-            "W GraphPlan zawsze wykonuje się dokładnie jedną akcję na poziom.",
-            "Równoległość wymaga, aby akcje miały identyczne preconditions.",
-            "Ekstrakcja planu wybiera na danym poziomie zbiór akcji, które wspólnie spełniają cele i nie konfliktują.",
-        ],
-        correct: [0, 4]
-    },
-    {
-        id: 57,
-        question: "Na czym polega formalizm STRIPS w planowaniu?",
-        options: [
-            "Plan w STRIPS musi być cyklem Hamiltona w grafie stanów.",
-            "Akcje opisane są przez zbiory: preconditions (warunki wstępne), effects (efekty); świat to zbiór literali prawdziwych, a plan to",
-            "STRIPS dopuszcza wyłącznie negatywne efekty; efekty dodawane są zabronione.",
-            "W STRIPS akcje nie mają warunków wstępnych, tylko losowe wyniki.",
-            "STRIPS wymaga modelu ciągłego czasu i równań różniczkowych do opisu każdej akcji.",
+            "W pakiecie predefiniowanym o nazwie STANDARD",
+            "W schemacie bazy danych jako jej obiekt",
+            "W pakiecie utworzonym przez użytkownika, zapisanym jako obiekt bazy danych",
+            "W pliku dyskowym zapisanym w miejscu określonym przez definiującego podprogram składowany",
         ],
         correct: [1]
     },
     {
-        id: 58,
-        question: "Które przykłady planowania niedeterministycznego są sensowne?",
+        id: 50,
+        question: "Co można umieścić w specyfikacji pakietu, dla którego nie istnieje ciało pakietu?",
         options: [
-            "Niedeterminizm oznacza, że akcje nie mają preconditions.",
-            "Robot podnosi obiekt, który może się wyślizgnąć; plan zawiera powtórzenie chwytu jako alternatywę.",
-            "Plan niedeterministyczny składa się wyłącznie z jednej liniowej ścieżki działań.",
-            "Każda akcja ma dokładnie jeden, deterministyczny wynik – nie ma potrzeby planu warunkowego.",
-            "Akcja „otwórz drzwi” może się powieść lub nie; plan powinien zawierać gałąź awaryjną dla wyniku negatywnego.",
+            "Deklarację stałej",
+            "Deklarację zmiennej",
+            "Deklarację wyjątku",
+            "Deklarację typu danych",
+            "Deklarację kursora",
         ],
-        correct: [1, 4]
+        correct: [0, 1, 2, 3, 4]
+    },
+    {
+        id: 51,
+        question: "Czy poniższy kod PL/SQL jest poprawny z punktu widzenia składni:\nDECLARE\nFUNCTION Count_Exams (sid studenci.ID_student%TYPE) RETURN NUMBER IS\nexnr NUMBER;\nBEGIN\nSELECT COUNT(*) INTO exnr FROM Egzaminy\nWHERE ID_student = sid ;\nRETURN exnr ;\nEND Count_Exams ;\nCURSOR c1 IS SELECT_ID_student, Nazwisko, Imie FROM Studenci WHERE UPPER (Nazwisko) = 'MURYJAS' ;\nBEGIN\nFOR vc1 IN c1 LOOP\n DBMS_OUTPUT.PUT_LINE('ID - ' || Count_Exams (vc1.ID_student) );\nEND LOOP;\nEND;",
+        options: [
+            "Tak",
+            "Nie",
+        ],
+        correct: [1]
+    },
+    {
+        id: 52,
+        question: "Które instrukcje, dotyczące kursora, realizowane są przez pętlę kursora?",
+        options: [
+            "zamknięcie kursora",
+            "pobranie wiersza z kursora i zapisanie go w zmiennej rekordowej",
+            "definicja kursora",
+            "otwarcie kursora",
+        ],
+        correct: [0, 1, 3]
+    },
+    {
+        id: 53,
+        question: "Twoim zadaniem jest zdefiniowanie typu kolekcji, który będzie dostępny dla innych użytkowników bazy danych podczas tworzenia kodu PL/SQL. W jaki sposób to zrobisz? Wskaż tę odpowiedź (te odpowiedzi), które umożliwiają wykonanie tego zadania.",
+        options: [
+            "Należy utworzyć w bazie danych obiekt będący typem danych przy pomocy polecenia CREATE TYPE AS OBJECT, podając w nim definicję typu kolekcji",
+            "Należy utworzyć w bazie danych specyfikację pakietu, w której znajdzie się definicja wymaganego typu kolekcji",
+            "Należy utworzyć w bazie danych pakiet, w którego specyfikacji znajdzie się deklaracja wymaganego typu kolekcji. Następnie w ciele pakietu należy zdefiniować typ danych dla elementów takiej kolekcji.",
+            "Należy utworzyć blok PL/SQL, w którego części deklaracyjnej znajdzie się definicja wymaganego typu kolekcji. Następnie należy zapisać ten blok w specyfikacji pakietu, utworzonej w bazie danych.",
+            "Należy utworzyć blok PL/SQL, w którego części deklaracyjnej znajdzie się definicja wymaganego typu kolekcji. Następnie należy zapisać plik zawierający ten blok w bazie danych.",
+        ],
+        correct: [1]
+    },
+    {
+        id: 54,
+        question: "Który rodzaj kolekcji umożliwia odwoływanie się do jej elementów przy pomocy indeksu, którego wartości mogą być liczbą całkowitą dodatnią lub ujemną?",
+        options: [
+            "Nie ma takiej kolekcji, której indeks może być liczbą całkowitą ujemną",
+            "Kolekcja typu VARRAY",
+            "Kolekcja typu tablica asocjacyjna",
+            "Kolekcja typu NESTED TABLE",
+        ],
+        correct: [2]
+    },
+    {
+        id: 55,
+        question: "Który rodzaj kolekcji umożliwia odwoływanie się do jej elementów przy pomocy indeksu, którego wartości mogą być liczbą całkowitą dodatnią lub ujemną? Wybierz wszystkie poprawne:",
+        options: [
+            "Kolekcja typu tablica asocjacyjna",
+            "Nie ma takiej kolekcji, której indeks może być liczbą całkowitą ujemną",
+            "Kolekcja typu NESTED TABLE",
+            "Kolekcja typu VARRAY",
+        ],
+        correct: [0]
+    },
+    {
+        id: 56,
+        question: "Wskaż poprawną postać instrukcji SELECT w języku PL/SQL, umieszczoną w części wykonawczej bloku PL/SQL (w zadaniu wykorzystano przykład bazy danych używanej na zajęciach laboratoryjnych).",
+        options: [
+            "SELECT Id_Student, Nazwisko, Imie INTO vid, vnazwisko, vimie FROM Studenci ;",
+            "CURSOR c1 IS SELECT Id_Student, Nazwisko, Imie FROM Studenci ;",
+            "SELECT Id_Student, Nazwisko, Imie FROM Studenci;",
+        ],
+        correct: [0]
+    },
+    {
+        id: 57,
+        question: "Czy składnia instrukcji SELECT w części wykonawczej bloku PL/SQL jest identyczna ze składnią instrukcji SELECT języka SQL?",
+        options: [
+            "Nie",
+            "Tak",
+        ],
+        correct: [0]
+    },
+    {
+        id: 58,
+        question: "Dokonaj analizy poniższego kodu i odpowiedz na następujące pytanie. Jakie wartości zostaną odpowiednio wyświetlone w wyniku wykonania instrukcji w liniach 10 i 11?\n1| DECLARE\n2| TYPE t_col_courses IS TABLE OF NUMBER;\n3| col_courses t_col_courses := t_col_courses();\n4| BEGIN\n5| FOR K IN 1..10 LOOP\n6| col_courses.EXTEND ;\n7| col_courses (k) := 2*k ;\n8| END LOOP;\n9| col_courses. EXTEND (3,3);\n10| DBMS_OUTPUT.PUT_LINE(col_courses.COUNT) ;\n11| DBMS_OUTPUT.PUT_LINE(col_courses (12)) ;\n12| end;",
+        options: [
+            "13 i 3",
+            "13 i 20",
+            "13 i 6",
+        ],
+        correct: [2]
     },
     {
         id: 59,
-        question: "Jakie są typowe słabości Przeszukiwania wszerz?",
+        question: "Wskaż zdanie prawdziwe dotyczące pakietów definiowanych w bazie danych ORACLE.",
         options: [
-            "Wymaga heurystyki i dlatego jest trudne do zastosowania.",
-            "Nie potrafi działać na grafach bez cykli.",
-            "Brak uwzględniania zróżnicowanych kosztów — nie jest optymalne, gdy koszty kroków się różnią.",
-            "Wysokie zapotrzebowanie na pamięć z uwagi na szeroką warstwę węzłów.",
-            "Zawsze przegląda mniej węzłów niż inne metody.",
+            "Każdy pakiet musi mieć unikalną nazwę w bazie danych.",
+            "Każdy pakiet musi składać się ze specyfikacji i opcjonalnie może posiadać ciało.",
+            "Każdy pakiet składa się ze specyfikacji i ciała.",
+            "Każdy pakiet musi zawierać co najmniej jeden podprogram PL/SQL.",
+            "W bazie danych można tworzyć pakiety o tej samej nazwie, jednak muszą one różnić się specyfikacją.",
         ],
-        correct: [2, 3]
+        correct: [1]
     },
     {
         id: 60,
-        question: "Które stwierdzenia poprawnie odróżniają wyszukiwanie nieinformowane od informowanego?",
+        question: "Proszę wskazać numer linii kodu, w której występuje błąd:\n1| DECLARE\n2| Liczba NUMBER;\n3| Mwyjatek EXCEPTION ;\n4| BEGIN\n5| SELECT COUNT(*) INTO liczba FROM Egzaminy WHERE Id_osrodek = 1;\n6| IF liczba 0 THEN\n7| EXECUTE mwyjatek ;\n8| END IF ;\n9| INSERT INTO Osrodki (Id_osrodek, Nazwa_o) VALUES (10, 'Politechnika Lubelska');\n10| EXCEPTION\n11| WHEN OTHERS THEN dbms_output.put_line ('Powstał nieznany wyjątek');\n12| WHEN mwyjatek THEN\n13| dbms_output.put_line ('Brak egzaminów w ośrodku');\n14| END;",
         options: [
-            "Informowane (np. A*) wykorzystuje heurystykę szacującą „odległość” do celu.",
-            "Informowane nie eksploruje w ogóle gałęzi nieoptymalnych — nie rozwija żadnych węzłów pobocznych.",
-            "Nieinformowane nie używa wiedzy o problemie poza strukturą przestrzeni stanów.",
-            "Heurystyka to gwarantowana dokładna odległość do celu.",
-            "Nieinformowane zawsze znajduje rozwiązanie optymalne dla dowolnych kosztów.",
+            "7",
+            "9",
+            "11",
+            "3",
         ],
         correct: [0, 2]
     },
     {
         id: 61,
-        question: "Wskaż błędne dopasowania strategia → własność.",
+        question: "W jakim miejscu zapisane są definicje podprogramów składowanych?",
         options: [
-            "Przeszukiwanie w głąb → gwarantuje znalezienie najpłytszego rozwiązania.",
-            "Przeszukiwanie z ograniczeniem głębokości → może pominąć rozwiązanie głębsze niż limit.",
-            "Przeszukiwanie z kosztami → optymalne przy dodatnich kosztach.",
-            "Przeszukiwanie iteracyjne w głąb → jest zupełne na grafach skończonych.",
-            "Przeszukiwanie wszerz → zawsze optymalne przy dowolnych kosztach.",
+            "W schemacie bazy danych jako jej obiekt",
+            "W pliku dyskowym zapisanym w miejscu określonym przez definiującego podprogram składowany",
+            "W pakiecie utworzonym przez użytkownika, zapisanym jako obiekt bazy danych",
+            "W pakiecie predefiniowanym o nazwie STANDARD",
         ],
-        correct: [0, 4]
+        correct: [0]
     },
     {
         id: 62,
-        question: "Jakie kryteria porównania algorytmów wyszukiwania należy raportować?",
+        question: "Jaki wyjątek (lub wyjątki) mogą powstać podczas wykonania polecenia SELECT INTO?",
         options: [
-            "Wrażliwość na parametry (np. reguły rozstrzygania remisów).",
-            "Liczba rozwiniętych i wygenerowanych węzłów.",
-            "Czas wykonania i zużycie pamięci.",
-            "Czy rozwiązanie jest optymalne oraz jaki ma koszt.",
-            "Własności heurystyki (dopuszczalność, spójność) i koszt jej obliczania.",
+            "INVALID_SELECT",
+            "Instrukcja ta nigdy nie powoduje powstanie wyjątku",
+            "TOO_MANY_ROWS",
+            "NO_DATA_FOUND",
+            "INVALID_CURSOR",
         ],
-        correct: [0, 1, 2, 3, 4]
+        correct: [2, 3]
     },
     {
         id: 63,
-        question: "(Python) Wskaż niepoprawne stwierdzenia o odległościach w siatce 4-kierunkowej.",
+        question: "Czym się charakteryzuje słaba zmienna kursora?",
         options: [
-            "Jeśli dozwolone są tylko ruchy góra/dół/lewo/prawo, Manhattan nie przeszacowuje najkrótszej liczby kroków.",
-            "W siatce 4-kierunkowej Manhattan zwykle nie przeszacowuje.",
-            "Manhattan przeszacowuje koszt, gdy ruch na ukos jest zabroniony i koszty są nieujemne.",
-            "Wartość heurystyki powinna być › rzeczywistego kosztu, by przyspieszyć A*.",
-            "Odległość euklidesowa jest zawsze ‹ odległości Manhattan, dlatego jest zawsze lepszą heurystyką.",
+            "Można z nią skojarzyć dowolne zapytanie",
+            "Jej deklaracja zawiera definicję typu danych, który opisuje strukturę zbioru wynikowego zapytania skojarzonego z tą zmienną",
+            "Można skojarzyć z nią tylko jedno zapytanie, dla którego struktura zbioru wynikowego jest zgodna z definicją typu danych określonego w deklaracji zmiennej",
+            "Można skojarzyć z nią tylko takie zapytanie, dla którego struktura zbioru wynikowego jest zgodna z definicją typu danych określonego w deklaracji zmiennej",
         ],
-        correct: [2, 3, 4]
+        correct: [0]
     },
     {
         id: 64,
-        question: "(Python) Jak walidować poprawność implementacji wyszukiwania?",
+        question: "Czy poniższy kod PL/SQL pozwala wyświetlić odpowiedni komunikat w przypadku, gdy student o nazwisku Kot nie istnieje w tabeli Studenci?\nDECLARE\ncursor c1 IS SELECT ID student, Nazwisko, Imie FROM Studenci\nWHERE UPPER (Nazwisko) = 'KOT' ;\nvc1 c1%ROWTYPE;\nBEGIN\nOPEN c1 ;\nFETCH c1 INTO vc1 ;\nIF C1%FOUND THEN\nDBMS_OUTPUT.PUT_LINE('Nie ma studenta o podanym nazwisku');\nEND IF ;\nCLOSE c1 ;\nEXCEPTION\nWHEN NO_DATA_FOUND THEN\nDBMS_OUTPUT.PUT_LINE('Nie ma studenta o podanym nazwisku') ;",
         options: [
-            "Weryfikować, że suma wag krawędzi na zwróconej ścieżce równa się raportowanemu kosztowi.",
-            "Sprawdzać rekonstrukcję ścieżki zgodną z mapą poprzedników.",
-            "Testować na małych grafach ręcznie policzonych.",
-            "Symulować przypadki brzegowe: brak ścieżki, wiele ścieżek o tym samym koszcie, grafy z cyklami dodatnimi.",
-            "Porównywać A* z h=0 do Dijkstry (powinny dać identyczny koszt/ścieżkę).",
+            "Tak",
+            "Nie",
         ],
-        correct: [0, 1, 2, 3, 4]
+        correct: [1]
     },
     {
         id: 65,
-        question: "(Python) Jak radzić sobie z wieloma najkrótszymi ścieżkami o tym samym koszcie?",
+        question: "Wyjątki NO_DATA_FOUND I INVALID_NUMBER wymagają tego samego sposobu obsługi w tym samym bloku np. wyświetlenia komunikatu o tej samej treści (obsługa ma dotyczyć wyłącznie tych dwóch wyjątków). Jak wykonać obsługę tej sytuacji?",
         options: [
-            "Zbierać wszystkie poprzedniki o tym samym koszcie i odtwarzać wiele ścieżek.",
-            "Wprowadzić tie-breaking w kolejce (np. preferować mniejsze h lub leksykograficznie).",
-            "Raportować deterministyczny wybór przez ustaloną kolejność sąsiadów.",
-            "Zdefiniować dodatkowe kryterium (np. minimalna liczba kroków przy równym koszcie).",
-            "Akceptować dowolną z równokosztowych ścieżek jako poprawną.",
+            "WHEN NO_DATA_FOUND THEN\nBlok_obsługi_1;\nWHEN INVALID_NUMBER THEN\nBlok_obsługi_1;",
+            "WHEN NO_DATA_FOUND OR INVALID_NUMBER THEN\nBlok_obsługi_1;",
+            "WHEN NO_DATA_FOUND AND INVALID_NUMBER THEN\nBlok_obsługi_1;",
+            "WHEN OTHERS THEN\nBlok_obsługi_1;",
+        ],
+        correct: [1]
+    },
+    {
+        id: 66,
+        question: "Co można umieścić w specyfikacji pakietu, dla którego nie istnieje ciało pakietu?",
+        options: [
+            "Deklarację wyjątku",
+            "Deklarację kursora",
+            "Deklarację typu danych",
+            "Deklarację stałej",
+            "Deklarację zmiennej",
         ],
         correct: [0, 1, 2, 3, 4]
     },
     {
-        id: 66,
-        question: "Które techniki najczęściej łączy się z uczeniem aktywnym w kontekście anotacji danych do sieci neuronowych?",
-        options: [
-            "Selekcja najbardziej informacyjnych przykładów do etykietowania przez człowieka.",
-            "Zastąpienie etykiet nagrodą środowiska.",
-            "Trenowanie bez żadnej walidacji jakości wybranych przykładów.",
-            "Całkowite pominięcie danych nieoznaczonych i skupienie się wyłącznie na syntetycznych.",
-            "Losowe etykietowanie wszystkich danych bez priorytetyzacji.",
-        ],
-        correct: [0]
-    },
-    {
         id: 67,
-        question: "Warstwa liniowa 2-wyjściowa bez składowej przesunięcia: y hat = [w1*x, w2*x]. Strata: L = 0.5 * ((y1 hat - y1)**2 +",
+        question: "Twoim zadaniem jest utworzyć pakiet o nazwie Pckg_Validate, który będzie udostępniał typy kolekcji oraz funkcje walidujące dane. Przyjmując założenie, że pakiet ten nie istnieje jeszcze w bazie danych, jakie polecenia wykonasz, aby utworzyć ten pakiet? Wskaż odpowiedź, która opisuje poprawny sposób tworzenia tego pakietu.",
         options: [
-            "dL/dw1 = -2, dL/dw2 = 2.",
-            "dL/dw1 = -1, dL/dw2 = 1.",
-            "dL/dw1 = 1, dL/dw2 = -1.",
-            "dL/dw1 = 0, dL/dw2 = 0.",
-            "dL/dw1 = 2, dL/dw2 = -2.",
+            "CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
+            "CREATE OR REPLACE PACKAGE Pckg_Validate",
+            "Najpierw CREATE OR REPLACE PACKAGE Pckg_Validate, potem CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
+            "Najpierw CREATE PACKAGE Pckg_Validate, potem CREATE PACKAGE BODY Pckg_Validate",
         ],
-        correct: [1]
+        correct: [2]
     },
     {
         id: 68,
-        question: "Wskaż prawdziwe stwierdzenia o przesunięciu (bias) w neuronie.",
+        question: "Instrukcja otwarcia kursora jawnego (OPEN) spowoduje powstanie wyjątku, jeśli:",
         options: [
-            "Przesunięcie pozwala na elastyczne przesunięcie funkcji aktywacji i niezerowy próg aktywacji.",
-            "Przesunięcie zwiększa zdolność modelu do dopasowania danych nawet przy stałych wejściach równych zero.",
-            "Przesunięcie to hiperparametr ustawiany ręcznie i nie podlega uczeniu.",
-            "Przesunięcie jest niepotrzebne, bo sumę ważoną zawsze można zastąpić stałą.",
-            "Przesunięcie blokuje uczenie wag w całej warstwie.",
+            "Zbiór wynikowy powstały po wykonaniu instrukcji SELECT, definiującej kursor, jest pusty",
+            "Połączenie z bazą danych zostało utracone",
+            "Kursor został już uprzednio otwarty",
+            "Instrukcja SELECT definiująca kursor nie jest poprawna składniowo",
         ],
-        correct: [0, 1]
+        correct: [2]
     },
     {
         id: 69,
-        question: "Które zastosowania są typowe dla konwolucyjnych sieci neuronowych?",
+        question: "Wskaż poprawny sposób deklarowania zmiennej rekordowej o nazwie My Rec w bloku PL/SQL:",
         options: [
-            "Bezpośrednie dowodzenie twierdzeń matematycznych symbolicznymi regułami.",
-            "Segmentacja semantyczna i instancyjna.",
-            "Klasyfikacja obrazów i wykrywanie obiektów.",
-            "Rozwiązywanie układów równań liniowych metodą Gaussa bez danych.",
-            "Super-rozdzielczość i odszumianie obrazów.",
+            "My Rec ROWTYPE (Id NUMBER(5), Name VARCHAR2(30));",
+            "TYPE tMy_Rec IS RECORD (Id NUMBER(5), Name VARCHAR2(30)); My_Rec tMy_Rec;",
+            "TYPE tMy_Rec AS OBJECT (Id NUMBER(5), Name VARCHAR2(30)); My_Rec tMy_Rec;",
+            "My Rec IS RECORD (Id NUMBER(5), Name VARCHAR2(30));",
         ],
-        correct: [1, 2, 4]
+        correct: [1]
     },
     {
         id: 70,
-        question: "Kiedy warto rozważyć klasyczny spadek gradientowy z pędem zamiast metod adaptacyjnych?",
+        question: "Który z atrybutów kursora jawnego można wykorzystać do kontroli istnienia rekordów pobranych poleceniem SELECT, zdefiniowanym w deklaracji kursora:",
         options: [
-            "Gdy zależy nam na dobrej generalizacji na dużych, bogatych zbiorach i mamy czas na strojenie tempa uczenia i harmonogramu.",
-            "Gdy potrzebujemy bezwarunkowo największej możliwej szybkości spadku na starcie.",
-            "Gdy gradienty są skrajnie rzadkie i każdy parametr powinien mieć własny krok.",
-            "Gdy chcemy całkowicie uniknąć doboru hiperparametrów.",
-            "Gdy metody adaptacyjne szybko zbijają stratę, ale walidacja stoi w miejscu lub rośnie.",
+            "%FOUND",
+            "%ROWCOUNT",
+            "%NOTFOUND",
+            "%ISOPEN",
         ],
-        correct: [0, 4]
+        correct: [0, 2]
     },
     {
         id: 71,
-        question: "Czym są funkcje aktywacji w sieciach neuronowych?",
+        question: "Które instrukcje, dotyczące kursora jawnego, realizowane są przez pętlę kursora?",
         options: [
-            "To nieliniowe przekształcenia stosowane do sumy ważonej wejść neuronu, które pozwalają sieci modelować złożone zależności.",
-            "To algorytmy sortowania służące do permutowania próbek w partii danych.",
-            "To procedury losowego inicjowania wag bez wpływu na wyjście neuronu.",
-            "To zbiory etykiet klas używane do oceny jakości modelu.",
-            "To operacje zapisu modelu do pliku bez zmiany obliczeń.",
+            "CLOSE",
+            "OPEN",
+            "DECLARE CURSOR",
+            "FETCH",
         ],
-        correct: [0]
+        correct: [0, 1, 3]
     },
     {
         id: 72,
-        question: "Do jakich scenariuszy najlepiej pasują poniższe techniki?",
+        question: "Wskaż poprawny sposób deklarowania stałej o nazwie My_Constant w bloku PL/SQL:",
         options: [
-            "Regularyzacja L1 — gdy zależy nam na rzadkich rozwiązaniach i interpretowalności (selekcja cech).",
-            "Dropout — gdy chcemy zmniejszyć ko-adaptacje w warstwach ukrytych dużych sieci.",
-            "Dropout — najlepszy wybór do małych modeli liniowych z jedną wagą.",
-            "Regularyzacja L1 — zawsze lepsza od L2 w każdej architekturze.",
-            "Regularyzacja L2 — gdy chcemy stabilizować uczenie i ograniczać duże wagi bez wyzerowywania ich.",
+            "My Constant IS CONSTANT NUMBER(1) := 5;",
+            "My Constant CONSTANT NUMBER(1) NOT NULL := 10;",
+            "My Constant CONSTANT NUMBER(1) := 10;",
+            "My Constant CONSTANT NUMBER(1) := 5;",
         ],
-        correct: [0, 1, 4]
+        correct: [3]
     },
     {
         id: 73,
-        question: "Gdzie najczęściej spotkamy sieci splotowe jednowymiarowe?",
+        question: "Dokonaj analizy poniższego kodu i odpowiedz na następujące pytanie. Jakie wartości zostaną odpowiednio wyświetlone w wyniku wykonania instrukcji w liniach 10 i 11?\n1| DECLARE\n2| TYPE t_col_courses IS TABLE OF NUMBER;\n3| col_courses t_col_courses := t_col_courses();\n4| BEGIN\n5| FOR K IN 1..10 LOOP\n6| col_courses.EXTEND ;\n7| col_courses(k) := k ;\n8| END LOOP;\n9| col_courses.DELETE (2,4);\n10| DBMS_OUTPUT.PUT_LINE(col_courses.COUNT);\n11| DBMS_OUTPUT.PUT_LINE(col_courses. LAST) ;\n12| END;\nWskaż poprawne:",
         options: [
-            "Analiza sekwencji znaków lub słów po odpowiednim zakodowaniu.",
-            "Wyłącznie segmentacja trójwymiarowych wolumenów medycznych.",
-            "Detekcja kolizji w symulacjach fizycznych bez danych.",
-            "Ekstrakcja cech z szeregów czasowych dla prognozowania.",
-            "Przetwarzanie sygnałów czasowych, takich jak audio lub dane czujników.",
+            "6 i 10",
+            "7 i 10",
+            "8 i 10",
         ],
-        correct: [0, 3, 4]
+        correct: [1]
     },
     {
         id: 74,
-        question: "Jaką rolę pełni funkcja straty w uczeniu sieci neuronowych?",
+        question: "W jakim celu wykorzystuje się kursory? Wskaż zdanie, które najlepiej oddaje celowość zastosowania kursorów.",
         options: [
-            "Ilościowo mierzy błąd predykcji względem prawdy odniesienia i kieruje procesem optymalizacji parametrów.",
-            "Służy do serializacji modelu do formatu obrazu.",
-            "Zastępuje dane treningowe generowanym szumem.",
-            "Blokuje aktualizację wag po pierwszej epoce.",
-            "Losowo zmienia etykiety, aby zwiększyć różnorodność danych.",
+            "Umożliwiają wielokrotne powtarzanie tych samych operacji z wykorzystaniem różnych danych",
+            "Umożliwiają przetwarzanie danych z wykorzystaniem wielu wierszy będących wynikiem zapytania",
+            "Umożliwiają pobranie wiersza danych i zapisanie ich w zmiennej",
+            "Umożliwiają wykonanie zapytania do bazy danych",
         ],
-        correct: [0]
+        correct: [1]
     },
     {
         id: 75,
-        question: "Neuronzsigmoidą:z = w*x + b,y hat = sigmoid(z).Strata:L = 0.5*(y hat - y)**2.Dlax=1,w=0,b=0,y=1obliczdL/dw",
+        question: "Czy poniższy kod PL/SQL jest poprawny z punktu widzenia składni:\n1| DECLARE\n2| FUNCTION Count_Exams (sid studenci.ID_student%TYPE) RETURN NUMBER IS exnr NUMBER ;\n3| BEGIN\n4| SELECT COUNT(*) INTO exnr FROM Egzaminy\n5| WHERE ID student = sid;\n6| RETURN exnr;\n7| END Count_Exams ;\n8| CURSOR c1 IS SELECT ID_student, Nazwisko, Imie FROM Studenci WHERE UPPER (Nazwisko)='MURYJAS';\n9| BEGIN\n10| FOR vc1 IN c1 LOOP\n11| DBMS_OUTPUT.PUT_LINE('ID - ' || Count_Exams (vc1.ID_student) );\n12| END LOOP;\nEND;",
         options: [
-            "dL/dw = 0.125, dL/db = 0.125.",
-            "dL/dw = 0, dL/db = 0.",
-            "dL/dw = -0.25, dL/db = -0.25.",
-            "dL/dw = -0.125, dL/db = -0.125.",
-            "dL/dw = -0.5, dL/db = -0.5.",
+            "Tak",
+            "Nie",
         ],
-        correct: [3]
+        correct: [1]
     },
     {
         id: 76,
-        question: "Gradient clipping — po co się go używa?",
+        question: "Dokonaj analizy poniższego kodu i odpowiedz na następujące pytanie. Jakie wartości zostaną odpowiednio wyświetlone w wyniku wykonania instrukcji w liniach 10 i 11?\nDECLARE\nTYPE t_col_courses IS TABLE OF NUMBER;\ncol_courses t_col_courses := t_col_courses();\nBEGIN\nFOR K IN 1..10 LOOP\ncol_courses.EXTEND ;\ncol_courses(k) := 2*k ;\nEND LOOP;\ncol_courses.EXTEND(3,3);\nDBMS_OUTPUT.PUT_LINE(col_courses. COUNT);\nDBMS_OUTPUT.PUT_LINE(col_courses (12)) ;\nEND;",
         options: [
-            "Zastępuje potrzebę użycia tempa uczenia.",
-            "Jest szczególnie pomocny w modelach sekwencyjnych, gdzie mogą występować eksplodujące gradienty.",
-            "Wymusza, by gradient zawsze był równy zeru poza ostatnią warstwą.",
-            "Aby ograniczać zbyt duże wartości gradientów i zapobiegać niestabilnym, zbyt dużym krokom.",
-            "Służy do redukcji rozmiaru modelu przez „obcinanie” warstw.",
+            "13 i 20",
+            "13 i 3",
+            "13 i 6",
         ],
-        correct: [1, 3]
+        correct: [2]
     },
     {
         id: 77,
-        question: "(Python/PyTorch) Wybierz poprawną inicjalizację optimizer Adam z szybkością uczenia 0.001.",
+        question: "Twoim zadaniem jest utworzyć pakiet o nazwie Pckg_Validate, który będzie udostępniał typy kolekcji oraz funkcje walidujące dane. Przyjmując założenie, że pakiet ten nie istnieje jeszcze w bazie danych, jakie polecenia wykonasz, aby utworzyć ten pakiet? Wskaż odpowiedź, która opisuje poprawny sposób tworzenia tego pakietu.",
         options: [
-            "optimizer = torch.optim.AdamW(model.parameters(), lr=None)",
-            "optimizer = torch.optim.SGD(model, lr=1e-3)",
-            "optimizer = torch.optim.Adagrad(model.parameters(), learning rate=1e-3)",
-            "optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)",
-            "optimizer = torch.optim.Adam(lr=1e-3)",
+            "CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
+            "Najpierw CREATE PACKAGE Pckg_Validate, potem CREATE PACKAGE BODY Pckg_Validate",
+            "Najpierw CREATE OR REPLACE PACKAGE Pckg_Validate, potem CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
+            "CREATE OR REPLACE PACKAGE Pckg_Validate",
         ],
-        correct: [3]
+        correct: [2]
     },
     {
         id: 78,
-        question: "(Python/PyTorch) Wybierz poprawny blok konwolucyjny: dwie konwolucje 3x3 z aktywacjami oraz pooling (import torch.nn",
+        question: "Jaka wartość zostanie wyświetlona w wyniku wykonania instrukcji znajdującej się w 12 linii poniższego kodu?\nDECLARE\nTYPE NT_Exams IS TABLE OF INTEGER ;\nvex NT_Exams := NT_Exams ();\nBEGIN\nFOR i IN 1..10 LOOP\nvex.extend ;\nvex(i) := i;\nEND LOOP;\nFOR i IN 1..10 LOOP\nvex.DELETE (i*2) ;\nEND LOOP;\nDBMS_OUTPUT.PUT_LINE('#Elements is ' || vex.COUNT);\nEND;",
         options: [
-            "nn.Sequential( nn.Conv2d(1, 32, 7), nn.Sigmoid(), nn.Linear(32, 64))",
-            "nn.Sequential(nn.MaxPool2d(2), nn.MaxPool2d(2), nn.MaxPool2d(2))",
-            "nn.Sequential( nn.Linear(784, 128), nn.ReLU(), nn.MaxPool2d(2))",
-            "nn.Sequential(nn.Conv2d(1,32,kernel size=3,padding=1),nn.ReLU(),nn.Conv2d(32,64,kernel size=3,padding=1),nn.ReLU(),",
-            "nn.Sequential(nn.Conv2d(3, 32, 3), nn.ReLU())",
+            "5",
+            "20",
+            "0",
+            "10",
         ],
-        correct: [3]
+        correct: [0]
     },
     {
         id: 79,
-        question: "Czym jest regresja wielomianowa w ujęciu modelowym?",
+        question: "W jakiej sytuacji tworzona jest tylko specyfikacja pakietu w bazie danych, tj. nie tworzy się ciała pakietu?",
         options: [
-            "To regresja liniowa zastosowana do cech utworzonych z potęg zmiennej wejściowej, np. [,1, x, x2, ..., xd,].",
-            "To metoda klasyfikacji binarnej z progiem na wyjściu.",
-            "To regresja, w której współczynniki muszą być całkowite.",
-            "To wyłącznie sieć neuronowa o jednej warstwie ukrytej.",
-            "To technika redukcji wymiaru bez komponentu predykcyjnego.",
+            "Jeżeli specyfikacja zawiera tylko deklarację wyprzedzającą podprogramu PL/SQL",
+            "Jeżeli specyfikacja zawiera tylko deklarację zmiennej lub stałej.",
+            "Jeżeli specyfikacja zawiera tylko deklarację kursora",
+            "Jeżeli specyfikacja zawiera tylko deklarację typu danych",
+            "Jeżeli specyfikacja zawiera tylko deklarację wyjątku",
         ],
-        correct: [0]
+        correct: [1, 3, 4]
     },
     {
         id: 80,
-        question: "Kiedy warto zastosować regresję wielomianową?",
+        question: "Proszę wskazać obowiązkowe sekcje bloku PL/SQL:",
         options: [
-            "Gdy model liniowy systematycznie zostawia wzorzec w resztach (np. kształt łuku).",
-            "Gdy wykres reszt jest idealnie losowy wokół zera.",
-            "Gdy zależność między zmienną objaśnianą a cechą jest nieliniowa i można ją aproksymować wielomianem.",
-            "Zawsze, bo wielomiany gwarantują brak przeuczenia.",
-            "Nigdy, bo wielomiany są identyczne z modelem stałym.",
+            "Sekcja obsługi wyjątków (EXCEPTION)",
+            "Sekcja wykonawcza (BEGIN)",
+            "Sekcja wywołania pakietów",
+            "Sekcja wywołania funkcji i procedur",
+            "Sekcja deklaracyjna (DECLARE)",
         ],
-        correct: [0, 2]
+        correct: [1]
     },
     {
         id: 81,
-        question: "Dlaczego skala cech ma znaczenie przy regularyzacji w regresji logistycznej?",
+        question: "Wskaż kolekcję, która jest lub może być rzadka:",
         options: [
-            "Bez skalowania kara L1/L2 faworyzuje cechy o mniejszej skali; standaryzacja umożliwia sprawiedliwą penalizację i porównywal-",
-            "Skalowanie zmienia funkcję sigmoidalną na liniową.",
-            "Skala nie ma znaczenia, bo kara działa tylko na bias.",
-            "Skalowanie pogarsza zbieżność i jest zabronione.",
-            "Kara L2 automatycznie skaluje cechy do [0,1].",
+            "Kolekcja typu VARRAY",
+            "Kolekcja typu tablica zagnieżdżona",
+            "Kolekcja typu tablica asocjacyjna",
         ],
-        correct: [0]
+        correct: [1, 2]
     },
     {
         id: 82,
-        question: "Regresja wielomianowa w wielu wymiarach — które opisy są poprawne?",
+        question: "Proszę wskazać numer linii kodu, w której występuje błąd:\n1|DECLARE\n2|v_Id VARCHAR2(3) NOT NULL := 'EAIE' ;\n3|V_nr_EKUK NUMBER (1) NOT NULL DEFAULT -9;\n4|Min_mod CONSTANT NUMBER(1) := := 10;\n5|BEGIN\n6|NULL;\n7|END;",
         options: [
-            "Nie można używać regularizacji przy wielu zmiennych.",
-            "Wielowymiarowa regresja wielomianowa zabrania interakcji między cechami.",
-            "Można tworzyć potęgi każdej cechy oraz interakcje (np. x2, x x , x3) do zadanego stopnia.",
-            "Liczba cech szybko rośnie ze stopniem i liczbą zmiennych, co zwiększa ryzyko przeuczenia.",
-            "Liczba cech maleje przy zwiększaniu stopnia.",
+            "4",
+            "3",
+            "6",
+            "2",
         ],
-        correct: [2, 3]
+        correct: [0, 3]
     },
     {
         id: 83,
-        question: "Które przykłady są nieliniowymi modelami regresji (względem cech wejściowych)?",
+        question: "Który z niżej wymienionych wyjątków może powstać podczas wykonywania poniższego kodu:\n1| declare\n2| CURSOR c1 is SELECT Id_Student, Nazwisko, Imie FROM Studenci ;\n3| vc1 c1%ROWTYPE;\n4| vdate DATE;\n5| begin\n6| FOR vc1 IN c1 LOOP\n7| SELECT MAX(Data_Egzamin) INTO vdate FROM Egzaminy WHERE Id_Student = vc1.Id_S\n8| dbms_output.put_line(vc1.Id_Student || ' - ' || to_char(vdate, 'yyyy-mm-dd')) ;\n9| END LOOP;\n10| end;",
         options: [
-            "Regresor wektorów nośnych z jądrem radialnym.",
-            "Regresor lasu losowego.",
-            "Średnia arytmetyczna wartości (y) niezależna od (x).",
-            "Regresja liniowa bez transformacji cech.",
-            "Regresja wielomianowa z cechami (1,x,x2,x3).",
+            "INVALID_CURSOR",
+            "CURSOR_ALREADY_OPEN",
+            "NO_DATA_FOUND",
+            "Żaden wyjątek nie powstanie podczas wykonywania tego kodu PL/SQL",
+            "TOO_MANY_ROWS",
         ],
-        correct: [0, 1, 4]
+        correct: [3]
     },
     {
         id: 84,
-        question: "Regresja wielomianowa a współliniowość — które zdania są prawdziwe?",
+        question: "Jaki będzie rezultat wykonania poniższego kodu PL/SQL? Wskaż odpowiedź, w której zaprezentowano przykładowe dane wynikowe.\n1| declare\n2| CURSOR c1 is SELECT Id_Student, Nazwisko, Imie FROM Studenci ;\n3| vc1 c1%ROWTYPE;\n4| vdate DATE;\n5| begin\n6| FOR vc1 IN c1 LOOP\n7| begin\n8| SELECT MAX(Data_Egzamin) INTO vdate FROM Egzaminy WHERE Id_Stu\n9| dbms_output.put_line(vc1.Id_Student || ' - ' || to_char(vdate, 'yyyy-mm-dd\"))\n10| exception\n11| WHEN NO_DATA_FOUND THEN\n12| dbms_output.put_line(vc1.Id_Student || ' - ' || ' brak egzaminów');\n13| end;\n14| END LOOP;\n15| end;",
         options: [
-            "Cecha x może być silnie skorelowana z x2,x3,..., co zwiększa współliniowość i wariancję estymacji.",
-            "Regularizacja L2 może złagodzić niestabilność współczynników.",
-            "Wielomiany z definicji eliminują problem współliniowości.",
-            "Standaryzacja zawsze gwarantuje, że kolinearność zniknie.",
-            "Kolinearność nie wpływa na niepewność współczynników.",
+            "0000020 - 2013-10-21\n0987654 - 2020-10-15\n9876543 -\n0909091 - 2022-12-06",
+            "0000020 2013-10-21\n0987654-2020-10-15\n9876543 - brak egzaminów\n0909091 - 2022-12-06",
+            "0000020 - 2013-10-21\n0987654 - 2020-10-15\n9876543-0\n0909091 2022-12-06",
         ],
-        correct: [0, 1]
+        correct: [0]
     },
     {
         id: 85,
-        question: "Wielomiany i ekstrapolacja: które stwierdzenia są prawdziwe?",
+        question: "Która kolekcja jest zawszę gęsta?",
         options: [
-            "Wysokie stopnie mogą dawać niestabilne i mylące predykcje poza zakresem obserwacji.",
-            "Wielomiany gwarantują poprawne predykcje daleko poza zakresem treningu.",
-            "Ekstrapolacja i interpolacja są identyczne w skutkach.",
-            "Ryzyko ekstrapolacji maleje wraz ze stopniem wielomianu.",
-            "Ekstrapolacja z modeli wielomianowych wymaga szczególnej ostrożności lub dodatkowych ograniczeń.",
+            "Kolekcja typu VARRAY",
+            "Kolekcja typu NESTED TABLE",
+            "Kolekcja typu tablica asocjacyjna",
         ],
-        correct: [0, 4]
+        correct: [0]
     },
     {
         id: 86,
-        question: "Jak dobrać próg decyzyjny inny niż 0.5 w zależności od kosztów błędów?",
+        question: "Twoim zadaniem jest zdefiniowanie funkcji PL/SQL, która będzie dostępna dla innych użytkowników bazy danych podczas tworzenia kodu PL/SQL. W jaki sposób to zrobisz? Wskaż tę odpowiedź (te odpowiedzi), które umożliwiają wykonanie tego zadania.",
         options: [
-            "Wyznaczyć próg przez rzut monetą dla każdej próbki.",
-            "Zawsze ustawić próg na 0.9 niezależnie od problemu.",
-            "Analizować krzywe ROC/PR oraz macierz kosztów i wybrać próg minimalizujący koszt oczekiwany lub maksymalizujący",
-            "Użyć progu równego średniej z prawdopodobieństw na teście.",
-            "Próg nie ma znaczenia, bo decyzję podejmuje optymalizator.",
+            "Należy utworzyć blok PL/SQL, w którego części deklaracyjnej znajdzie się definicja wymaganej funkcji. Następnie należy zapisać ten blok w pakiecie, utworzonym w bazie danych.",
+            "Należy utworzyć w bazie danych obiekt będący funkcją przy pomocy polecenia CREATE FUNCTION, podając w nim definicję wymaganej funkcji.",
+            "Należy utworzyć blok PL/SQL, w którego części deklaracyjnej znajdzie się definicja wymaganej funkcji. Następnie należy zapisać plik zawierający ten blok w bazie danych.",
+            "Należy utworzyć w bazie danych pakiet, w którego specyfikacji znajdzie się deklaracja wymaganej funkcji. Następnie w ciele pakietu należy zdefiniować kod źródłowy dla tej funkcji.",
+            "Należy utworzyć w bazie danych specyfikację pakietu, w której znajdzie się definicja wymaganej funkcji",
         ],
-        correct: [2]
+        correct: [1, 3]
     },
     {
         id: 87,
-        question: "Które przykłady opisują typowe zastosowania regresji?",
+        question: "Które instrukcje, dotyczące kursora, realizowane są przez pętlę kursora?",
         options: [
-            "Prognoza cen mieszkań na podstawie metrażu, lokalizacji i roku budowy.",
-            "Wykrywanie anomalii wyłącznie na podstawie braku etykiet.",
-            "Szacowanie zużycia energii na podstawie temperatury i obciążenia.",
-            "Przypisywanie zdjęcia do jednej z dziesięciu kategorii zwierząt.",
-            "Przewidywanie czasu dostawy paczki z użyciem dystansu i natężenia ruchu.",
-        ],
-        correct: [0, 2, 4]
-    },
-    {
-        id: 88,
-        question: "(Python/sklearn) Jak zapewnić brak „wycieku informacji” przy skalowaniu cech i uczeniu?",
-        options: [
-            "Losowo przemieszać etykiety przed skalowaniem.",
-            "Użyć sklearn.pipeline.Pipeline i dopasować skalowanie wyłącznie na zbiorze uczącym wewnątrz fit().",
-            "Dopasować na teście i zastosować na treningu.",
-            "Dopasować skalowanie na całym zbiorze przed podziałem.",
-            "Pominąć skalowanie i trenować bezpośrednio.",
-        ],
-        correct: [1]
-    },
-    {
-        id: 89,
-        question: "(Python/sklearn) Czym różnią się StandardScaler i MinMaxScaler?",
-        options: [
-            "Oba skalują wyłącznie do zakresu [0,1].",
-            "StandardScaler wymaga tylko danych binarnych.",
-            "StandardScaler zeruje średnią i skaluje do odchylenia 1, MinMaxScaler przekształca do zadanego zakresu (domyślnie [0,1]).",
-            "To ta sama klasa o dwóch nazwach.",
-            "MinMaxScaler usuwa obserwacje odstające.",
-        ],
-        correct: [2]
-    },
-    {
-        id: 90,
-        question: "(Python/sklearn) Która klasa implementuje regresję liniową metodą najmniejszych kwadratów?",
-        options: [
-            "sklearn.linear model.LinearRegression",
-            "sklearn.svm.SVC",
-            "sklearn.linear model.LogisticRegression",
-            "sklearn.tree.DecisionTreeClassifier",
-            "sklearn.naive bayes.GaussianNB",
-        ],
-        correct: [0]
-    },
-    {
-        id: 91,
-        question: "(Python/sklearn) Jak uzyskać predykcje modelu w scikit-learn po wytrenowaniu?",
-        options: [
-            "Wywołać model.predict(X test).",
-            "Wywołać model.transform(X test).",
-            "Wywołać predict(model, X test) z sklearn.metrics.",
-            "Wywołać model.infer(X test).",
-            "Wywołać model.forward(X test).",
-        ],
-        correct: [0]
-    },
-    {
-        id: 92,
-        question: "Czym jest drzewo decyzyjne w uczeniu maszynowym?",
-        options: [
-            "Model, który rekurencyjnie dzieli przestrzeń cech na podobszary przy użyciu testów na pojedynczych cechach.",
-            "Losowy generator etykiet niezależny od danych wejściowych.",
-            "Sieć konwolucyjna z warstwami splotowymi i funkcją aktywacji ReLU.",
-            "Zbiór reguł if–then realizowanych jako węzły decyzyjne prowadzące do liści z predykcją.",
-            "Zawsze liniowy model z jedną wspólną wagą dla wszystkich cech.",
-        ],
-        correct: [0, 3]
-    },
-    {
-        id: 93,
-        question: "Które hiperparametry drzewa bezpośrednio kontrolują jego złożoność i mają wpływ na przeuczenie?",
-        options: [
-            "Minimalny spadek nieczystości wymagany do podziału.",
-            "Minimalna liczba próbek do podziału i w liściu.",
-            "Maksymalna głębokość drzewa.",
-            "Współczynnik uczenia (learning rate) jak w boosting bez zmian.",
-            "Liczba epok uczenia jak w sieciach neuronowych.",
-        ],
-        correct: [0, 1, 2]
-    },
-    {
-        id: 94,
-        question: "Jakie są popularne miary jednorodności (nieczystości) używane przy wyborze podziału w drzewach?",
-        options: [
-            "Nieczystość Giniego.",
-            "Entropia informacyjna.",
-            "Odchylenie standardowe samej cechy bez odniesienia do etykiet.",
-            "Średnia arytmetyczna wartości cechy.",
-            "Losowy wskaźnik jednorodności bazujący na rzucie monetą.",
-        ],
-        correct: [0, 1]
-    },
-    {
-        id: 95,
-        question: "Węzeł ma 4 próbki: 3 klasy A i 1 klasy B. Oblicz nieczystość Giniego.",
-        options: [
-            "=0.",
-            "=0.25.",
-            "=0.375.",
-            "=0.75.",
-            "=0.5.",
-        ],
-        correct: [2]
-    },
-    {
-        id: 96,
-        question: "Dlaczego losowanie podzbioru cech w węźle pomaga lasom?",
-        options: [
-            "Zawsze poprawia dokładność bez spadku stabilności.",
-            "Wymusza jednolite użycie wszystkich cech w każdym drzewie.",
-            "Redukuje korelację między drzewami, dzięki czemu uśrednianie bardziej obniża wariancję.",
-            "Wprowadza dodatkową losowość, co zmniejsza ryzyko dominacji silnych cech.",
-            "Zwiększa głębokość drzew niezależnie od danych.",
-        ],
-        correct: [2, 3]
-    },
-    {
-        id: 97,
-        question: "Wskaż prawidłowe stwierdzenia o przeuczeniu w drzewach.",
-        options: [
-            "Głębokie drzewa z małymi liśćmi mają wysokie ryzyko przeuczenia.",
-            "Zwiększenie n estimators w pojedynczym DecisionTreeClassifier zmniejsza przeuczenie.",
-            "Skalowanie cech zawsze eliminuje overfitting drzewa.",
-            "Ograniczenia max depth i min samples leaf redukują wariancję modelu.",
-            "Zwiększanie liczby klas zawsze obniża ryzyko przeuczenia drzewa.",
-        ],
-        correct: [0, 3]
-    },
-    {
-        id: 98,
-        question: "Które kryteria nieczystości są typowo używane w drzewach klasyfikacyjnych?",
-        options: [
-            "Impurity Giniego.",
-            "Średni błąd bezwzględny (MAE) jako jedyne kryterium w klasyfikacji.",
-            "Współczynnik korelacji Pearsona między cechami.",
-            "Entropia (zysk informacyjny).",
-            "Funkcja aktywacji sigmoidalna.",
-        ],
-        correct: [0, 3]
-    },
-    {
-        id: 99,
-        question: "(Python/sklearn) Co oznacza feature importances w RandomForestClassifier?",
-        options: [
-            "Miary korelacji Pearsona każdej cechy z klasą.",
-            "Wektor współczynników regresji liniowej po dopasowaniu lasu.",
-            "Dokładne wpływy SHAP dla każdej próbki.",
-            "Wektor ważności cech oparty o średni spadek nieczystości w drzewach lasu.",
-            "Częstość występowania cechy w surowych danych wejściowych.",
-        ],
-        correct: [3]
-    },
-    {
-        id: 100,
-        question: "(Python/sklearn) Co robi ccp alpha w drzewach scikit-learn?",
-        options: [
-            "Zastępuje max depth i min samples leaf, uniemożliwiając ich użycie.",
-            "Steruje obcinaniem drzewa metodą koszt–złożoność; większe wartości silniej przycinają.",
-            "Włącza losowe podmiany cech w liściach.",
-            "Ustawia maks. liczbę drzew w lesie.",
-            "Włącza walidację krzyżową w trakcie wzrostu drzewa.",
-        ],
-        correct: [1]
-    },
-    {
-        id: 101,
-        question: "(Python/sklearn) Jak poprawnie ustawić losowość w lesie losowym dla odtwarzalności?",
-        options: [
-            "Użyć wyłącznie oob score=True.",
-            "Zachować stałe ziarno również w train test split.",
-            "Zamiast RandomForestClassifier użyć DecisionTreeClassifier.",
-            "Ustawić max features=None — to wystarczy do replikowalności.",
-            "Przekazać random state do RandomForestClassifier.",
-        ],
-        correct: [1, 4]
-    },
-    {
-        id: 102,
-        question: "(Python/sklearn) Które działania są dobrą praktyką przy ocenie lasu?",
-        options: [
-            "Tuning parametrów na zbiorze testowym, a następnie raportowanie na tym samym zbiorze.",
-            "Łączenie zbioru treningowego i testowego przed GridSearchCV.",
-            "Zestawienie wyników z OOB i K-fold, by ocenić stabilność.",
-            "Raportowanie wyłącznie dokładności bez macierzy pomyłek przy nierównowadze klas.",
-            "Użycie walidacji krzyżowej z StratifiedKFold dla klasyfikacji.",
-        ],
-        correct: [2, 4]
-    },
-    {
-        id: 103,
-        question: "(Python/sklearn) Która linia poprawnie tworzy las losowy do regresji w sklearn?",
-        options: [
-            "RandomForestClassifier(n trees=200)",
-            "RandomForestRegressor(n estimators=\"auto\")",
-            "RandomForestRegressor(criterion=\"gini\")",
-            "RandomForestRegressor(n estimators=200, random state=0)",
-            "DecisionTreeRegressor(n estimators=200)",
-        ],
-        correct: [3]
-    },
-    {
-        id: 104,
-        question: "(Python/sklearn) W jakim celu używa się oob score=True w RandomForestClassifier?",
-        options: [
-            "Do szacowania jakości modelu na próbkach niewykorzystanych w bootstrapie.",
-            "Do włączenia losowego wyszukiwania hiperparametrów.",
-            "Do skalowania cech przed treningiem.",
-            "Do włączenia walidacji krzyżowej z k-fold.",
-            "Do obliczenia ważności cech metodą SHAP.",
-        ],
-        correct: [0]
-    },
-    {
-        id: 105,
-        question: "Jak poprawnie zdefiniować problem binarnej klasyfikacji?",
-        options: [
-            "Liczba klas jest większa lub równa trzem.",
-            "Zbiór etykiet ma dokładnie dwie wartości.",
-            "Każda próbka może jednocześnie należeć do wielu klas.",
-            "Zbiór etykiet jest uporządkowany.",
-            "Model zwraca liczby rzeczywiste bez progowania.",
-        ],
-        correct: [1]
-    },
-    {
-        id: 106,
-        question: "Zaznacz prawdziwe stwierdzenia o F1-score.",
-        options: [
-            "F1 jest średnią harmoniczną precyzji i czułości: F1=2· P·R .",
-            "W problemach niezbalansowanych F1 jest równoważne accuracy.",
-            "F1 ignoruje fałszywe pozytywy.",
-            "F1 karze duże rozbieżności między precyzją a czułością.",
-            "F1 to średnia arytmetyczna precyzji i czułości.",
-        ],
-        correct: [0, 3]
-    },
-    {
-        id: 107,
-        question: "Dopasuj klasyfikator zespołowy do jego podstawowej idei.",
-        options: [
-            "Bag-of-words → kompresja wymiarów przez analizę składowych głównych.",
-            "AdaBoost → pojedyncze głębokie drzewo bez ważenia przykładów.",
-            "Gradient Boosting → sekwencyjne dodawanie płytkich drzew minimalizujących bieżącą funkcję straty.",
-            "Lasy losowe → wiele drzew trenowanych na bootstrapowanych próbkach i losowych podzbiorach cech, głosowanie większościowe.",
-            "Stacking → wstępne losowe zniekształcanie etykiet zamiast łączenia modeli.",
-        ],
-        correct: [2, 3]
-    },
-    {
-        id: 108,
-        question: "Co odróżnia uczenie leniwe od uczenia gorliwego?",
-        options: [
-            "W uczeniu leniwym brak wyraźnej fazy trenowania; decyzja zapada dopiero w czasie predykcji.",
-            "Uczenie leniwe nie może działać dla danych numerycznych.",
-            "Uczenie gorliwe nie wymaga danych treningowych.",
-            "W uczeniu gorliwym model jest dopasowywany w fazie treningu.",
-            "Uczenie leniwe zawsze działa szybciej podczas predykcji niż gorliwe.",
-        ],
-        correct: [0, 3]
-    },
-    {
-        id: 109,
-        question: "Dlaczego balanced accuracy bywa preferowana względem zwykłego accuracy przy niezbalansowanych klasach?",
-        options: [
-            "Zawsze daje wyższy wynik niż accuracy.",
-            "Może ujawnić, że model ignoruje klasę rzadką mimo wysokiego zwykłego accuracy.",
-            "Wymaga prawdopodobieństw zamiast etykiet.",
-            "Nie zależy od macierzy pomyłek.",
-            "Uwzględnia czułość obu klas po równo, więc nie jest zdominowana przez klasę większościową.",
-        ],
-        correct: [1, 4]
-    },
-    {
-        id: 110,
-        question: "Które opisy poprawnie charakteryzują regresję logistyczną jako klasyfikator?",
-        options: [
-            "Wymaga drzew decyzyjnych jako warstwy wstępnej.",
-            "Może być rozszerzona do wieloklasowości (np. przez jeden-przeciw-reszcie).",
-            "Nie pozwala na regularyzację.",
-            "Jest klasyfikatorem generatywnym modelującym p(x,y).",
-            "Model liniowy zwracający prawdopodobieństwa klas i optymalizujący log-stratę.",
-        ],
-        correct: [1, 4]
-    },
-    {
-        id: 111,
-        question: "Jakie są potencjalne konsekwencje braku rzetelnej oceny klasyfikatora?",
-        options: [
-            "Błędne decyzje biznesowe oparte na zawyżonych oczekiwaniach co do jakości modelu.",
-            "Ryzyko nadmiernego dopasowania i słaba skuteczność na danych produkcyjnych.",
-            "Zmniejszenie wariancji modelu dzięki braku weryfikacji.",
-            "Automatyczne dopasowanie hiperparametrów bez walidacji.",
-            "Gwarancja poprawy wyników po każdym nowym uruchomieniu modelu.",
-        ],
-        correct: [0, 1]
-    },
-    {
-        id: 112,
-        question: "Czym jest klasyfikator w uczeniu maszynowym?",
-        options: [
-            "Program do generowania danych syntetycznych zamiast przewidywania klas.",
-            "Mechanizm do estymacji wartości ciągłych w regresji liniowej.",
-            "Model, który przypisuje obiektowi etykietę z ustalonego zbioru klas na podstawie jego cech.",
-            "Procedura, która zawsze zwraca liczbę rzeczywistą bez możliwości podziału na klasy.",
-            "Algorytm służący wyłącznie do klasteryzacji, bez użycia etykiet.",
-        ],
-        correct: [2]
-    },
-    {
-        id: 113,
-        question: "Co oznacza „przeniesienie wiedzy” (data leakage) w kontekście oceny klasyfikatora?",
-        options: [
-            "Technikę augmentacji danych w zbiorze treningowym.",
-            "Przypadek, gdy model jest trenowany wyłącznie na danych treningowych.",
-            "Celowe zaniżanie wyników na zbiorze testowym.",
-            "Wykorzystanie walidacji krzyżowej z zachowaniem podziału czasowego.",
-            "Sytuację, w której informacje z części testowej wpływają na proces trenowania lub strojenia modelu.",
-        ],
-        correct: [4]
-    },
-    {
-        id: 114,
-        question: "(Python/sklearn) Jak wskazać, która etykieta jest klasą pozytywną przy liczeniu ROC/PR?",
-        options: [
-            "Przekazać average=\"macro\" do roc curve.",
-            "Zmienić nazwę kolumny y true na \"positive\".",
-            "Zawsze wybierana jest alfabetycznie ostatnia etykieta.",
-            "Przekazać argument pos label=.",
-            "Ustawić threshold=0.5 w roc auc score.",
-        ],
-        correct: [3]
-    },
-    {
-        id: 115,
-        question: "(Python/sklearn) Jak w scikit-learn obliczyć punkty krzywej ROC (FPR, TPR, progi) dla klasyfikatora binarnego?",
-        options: [
-            "Użyć sklearn.metrics.roc_curve(y_true, y_score).",
-            "Użyć sklearn.metrics.roc_auc_score(y_true, y_score).",
-            "Użyć sklearn.metrics.classificatio_report.",
-            "Użyć sklearn.metrics.precision recall_curve(y true, y score).",
-            "Policzyć sklearn.metrics.confusion matrix i odczytać z niej bezpośrednio całą krzywą.",
-        ],
-        correct: [0]
-    },
-    {
-        id: 116,
-        question: "(Python/sklearn) Jak uzyskać macierz pomyłek w scikit-learn?",
-        options: [
-            "sklearn.metrics.roc_curve(y_true, y_pred)",
-            "sklearn.metrics.confusion_plot(y_true, y_pred)",
-            "sklearn.metrics.confusion_matrix(y true, y pred)",
-            "sklearn.metrics.cmatrix(y true, y pred)",
-            "sklearn.metrics.auc(y true, y pred)",
-        ],
-        correct: [2]
-    },
-    {
-        id: 117,
-        question: "(Python/sklearn) Jakiej wielkości należy przekazać do funkcji roc curve lub precision recall curve?",
-        options: [
-            "Wektor cech wejściowych X[:, 0].",
-            "Indeksy próbek zamiast wyników.",
-            "Dowolne losowe liczby o tym samym rozkładzie.",
-            "Prawdopodobieństwa dla klasy pozytywnej (predict proba[:, 1]) lub wartości funkcji decyzyjnej (decision function).",
-            "Tylko twarde etykiety 0/1 (predict).",
-        ],
-        correct: [3]
-    },
-    {
-        id: 118,
-        question: "Zbiory rozmyte: ZIMNO(x): µ=0.7; WILGOTNO(x): µ=0.4. Reguła: IF ZIMNO AND WILGOTNO THEN DESZCZ. Koniunkcja: min,",
-        options: [
-            "0.7.",
-            "0.4.",
-            "0.3.",
-            "1.0.",
-            "0.0.",
-        ],
-        correct: [1]
-    },
-    {
-        id: 119,
-        question: "Reprezentacja niepewności: co odróżnia logikę rozmytą od czynników pewności (certainty factors)?",
-        options: [
-            "W logice rozmytej prawdziwość jest wyłącznie binarna.",
-            "Czynniki pewności wymagają pełnych rozkładów prawdopodobieństwa Bayesa.",
-            "Obie techniki wykluczają łączenie dowodów z wielu reguł.",
-            "Czynniki pewności to heurystyczne miary przekonania przypisane regułom i wnioskom.",
-            "Logika rozmyta modeluje stopnie przynależności do zbiorów (wartości w przedziale [0,1]).",
-        ],
-        correct: [3, 4]
-    },
-    {
-        id: 120,
-        question: "Jakie są ograniczenia wydajnościowe klasycznych silników wnioskowania?",
-        options: [
-            "Wzrost liczby reguł i faktów może prowadzić do dużej złożoności czasowej wnioskowania.",
-            "Wnioskowanie zawsze działa w czasie stałym O(1) niezależnie od bazy wiedzy.",
-            "Każdy system ekspertowy korzysta z równoległego przetwarzania GPU.",
-            "Rozwiązywanie konfliktów reguł i dopasowań wzorców może być kosztowne obliczeniowo.",
-            "Wydajność nie zależy od jakości reprezentacji wiedzy.",
-        ],
-        correct: [0, 3]
-    },
-    {
-        id: 121,
-        question: "Które stwierdzenia opisują typowe wąskie gardła procesu tworzenia systemu ekspertowego?",
-        options: [
-            "Pozyskiwanie wiedzy od ekspertów jest trudne, kosztowne i podatne na stronniczości.",
-            "Im mniej dokumentacji, tym szybsza inżynieria wiedzy.",
-            "Nie istnieje ryzyko sprzecznych reguł.",
-            "Formalizacja wiedzy naturalnej w reguły logiczne bywa niejednoznaczna.",
-            "Brak potrzeby walidacji z użytkownikami końcowymi — reguły są oczywiste.",
-        ],
-        correct: [0, 3]
-    },
-    {
-        id: 122,
-        question: "Czym jest system ekspertowy?",
-        options: [
-            "Dowolna sieć neuronowa uczona na dużym zbiorze danych bez udziału wiedzy eksperckiej.",
-            "System operacyjny komputera osobistego.",
-            "Zwykła baza danych bez mechanizmu wnioskowania i reguł.",
-            "Edytor tekstu z funkcją autokorekty.",
-            "Program komputerowy, który wykorzystuje wiedzę dziedzinową i reguły wnioskowania, aby rozwiązywać problemy na poziomie",
-        ],
-        correct: [4]
-    },
-    {
-        id: 123,
-        question: "Które stwierdzenia poprawnie opisują reprezentację wiedzy w systemach ekspertowych?",
-        options: [
-            "Zawsze jest generowana automatycznie bez udziału ekspertów.",
-            "Może wykorzystywać reguły IF–THEN, ramki, ontologie lub logikę predykatów.",
-            "Musi być wyłącznie w postaci sieci neuronowej.",
-            "Powinna być przejrzysta i umożliwiać aktualizację wiedzy eksperta.",
-            "Nie może zawierać niepewności w żadnej formie.",
-        ],
-        correct: [1, 3]
-    },
-    {
-        id: 124,
-        question: "Wskaż prawdziwe stwierdzenia o wnioskowaniu wstecznym (backward chaining).",
-        options: [
-            "Może żądać dodatkowych danych od użytkownika, gdy brakuje przesłanek.",
-            "Jest tym samym co wnioskowanie progresywne.",
-            "Zaczyna od hipotezy/celu i sprawdza, czy można ją wyprowadzić z dostępnych faktów i reguł.",
-            "Opiera się wyłącznie na losowaniu odpowiedzi.",
-            "Zawsze wymaga pełnej eksploracji wszystkich reguł od faktów do celów.",
-        ],
-        correct: [0, 2]
-    },
-    {
-        id: 125,
-        question: "W administracji publicznej i prawie systemy ekspertowe mogą:",
-        options: [
-            "Standaryzować procedury i ścieżki obsługi spraw.",
-            "Zastępować sądy w wydawaniu wyroków karnych.",
-            "Automatycznie uchwalać ustawy bez udziału człowieka.",
-            "Wspierać interpretacje podatkowe poprzez reguły kwalifikacji.",
-            "Weryfikować spełnienie kryteriów formalnych wniosków i świadczeń.",
-        ],
-        correct: [0, 3, 4]
-    },
-    {
-        id: 126,
-        question: "Wskaż zalety systemów ekspertowych.",
-        options: [
-            "Zawsze uczą się samodzielnie bez udziału ekspertów dziedzinowych.",
-            "Mogą dostarczać uzasadnienia decyzji (explanation facility).",
-            "Utrwalają i udostępniają wiedzę ekspercką w sposób powtarzalny.",
-            "Nigdy nie wymagają aktualizacji wiedzy wraz ze zmianą domeny.",
-            "Gwarantują stuprocentową trafność we wszystkich dziedzinach.",
-        ],
-        correct: [1, 2]
-    },
-    {
-        id: 127,
-        question: "Dopasuj domenę zastosowania do przykładowego zadania systemu ekspertowego.",
-        options: [
-            "Przemysł → diagnoza usterek maszyn na podstawie sygnałów czujników.",
-            "Gry komputerowe → renderowanie grafiki 3D.",
-            "Medycyna → wspomaganie diagnozy na podstawie objawów i wyników badań.",
-            "Finanse → ocena ryzyka kredytowego klienta.",
-            "Systemy plików → alokacja bloków na dysku bez udziału reguł dziedzinowych.",
-        ],
-        correct: [0, 2, 3]
-    },
-    {
-        id: 128,
-        question: "Jakie przewagi kosztowe mogą mieć systemy ekspertowe w projektach z małymi danymi?",
-        options: [
-            "Szybsze prototypowanie dzięki bezpośredniemu zakodowaniu reguł od eksperta.",
-            "Brak potrzeby monitorowania skuteczności po wdrożeniu.",
-            "Automatyczna aktualizacja reguł na podstawie dowolnych danych bez nadzoru.",
-            "Zawsze niższy koszt całkowity niezależnie od domeny i złożoności.",
-            "Mniejsza potrzeba gromadzenia i etykietowania dużych zbiorów danych.",
-        ],
-        correct: [0, 4]
-    },
-    {
-        id: 129,
-        question: "(Python/experta) Jak w experta uruchomić prosty system reguł po zdefiniowaniu KnowledgeEngine i dodaniu faktów?",
-        options: [
-            "Użyć engine.optimize() przed run() — inaczej reguły się nie aktywują.",
-            "Wystarczy samo engine.run() — reset() i declare() są zbędne.",
-            "Wywołać engine.reset(); engine.declare(Fact(...)); engine.run().",
-            "Wywołać engine.fit(X,y) jak w scikit-learn.",
-            "Użyć engine.predict(...) do uruchomienia wnioskowania.",
-        ],
-        correct: [2]
-    },
-    {
-        id: 130,
-        question: "(Python/experta) Które stwierdzenie o faktach w experta jest poprawne?",
-        options: [
-            "Fakty muszą być wyłącznie krotkami Pythona.",
-            "Fakty są obiektami (np. Fact lub klasy potomne) deklarowanymi przez engine.declare(...).",
-            "Fakt nie może zostać wycofany.",
-            "Fakty można dodać tylko podczas dekorowania reguł.",
-            "Fakty dodaje się metodą engine.fit facts(...).",
-        ],
-        correct: [1]
-    },
-    {
-        id: 131,
-        question: "Czym jest dopełnienie (negacja) zbioru rozmytego A?",
-        options: [
-            "Dla zbiorów ostrych (0/1) sprowadza się do klasycznego dopełnienia.",
-            "W standardowej definicji: µ A¯(x)=1−µ",
-            "µ A¯(x)=µ",
-            "Dopełnienie polega na zamianie każdego α-przekroju na x:µ (x)<α.",
-            "µ A¯(x)=",
-        ],
-        correct: [0, 1]
-    },
-    {
-        id: 132,
-        question: "Czym różni się niepewność probabilistyczna od nieostrości (rozmytości)?",
-        options: [
-            "To pojęcia tożsame; µ(x) zawsze jest prawdopodobieństwem.",
-            "Prawdopodobieństwo i rozmytość mają identyczne reguły rachunku.",
-            "W zbiorach rozmytych µ(x) nie jest prawdopodobieństwem wystąpienia x, lecz stopniem przynależności.",
-            "Rozmytość oznacza, że zdarzenia są niezależne probabilistycznie.",
-            "Prawdopodobieństwo dotyczy losowości zdarzeń; rozmytość dotyczy stopnia spełniania pojęcia.",
-        ],
-        correct: [2, 4]
-    },
-    {
-        id: 133,
-        question: "Podaj przykład reguły Takagi–Sugeno dla sterowania mocą.",
-        options: [
-            "IF temperatura jest niska THEN moc jest 0,1.",
-            "IF y =a +a ·temp+a ·błąd THEN moc jest wysoka.",
-            "IF temperatura jest niska THEN moc jest wysoka.",
-            "IF błąd jest duży THEN błąd jest mały.",
-            "IF temperatura jest niska AND błąd jest duży THEN moc y =a +a ·temp+a ·błąd.",
-        ],
-        correct: [4]
-    },
-    {
-        id: 134,
-        question: "Które stwierdzenia o sortowaniu w OWA są prawdziwe?",
-        options: [
-            "OWA wymaga posortowania także samych wag rosnąco.",
-            "Wejścia są porządkowane, a wagi przypisane do pozycji po sortowaniu.",
-            "Sortowanie można pominąć, jeśli wagi sumują się do 1.",
-            "Dzięki sortowaniu OWA jest symetryczny względem permutacji cech (anonimowy).",
-            "Sortowanie polega na przypisaniu największej wagi do najmniejszej wartości bez względu na rangę.",
-        ],
-        correct: [1, 3]
-    },
-    {
-        id: 135,
-        question: "Które własności operatora OWA są prawdziwe?",
-        options: [
-            "Ograniczenie: wynik leży w [minx , maxx ].",
-            "Homogeniczność dla dowolnych (także ujemnych) skalowań.",
-            "Idempotentność: jeśli wszystkie wejścia są równe a, to wynik =a.",
-            "Addytywność: OWA(x+y) zawsze równa się OWA(x) + OWA(y).",
-            "Monotoniczność: zwiększenie dowolnego wejścia nie zmniejszy wyniku.",
-        ],
-        correct: [0, 2, 4]
-    },
-    {
-        id: 136,
-        question: "Jakie są główne elementy modelu wnioskowania rozmytego (FIS)?",
-        options: [
-            "Zastąpienie fuzzyfikacji standaryzacją Z-score w każdym kroku.",
-            "Fuzzyfikacja wejść, baza reguł, mechanizm wnioskowania/aktywacji reguł, agregacja wniosków, defuzyfikacja.",
-            "Defuzyfikacja zawsze nie jest potrzebna, bo wyjście jest 0/1.",
-            "Uczenie wyłącznie przez wsteczną propagację gradientu bez reguł.",
-            "Każdy term lingwistyczny ma funkcję przynależności zdefiniowaną na dziedzinie wejścia.",
-        ],
-        correct: [1, 4]
-    },
-    {
-        id: 137,
-        question: "Jak interpretować funkcję przynależności µ (x) w zbiorze rozmytym A?",
-        options: [
-            "Jako pochodną funkcji charakterystycznej.",
-            "Jako prawdopodobieństwo losowego zdarzenia niezależnego od x.",
-            "Jako wartość opisującą „jak bardzo” x spełnia pojęcie reprezentowane przez A.",
-            "Jako liczbę naturalną większą od 1.",
-            "Jako stopień przynależności elementu x do zbioru A w skali [0,1].",
-        ],
-        correct: [2, 4]
-    },
-    {
-        id: 138,
-        question: "Wskaż przykłady t-norm (operator „i”).",
-        options: [
-            "Minimum (G¨odla): T(a,b)=min(a,b).",
-            "Drastyczna t-norma: T(a,b)= .",
-            "Łukasiewicza: T(a,b)=max0,a+b−1.",
-            "Iloczyn algebraiczny: T(a,b)=a·b.",
-        ],
-        correct: [0, 1, 2, 3]
-    },
-    {
-        id: 139,
-        question: "Które zdania o normalizacji zbiorów rozmytych są poprawne?",
-        options: [
-            "Normalizacja wymaga, by rdzeń był pusty.",
-            "Normalizacja oznacza sup µ(x)=0.",
-            "Skalowanie pionowe µ′(x)=µ(x)/h (dla h=supµ) może normalizować zbiór, jeśli h>0.",
-            "Zbiór rozmyty nazywamy znormalizowanym, jeśli sup µ(x)=1.",
-            "Zbiory rozmyte nie mogą być normalizowane.",
-        ],
-        correct: [2, 3]
-    },
-    {
-        id: 140,
-        question: "Dopasuj etap modelu wnioskowania rozmytego (FIS) do opisu.",
-        options: [
-            "Agregacja → połączenie wniosków reguł s-normą.",
-            "Fuzzyfikacja → obliczenie µ(x) dla terminów wejściowych.",
-            "Baza reguł → standaryzacja Z-score.",
-            "Aktywacja reguł → połączenie przesłanek t-normą.",
-            "Defuzyfikacja → wyznaczenie wartości ostrej.",
-        ],
-        correct: [0, 1, 3, 4]
-    },
-    {
-        id: 141,
-        question: "(Python) Która komenda poprawnie instaluje pakiet do wnioskowania rozmytego scikit-fuzzy?",
-        options: [
-            "pip install sklearn-fuzzy",
-            "pip3 install fuzzy-sklearn",
-            "pip install fuzzy logic sk",
-            "conda install scikit-fuzzy==0.0.0",
-            "pip install scikit-fuzzy",
-        ],
-        correct: [4]
-    },
-    {
-        id: 142,
-        question: "(Python/skfuzzy) Dopasuj kształt funkcji przynależności do wywołania (wybierz prawidłowe pary).",
-        options: [
-            "Gaussowska ↔ fuzz.gaussmf(x, mean, sigma).",
-            "Trapezowa ↔ fuzz.sigmf(x, b, c).",
-            "Trójkątna ↔ fuzz.gauss2mf(x, a, b, c, d).",
-            "Trapezowa ↔ fuzz.trapmf(x, [a, b, c, d]).",
-            "Trójkątna ↔ fuzz.trimf(x, [a, b, c]).",
-        ],
-        correct: [0, 3, 4]
-    },
-    {
-        id: 143,
-        question: "(Python) Jak obliczyć OWA dla x i wag w w NumPy?",
-        options: [
-            "result = np.mean(x * w)",
-            "x sorted = np.sort(x)[::-1]; result = np.dot(w, x sorted)",
-            "result = np.dot(w, x)",
-            "result = w * np.sort(w)",
-            "result = np.sum(np.maximum(w, x))",
-        ],
-        correct: [1]
-    },
-    {
-        id: 144,
-        question: "Jak interpretować punkt operacyjny wybrany na krzywej ROC/PR?",
-        options: [
-            "Punkt operacyjny musi leżeć na przekątnej ROC.",
-            "To para metryk uzyskana dla konkretnego progu; odzwierciedla kompromis TPR–FPR (ROC) lub Precision–Recall (PR).",
-            "Na PR zawsze wybieramy punkt o największym Recall bez względu na Precision.",
-            "Dobór punktu powinien wynikać z kosztów FP/FN lub ograniczeń.",
-            "Punkt operacyjny nie zależy od progu decyzji.",
-        ],
-        correct: [1, 3]
-    },
-    {
-        id: 145,
-        question: "Jak ująć koszty w ocenie detekcji anomalii?",
-        options: [
-            "Zawsze przyjmować koszt FP = koszt FN.",
-            "Zdefiniować macierz kosztów (koszt FP, FN) i minimalizować oczekiwany koszt.",
-            "Dobrać próg, by spełnić ograniczenia (np. FPR ‹α) przy maksymalnym Recall.",
-            "Koszty nie mają wpływu na wybór progu decyzji.",
-            "Koszty można ignorować przy ogromnej nierównowadze klas.",
-        ],
-        correct: [1, 2]
-    },
-    {
-        id: 146,
-        question: "Które stwierdzenia o skali i kalibracji wyników anomalii są prawdziwe?",
-        options: [
-            "Kalibracja niszczy ranking i dlatego nie powinna być stosowana.",
-            "Wynik każdego algorytmu można zawsze interpretować jako p-value bez dodatkowych założeń.",
-            "Różne algorytmy zwracają wyniki w różnych skalach; do wspólnego progu potrzebna bywa kalibracja lub normalizacja.",
-            "Skala score jest identyczna między LOF, Isolation Forest i One-Class SVM.",
-            "Monotoniczne przekształcenie score (np. skalowanie liniowe) nie zmienia kolejności próbek.",
-        ],
-        correct: [2, 4]
-    },
-    {
-        id: 147,
-        question: "Jak wybrać próg na podstawie krzywej ROC, aby zbalansować czułość i specyficzność?",
-        options: [
-            "Wybrać próg maksymalizujący statystykę Youdena: J =TPR−FPR.",
-            "Wybrać próg minimalizujący odległość euklidesową do punktu idealnego (FPR=0,TPR=1).",
-            "Zawsze ustawić próg na medianie skali.",
-            "Wziąć dowolny próg z największą liczbą TN.",
-            "Wybrać próg minimalizujący TPR+FPR.",
-        ],
-        correct: [0, 1]
-    },
-    {
-        id: 148,
-        question: "Dopasuj przykład do novelty detection lub outlier detection.",
-        options: [
-            "Zawsze etykietujemy anomalie w treningu, więc to novelty detection.",
-            "Dane transakcyjne z nielicznymi oszustwami już w treningu; użycie Isolation Forest odpornego na outliery → outlier detection.",
-            "Autoenkoder uczony na normalnych przebiegach czujnika; wysokie błędy rekonstrukcji w produkcji → novelty detection.",
-            "Trenowanie One-Class SVM na czystych danych normalnych, a test zawiera nowe typy oszustw → novelty detection.",
-            "Gdy w treningu są anomalia, to na pewno novelty detection.",
+            "definicja kursora",
+            "zamknięcie kursora",
+            "otwarcie kursora",
+            "pobranie wiersza z kursora i zapisanie go w zmiennej rekordowej",
         ],
         correct: [1, 2, 3]
     },
     {
-        id: 149,
-        question: "Przykład Isolation Forest score — wskaż poprawne interpretacje.",
+        id: 88,
+        question: "Wskaż sposób skojarzenia błędu o numerze -1 z nazwą wyjątku DUPLICATE_VALUES:",
         options: [
-            "Im krótsza średnia długość ścieżki izolacji h(x) w lesie, tym wyższy score anomalii.",
-            "Score bywa wyprowadzany przez normalizację h(x) względem oczekiwanej długości c(n); punkty „łatwe do odcięcia” dostają",
-            "Dłuższe ścieżki oznaczają większą anomalię.",
-            "Score to dokładne prawdopodobieństwo anomalii wyuczone z etykiet.",
-            "Wynik jest niezależny od liczby drzew i próbkowania.",
+            "declare\nPRAGMA EXCEPTION_INIT(duplicate_values, -1);\nduplicate_values exception ;\nbegin\nnull;\nend;",
+            "declare\nPRAGMA EXCEPTION_INIT(duplicate_values, -1);\nbegin\nnull;\nend;",
+            "declare\nduplicate_values exception;\nPRAGMA EXCEPTION_INIT(duplicate_values, -1);\nbegin\nnull;\nend;",
         ],
-        correct: [0, 1]
+        correct: [2]
     },
     {
-        id: 150,
-        question: "Które stwierdzenia o kalibracji i przekształceniach monotonicznych skali są prawdziwe?",
+        id: 89,
+        question: "Które instrukcje, dotyczące kursora, realizowane są przez pętlę kursora?",
         options: [
-            "AUC-PR zawsze się zwiększa po skalowaniu do [0,1].",
-            "Monotonia niszczy kolejność i zmienia AUC-ROC.",
-            "F1 przy stałym progu liczbowym może się zmienić po przekształceniu skali.",
-            "ROC zależy od absolutnych wartości skali, nie od rankingu.",
-            "Monotoniczne przekształcenie skali nie zmienia AUC-ROC.",
+            "pobranie wiersza z kursora i zapisanie go w zmiennej rekordowej",
+            "zamknięcie kursora",
+            "definicja kursora",
+            "otwarcie kursora",
         ],
-        correct: [2, 4]
+        correct: [0, 1, 3]
     },
     {
-        id: 151,
-        question: "Jak uniknąć data leakage w detekcji anomalii?",
+        id: 90,
+        question: "Wskaż prawidłowy kod PL/SQL, umożliwiający wyświetlenie identyfikatora studenta, który nie zdawał żadnego egzaminu? Przyjmij założenie, że jeśli student zdawał egzamin to otrzymał z niego co najmniej 2 punkty.",
         options: [
-            "Użyć Pipeline, aby dopasować przekształcenia wyłącznie na zbiorze uczącym.",
-            "Usunąć z test tylko anomalia, normalne zostawić.",
-            "Wykonać train/test split przed obliczaniem transformacji (skalowanie, PCA) i trenować transformacje tylko na train.",
-            "Dobierać hiperparametry na zbiorze testowym, a potem raportować na nim metryki.",
-            "Skalować wspólnie train+test, bo to „stabilizuje” wyniki.",
+            "DECLARE\nCURSOR C1 IS SELECT Id_Student, Nazwisko, Imie FROM Studenci ; CURSOR C2(ids studenci.id_student TYPE) IS\nBEGIN\nSELECT COUNT(Punkty) Total FROM Egzaminy WHERE Id_student ids;\nFOR vcl IN c1 LOOP\nFOR vc2 IN c2(vc1.Id_Student) LOOP\nIF vc2.Total IS NULL THEN\nDBMS_OUTPUT.PUT_LINE('Student o ID = ' || vc1.Id_Student || nie zdawał egzaminu');\nEND IF;\nEND LOOP;\nEND;\nEND LOOP;",
+            "DECLARE\nCURSOR C1 IS SELECT Id Student, Nazwisko, Imie FROM Studenci ; CURSOR C2(ids studenci.id_student%TYPE) IS\nBEGIN\nSELECT COUNT(Punkty) Total FROM Egzaminy WHERE Id student = ids;\nFOR vc1 IN c1 LOOP\nFOR vc2 IN c2(vc1.Id_Student) LOOP\nIF vc2.Total = 0 THEN\nDBMS_OUTPUT.PUT_LINE('Student o ID || vc1.Id_Student || nie zdawał egzaminu');\nEND IF;\nEND LOOP;",
+            "END LOOP;\nEND;\nDECLARE\nCURSOR C1 IS SELECT Id Student, Nazwisko, Imie FROM Studenci ;\nCURSOR C2(ids studenci.id_student TYPE) IS\nBEGIN\nSELECT SUM(Punkty) Total FROM Egzaminy WHERE Id_student ids;\nFOR vc1 IN c1 LOOP\nFOR vc2 IN c2(vc1. Id_Student) LOOP\nIF vc2.Total IS NULL THEN\nDBMS_OUTPUT.PUT_LINE('Student o ID = || vc1.Id_Student || nie zdawał egzaminu');\nEND IF;\nEND LOOP;\nEND LOOP;\nEND;",
+            "DECLARE\nCURSOR C1 IS SELECT Id Student, Nazwisko, Imie FROM Studenci ; CURSOR C2(ids studenci.id_student TYPE) IS\nBEGIN\nSELECT SUM(Punkty) Total FROM Egzaminy WHERE Id_student = ids;\nFOR vc1 IN c1 LOOP\nFOR vc2 IN c2(vc1.Id_Student) LOOP\nIF vc2.Total @ THEN\nDBMS_OUTPUT.PUT_LINE('Student o ID || vc1.Id_Student || nie zdawał egzaminu');\nEND IF;\nEND LOOP;\nEND LOOP;",
         ],
-        correct: [0, 2]
+        correct: [1, 2]
     },
     {
-        id: 152,
-        question: "Dopasuj przykład szeregów czasowych do typu anomalii.",
+        id: 91,
+        question: "Który z poniższych kodów PL/SQL umożliwia wyświetlenie komunikatu informującego, iż dany student nie przystąpił jeszcze do żadnego egzaminu?",
         options: [
-            "Wysoka temperatura procesora przy niskim obciążeniu (ale normalna przy wysokim) → kontekstowa.",
-            "Cykl dobowy (dzień/noc) → punktowa.",
-            "Jednorazowy skok napięcia w sekundzie t na stabilnej linii → punktowa.",
-            "Losowy brak jednej próbki w strumieniu → zbiorowa.",
-            "Nagła zmiana średniego poziomu sygnału i utrzymanie nowego poziomu przez 10 minut → zbiorowa.",
+            "declare\nCURSOR c1 is SELECT Id_Student, Nazwisko, Imie FROM Studenci;\nvnum NUMBER;\nno_data_found EXCEPTION;\nbegin\nFOR vc1 IN c1 LOOP\nbegin\nSELECT DISTINCT 1 INTO vnum FROM Egzaminy WHERE Id Student = vc1.Id_Student;\n dbms_output.put_line(vc1.Id_Student || ' - istnieje egzamin' );\nexception\nwhen NO_DATA_FOUND then\ndbms_output.put_line(vc1.Id_Student || ' - brak egzaminów\");\nend;\nEND LOOP;\n end;",
+            "declare\nCURSOR c1 is SELECT Id_Student, Nazwisko, Imie FROM Studenci;\nvnum NUMBER;\nno_data_found EXCEPTION;\nbegin\nFOR vc1 IN c1 LOOP\nbegin\nSELECT DISTINCT 1 INTO vnum FROM Egzaminy WHERE Id_Student = vc1.Id_Student;\n dbms_output.put_line(vc1.Id_Student || ' - istnieje egzamin' );\nexception\nwhen STANDARD.NO_DATA_FOUND then\ndbms_output.put_line(vc1.Id_Student || ' - brak egzaminów');\nend;\nEND LOOP;\nend;",
+            "declare\nCURSOR c1 is SELECT Id Student, Nazwisko, Imie FROM Studenci ;\nvnum NUMBER;\nno_data_found EXCEPTION;\nbegin\nFOR vc1 IN c1 LOOP\nbegin\nSELECT DISTINCT 1 INTO vnum FROM Egzaminy WHERE Id_Student = vc1.Id_Student;\n IF vnum IS NOT NULL THEN\ndbms_output.put_line(vc1.Id_Student || ' - istnieje egzamin');\nELSE\ndbms_output.put_line(vc1.Id_Student || ' - brak egzaminów\");\nEND IF;\nend;\nEND LOOP;\n end;",
         ],
-        correct: [0, 2, 4]
-    },
-    {
-        id: 153,
-        question: "Jakie są punkty charakterystyczne krzywej ROC?",
-        options: [
-            "((0,0)): gdy próg tak wysoki, że wszystko klasyfikowane jako „normalne”.",
-            "Prosta losowa to linia pionowa (x=0.5).",
-            "((0,0)) odpowiada progowi najniższemu, a ((1,1)) najwyższemu.",
-            "((1,1)): gdy próg tak niski, że wszystko klasyfikowane jako „anomalia”.",
-            "((0,1)) jest zawsze osiągalny dla każdego losowego klasyfikatora.",
-        ],
-        correct: [0, 3]
-    },
-    {
-        id: 154,
-        question: "Chcesz zapewnić Recall ›0.9 (wysoka czułość). Jak dobrać próg?",
-        options: [
-            "Zwiększać próg, bo większy próg zwiększa Recall.",
-            "Przesuwać próg w dół, monitorując Recall aż osiągnie/wyprzedzi 0.9, a potem minimalizować FPR/FP wśród spełniających",
-            "Wybrać punkt o maksymalnym Precision niezależnie od Recall.",
-            "Ustawić próg na medianie.",
-            "Wybrać najmniejszy próg, dla którego na krzywej PR/ROC spełnione jest Recall›0.9.",
-        ],
-        correct: [1, 4]
-    },
-    {
-        id: 155,
-        question: "(Python/sklearn) Jak pozyskać ciągłą ocenę stopnia anomalii z sklearn.ensemble.IsolationForest mdl?",
-        options: [
-            "scores = -mdl.score_samples(X)",
-            "scores = mdl.predict(X)",
-            "scores = mdl.apply(X)",
-            "scores = -mdl.decision_function(X)",
-            "scores = mdl.feature_importances_",
-        ],
-        correct: [0, 3]
-    },
-    {
-        id: 156,
-        question: "(Python/sklearn) Jakie źródła skali anomalii zwracają typowe algorytmy?",
-        options: [
-            "predict(X).",
-            "score samples(X).",
-            "transform score(X).",
-            "decision function(X).",
-            "test samples(X).",
-        ],
-        correct: [1, 3]
+        correct: [1]
     },
 ];
