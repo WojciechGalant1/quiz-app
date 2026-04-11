@@ -8,6 +8,7 @@ import LibraryModal from './quiz/LibraryModal';
 import ProgressBar from './quiz/ProgressBar';
 import QuestionCard from './quiz/QuestionCard';
 import ResultsView from './quiz/ResultsView';
+import AllQuestionsView from './quiz/AllQuestionsView';
 
 const shuffleArray = <T,>(array: T[]): T[] => {
     const shuffled = [...array];
@@ -50,6 +51,7 @@ const QuizApp = () => {
     const [score, setScore] = useState(0);
     const [newPoolName, setNewPoolName] = useState('');
     const [showLibraryModal, setShowLibraryModal] = useState(false);
+    const [showAllAsList, setShowAllAsList] = useState(false);
 
     const prepareQuiz = (pool: QuizQuestion[]) => {
         const randomized = shuffleArray(pool).map(q => {
@@ -148,6 +150,7 @@ const QuizApp = () => {
         setShowResults(false);
         setScore(0);
         setShowLibraryModal(false);
+        setShowAllAsList(false);
     };
 
     const startRandomTest = () => {
@@ -162,6 +165,7 @@ const QuizApp = () => {
         setShowResults(false);
         setScore(0);
         setShowLibraryModal(false);
+        setShowAllAsList(false);
     };
 
     const downloadPoolAsJSON = (name: string, pool: QuizQuestion[]) => {
@@ -234,6 +238,7 @@ const QuizApp = () => {
         setCurrentQuestion(0);
         setSelectedAnswers({});
         setShowResults(false);
+        setShowAllAsList(false);
         setScore(0);
     };
 
@@ -265,6 +270,7 @@ const QuizApp = () => {
                 loadPool={loadPool}
                 startRandomTest={startRandomTest}
                 setShowLibraryModal={setShowLibraryModal}
+                onShowAllAnswers={() => setShowAllAsList(true)}
             />
 
             <LibraryModal
@@ -294,20 +300,29 @@ const QuizApp = () => {
                         </div>
 
                         <div className="flex items-center gap-3">
-                            <button
-                                onClick={resetToFullPool}
-                                className="text-white/40 hover:text-white transition-colors group p-2 bg-white/5 rounded-xl border border-white/10"
-                                title="Resetuj do pełnej puli"
-                            >
-                                <RotateCcw className="w-5 h-5 group-hover:rotate-[-45deg] transition-transform" />
-                            </button>
-                            <div className="text-white/90 font-bold bg-white/10 px-4 py-2 rounded-xl border border-white/10 backdrop-blur-md">
-                                {currentQuestion + 1} <span className="text-white/40 font-normal">/</span> {shuffledQuestions.length}
-                            </div>
+                            {!showAllAsList && (
+                                <>
+                                    <button
+                                        onClick={resetToFullPool}
+                                        className="text-white/40 hover:text-white transition-colors group p-2 bg-white/5 rounded-xl border border-white/10"
+                                        title="Resetuj do pełnej puli"
+                                    >
+                                        <RotateCcw className="w-5 h-5 group-hover:rotate-[-45deg] transition-transform" />
+                                    </button>
+                                    <div className="text-white/90 font-bold bg-white/10 px-4 py-2 rounded-xl border border-white/10 backdrop-blur-md">
+                                        {currentQuestion + 1} <span className="text-white/40 font-normal">/</span> {shuffledQuestions.length}
+                                    </div>
+                                </>
+                            )}
                         </div>
                     </div>
 
-                    {showResults ? (
+                    {showAllAsList ? (
+                        <AllQuestionsView
+                            questions={currentPool}
+                            onBack={() => setShowAllAsList(false)}
+                        />
+                    ) : showResults ? (
                         <ResultsView
                             score={score}
                             totalQuestions={shuffledQuestions.length}

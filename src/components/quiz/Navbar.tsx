@@ -5,9 +5,10 @@ interface NavbarProps {
     loadPool: (name: string) => void;
     startRandomTest: () => void;
     setShowLibraryModal: (show: boolean) => void;
+    onShowAllAnswers: () => void;
 }
 
-const Navbar = ({ activePoolName, loadPool, startRandomTest, setShowLibraryModal }: NavbarProps) => {
+const Navbar = ({ activePoolName, loadPool, startRandomTest, setShowLibraryModal, onShowAllAnswers }: NavbarProps) => {
     return (
         <nav className="w-full bg-black/40 backdrop-blur-md border-b border-white/10 p-4 sticky top-0 z-50">
             <div className="max-w-6xl mx-auto flex items-center justify-between gap-4">
@@ -35,6 +36,13 @@ const Navbar = ({ activePoolName, loadPool, startRandomTest, setShowLibraryModal
                             }`}
                     >
                         Szybki test
+                    </button>
+
+                    <button
+                        onClick={onShowAllAnswers}
+                        className="px-4 py-2 rounded-xl text-sm font-bold bg-white/5 text-white/60 hover:bg-white/10 hover:text-white transition-all whitespace-nowrap"
+                    >
+                        Pytania i odp.
                     </button>
 
                     <button
