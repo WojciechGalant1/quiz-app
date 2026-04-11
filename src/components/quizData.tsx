@@ -12,7 +12,7 @@ export const quizData: QuizQuestion[] = [
         options: [
             "SELECT Id_Student, Nazwisko, Imie FROM Studenci ;",
             "CURSOR c1 IS SELECT Id_Student, Nazwisko, Imie FROM Studenci ;",
-            "SELECT Id_Student, Nazwisko, Imie INTO vid, vnazwisko, vimie FROM Studenci ;\n💡 **Wyjaśnienie:** Składnia PL/SQL ściśle wymaga klauzuli `INTO` przy instrukcjach `SELECT`, które powracają jako zapytanie jednowierszowe, w celu przekazania wyników pod docelowe zmienne robocze. Brak tego wymogu rodzi błąd kompilacji bazy.",
+            "SELECT Id_Student, Nazwisko, Imie INTO vid, vnazwisko, vimie FROM Studenci ;",
         ],
         correct: [2]
     },
@@ -23,7 +23,7 @@ export const quizData: QuizQuestion[] = [
             "Umożliwiają pobranie wiersza danych i zapisanie ich w zmiennej",
             "Umożliwiają wielokrotne powtarzanie tych samych operacji z wykorzystaniem różnych danych",
             "Umożliwiają przetwarzanie danych z wykorzystaniem wielu wierszy będących wynikiem zapytania",
-            "Umożliwiają wykonanie zapytania do bazy danych\n💡 **Wyjaśnienie:** Kursory jawne uruchamia się dla bezpiecznego powielania operacji na zapytaniach o dużej ilości wierszy z bazy. Chronią aplikację bazodanową przed wyjątkami `TOO_MANY_ROWS` w tradycyjnym `SELECT INTO` i pozwalają badać w pętlach m.in. atrybuty stanu bazy takie jak `%NOTFOUND` w przypadku braku nowych wierszy.",
+            "Umożliwiają wykonanie zapytania do bazy danych",
         ],
         correct: [2]
     },
@@ -34,7 +34,7 @@ export const quizData: QuizQuestion[] = [
             "CREATE OR REPLACE PACKAGE Pckg_Validate",
             "Najpierw CREATE PACKAGE Pckg_Validate, potem CREATE PACKAGE BODY Pckg_Validate",
             "CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
-            "Najpierw CREATE OR REPLACE PACKAGE Pckg_Validate, potem CREATE OR REPLACE PACKAGE BODY Pckg_Validate\n💡 **Wyjaśnienie:** Cykl budowy obiektowej narzuca systematykę w Oracle - domyślnie instaluje się publiczną specyfikację poleceniem `CREATE OR REPLACE PACKAGE` z pustymi deklaracjami, by dopiero w drugiej fazie dostarczyć dedykowaną logikę za pomocą polecenia `CREATE OR REPLACE PACKAGE BODY`, modyfikującego algorytm bez usuwania ustawień bazy.",
+            "Najpierw CREATE OR REPLACE PACKAGE Pckg_Validate, potem CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
         ],
         correct: [3]
     },
@@ -47,7 +47,7 @@ export const quizData: QuizQuestion[] = [
             "ALTER FUNCTION BY REPLACING SF_Validate",
             "CREATE OR MODIFY FUNCTION SF_Validate",
             "CREATE FUNCTION SF_Validate",
-            "ALTER FUNCTION SF_Validate\n💡 **Wyjaśnienie:** Cykl budowy obiektowej narzuca systematykę w Oracle - domyślnie instaluje się publiczną specyfikację poleceniem `CREATE OR REPLACE PACKAGE` z pustymi deklaracjami, by dopiero w drugiej fazie dostarczyć dedykowaną logikę za pomocą polecenia `CREATE OR REPLACE PACKAGE BODY`, modyfikującego algorytm bez usuwania ustawień bazy.",
+            "ALTER FUNCTION SF_Validate",
         ],
         correct: [0]
     },
@@ -58,7 +58,7 @@ export const quizData: QuizQuestion[] = [
             "dodaj_ przedmiot(n_opis => NULL);",
             "dodaj przedmiot('Algorytmy');",
             "dodaj_ przedmiot('Algorytmy', 'Opis algorytmów\");",
-            "dodaj_przedmiot;\n💡 **Wyjaśnienie:** Parametry domyślne dają elastyczność w omijaniu argumentów. Aby jednak skutecznie pominąć część wprowadzanych atrybutów bez błędu, stosujemy notację nazwaną ze strzałką '=>', jednoznacznie dopasowując przekazywany argument do docelowej nazwy w sygnaturze.",
+            "dodaj_przedmiot;",
         ],
         correct: [0, 2]
     },
@@ -68,7 +68,7 @@ export const quizData: QuizQuestion[] = [
         options: [
             "Kolekcja typu VARRAY",
             "Kolekcja typu tablica asocjacyjna",
-            "Kolekcja typu NESTED TABLE\n💡 **Wyjaśnienie:** Kolekcje różnią się organizacją pod względem gęstości wierszy. Tablice asocjacyjne wspierają elastyczność i pozwalają na indeksy ujemne (poprzez indeksy oparte o PLS_INTEGER), a VARRAY to ze swej natury tablica sztywna, nierozszerzalna ponad założony limit i gęsta - dlatego nie można na niej wybiórczo usunąć pojedynczego elementu ze środka rzędu używając polecenia typu DELETE(indeks).",
+            "Kolekcja typu NESTED TABLE",
         ],
         correct: [0]
     },
@@ -79,7 +79,7 @@ export const quizData: QuizQuestion[] = [
             "Poprzez kompilację bloku PL/SQL, zawierającego kod obsługi wyjątku",
             "Poprzez wykonanie tylko tej instrukcji, która powoduje powstanie wyjątku",
             "Poprzez analizę poprawności składni kodu PL/SQL, zawierającego instrukcję powodującą powstanie wyjątku oraz jego obsługę",
-            "Poprzez uruchomienie (wykonanie) bloku PL/SQL, zawierającego instrukcję powodującą powstanie wyjątku oraz jego obsługę\n💡 **Wyjaśnienie:** Proces przechwytywania awarii powołuje rezerwy wbudowane w kod Oracle, np. dla zdarzeń o znanym id `NO_DATA_FOUND`. Jeśli tworzymy własny wyjątek sprzęgający dany numer usterki do konkretnej nazwy, musimy zadeklarować go flagą oraz powiązać z systemowym parametrem komendy `PRAGMA EXCEPTION_INIT`. Obsługa wszystkich generycznie wrzuconych do potoku nieprzechwyconych incydentów polega domyślnie na wylistowaniu na ostatnim u dołu rankingu tzw. śmieciarki catchera `WHEN OTHERS`.",
+            "Poprzez uruchomienie (wykonanie) bloku PL/SQL, zawierającego instrukcję powodującą powstanie wyjątku oraz jego obsługę",
         ],
         correct: [3]
     },
@@ -92,7 +92,7 @@ export const quizData: QuizQuestion[] = [
             "NO_DATA_FOUND",
             "TOO_MANY_ROWS",
             "DUP_VAL_ON_COLUMN",
-            "TO_MANY_DATA\n💡 **Wyjaśnienie:** Proces przechwytywania awarii powołuje rezerwy wbudowane w kod Oracle, np. dla zdarzeń o znanym id `NO_DATA_FOUND`. Jeśli tworzymy własny wyjątek sprzęgający dany numer usterki do konkretnej nazwy, musimy zadeklarować go flagą oraz powiązać z systemowym parametrem komendy `PRAGMA EXCEPTION_INIT`. Obsługa wszystkich generycznie wrzuconych do potoku nieprzechwyconych incydentów polega domyślnie na wylistowaniu na ostatnim u dołu rankingu tzw. śmieciarki catchera `WHEN OTHERS`.",
+            "TO_MANY_DATA",
         ],
         correct: [0, 1, 2, 3]
     },
@@ -103,7 +103,7 @@ export const quizData: QuizQuestion[] = [
             "ALTER PACKAGE Pckg_Validate COMPILE",
             "ALTER PACKAGE Pckg_Validate COMPILE SPECIFICATION",
             "ALTER PACKAGE Pckg_Validate COMPILE BODY",
-            "ALTER PACKAGE Pckg_Validate COMPILE PACKAGE\n💡 **Wyjaśnienie:** Wybrana odpowiedź wprost odzwierciedla prawidłową, standardowo rekomendowaną ze sztuki i narzucaną w dokumentacjach architektoniczną konstrukcję ze środowisk od RDBMS dającą poprawnie funkcjonujący w bazie skrypt PL/SQL bez obciążeń na spadek spójności ani powodowaniach do przerwań.",
+            "ALTER PACKAGE Pckg_Validate COMPILE PACKAGE",
         ],
         correct: [2]
     },
@@ -112,7 +112,7 @@ export const quizData: QuizQuestion[] = [
         question: "Wskaż sposób skojarzenia błędu o numerze -1 z nazwą wyjątku DUPLICATE_VALUES:",
         options: [
             "declare\n PRAGMA EXCEPTION_INIT(duplicate_values, -1); duplicate_values exception;\nbegin\n null;\nend;",
-            "declare\nduplicate_values exception;\nPRAGMA EXCEPTION_INIT(duplicate_values, -1);\nbegin\nnull;\nend;\n💡 **Wyjaśnienie:** Proces przechwytywania awarii powołuje rezerwy wbudowane w kod Oracle, np. dla zdarzeń o znanym id `NO_DATA_FOUND`. Jeśli tworzymy własny wyjątek sprzęgający dany numer usterki do konkretnej nazwy, musimy zadeklarować go flagą oraz powiązać z systemowym parametrem komendy `PRAGMA EXCEPTION_INIT`. Obsługa wszystkich generycznie wrzuconych do potoku nieprzechwyconych incydentów polega domyślnie na wylistowaniu na ostatnim u dołu rankingu tzw. śmieciarki catchera `WHEN OTHERS`.",
+            "declare\nduplicate_values exception;\nPRAGMA EXCEPTION_INIT(duplicate_values, -1);\nbegin\nnull;\nend;",
         ],
         correct: [1]
     },
@@ -124,7 +124,7 @@ export const quizData: QuizQuestion[] = [
             "Najpierw CREATE PACKAGE Pckg_Validate, potem CREATE PACKAGE BODY Pckg_Validate",
             "Najpierw CREATE OR REPLACE PACKAGE Pckg_Validate, potem CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
             "CREATE PACKAGE BODY Pckg_Validate",
-            "CREATE OR REPLACE PACKAGE BODY Pckg_Validate\n💡 **Wyjaśnienie:** Cykl budowy obiektowej narzuca systematykę w Oracle - domyślnie instaluje się publiczną specyfikację poleceniem `CREATE OR REPLACE PACKAGE` z pustymi deklaracjami, by dopiero w drugiej fazie dostarczyć dedykowaną logikę za pomocą polecenia `CREATE OR REPLACE PACKAGE BODY`, modyfikującego algorytm bez usuwania ustawień bazy.",
+            "CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
         ],
         correct: [4]
     },
@@ -136,7 +136,7 @@ export const quizData: QuizQuestion[] = [
             "Podczas sprawdzania wartości atrybutu %FOUND",
             "Podczas wykonania instrukcji otwarcia kursora",
             "Podczas sprawdzania wartości atrybutu %NOTFOUND",
-            "Podczas pobierania danych do zmiennej przy pomocy instrukcji FETCH\n💡 **Wyjaśnienie:** Kursory jawne uruchamia się dla bezpiecznego powielania operacji na zapytaniach o dużej ilości wierszy z bazy. Chronią aplikację bazodanową przed wyjątkami `TOO_MANY_ROWS` w tradycyjnym `SELECT INTO` i pozwalają badać w pętlach m.in. atrybuty stanu bazy takie jak `%NOTFOUND` w przypadku braku nowych wierszy.",
+            "Podczas pobierania danych do zmiennej przy pomocy instrukcji FETCH",
         ],
         correct: [2]
     },
@@ -148,7 +148,7 @@ export const quizData: QuizQuestion[] = [
             "Każdy pakiet musi składać się ze specyfikacji i opcjonalnie może posiadać ciało.",
             "W bazie danych można tworzyć pakiety o tej samej nazwie, jednak muszą one różnić się specyfikacją.",
             "Każdy pakiet musi zawierać co najmniej jeden podprogram PL/SQL.",
-            "Każdy pakiet musi mieć unikalną nazwę w bazie danych.\n💡 **Wyjaśnienie:** Wybrana odpowiedź wprost odzwierciedla prawidłową, standardowo rekomendowaną ze sztuki i narzucaną w dokumentacjach architektoniczną konstrukcję ze środowisk od RDBMS dającą poprawnie funkcjonujący w bazie skrypt PL/SQL bez obciążeń na spadek spójności ani powodowaniach do przerwań.",
+            "Każdy pakiet musi mieć unikalną nazwę w bazie danych.",
         ],
         correct: [1]
     },
@@ -159,7 +159,7 @@ export const quizData: QuizQuestion[] = [
             "Tylko w sekcji EXCEPTION",
             "Tylko w sekcji BEGIN lub EXCEPTION",
             "Tylko w sekcji BEGIN",
-            "W każdej sekcji tj. w części DECLARE, BEGIN, EXCEPTION\n💡 **Wyjaśnienie:** Architektura kodu bazuje tu na regułach wymiarowania referencyjnego. Deklarujące ujęcie predykatu pomocniczego `%ROWTYPE` bezbłędnie przesyła schemat relacyjny pobranej bazy czy kursora do deklarowanej w PL/SQL zmiennej. Reguły te wymuszają także trzymanie zadeklarowanych nowości logicznych dla procedur składowych podprogramów funkcji i procedur tuż u dołu przed sekcją otwarcia bloku roboczego `BEGIN`.",
+            "W każdej sekcji tj. w części DECLARE, BEGIN, EXCEPTION",
         ],
         correct: [1]
     },
@@ -170,7 +170,7 @@ export const quizData: QuizQuestion[] = [
             "TYPE tMy_Rec AS OBJECT (Id NUMBER(5), Name VARCHAR2(30));\nMy_Rec tMy_Rec;",
             "My Rec IS RECORD (Id NUMBER(5), Name VARCHAR2(30));",
             "My Rec ROWTYPE (Id NUMBER(5), Name VARCHAR2(30));",
-            "TYPE tMy_Rec IS RECORD (Id NUMBER(5), Name VARCHAR2(30)); My_Rec tMy_Rec;\n💡 **Wyjaśnienie:** Architektura kodu bazuje tu na regułach wymiarowania referencyjnego. Deklarujące ujęcie predykatu pomocniczego `%ROWTYPE` bezbłędnie przesyła schemat relacyjny pobranej bazy czy kursora do deklarowanej w PL/SQL zmiennej. Reguły te wymuszają także trzymanie zadeklarowanych nowości logicznych dla procedur składowych podprogramów funkcji i procedur tuż u dołu przed sekcją otwarcia bloku roboczego `BEGIN`.",
+            "TYPE tMy_Rec IS RECORD (Id NUMBER(5), Name VARCHAR2(30)); My_Rec tMy_Rec;",
         ],
         correct: [3]
     },
@@ -182,7 +182,7 @@ export const quizData: QuizQuestion[] = [
             "Najpierw CREATE PACKAGE Pckg_Validate, potem CREATE PACKAGE BODY Pckg_Validate",
             "CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
             "CREATE OR REPLACE PACKAGE Pckg_Validate",
-            "Najpierw CREATE OR REPLACE PACKAGE Pckg_Validate, potem CREATE OR REPLACE PACKAGE BODY Pckg_Validate\n💡 **Wyjaśnienie:** Cykl budowy obiektowej narzuca systematykę w Oracle - domyślnie instaluje się publiczną specyfikację poleceniem `CREATE OR REPLACE PACKAGE` z pustymi deklaracjami, by dopiero w drugiej fazie dostarczyć dedykowaną logikę za pomocą polecenia `CREATE OR REPLACE PACKAGE BODY`, modyfikującego algorytm bez usuwania ustawień bazy.",
+            "Najpierw CREATE OR REPLACE PACKAGE Pckg_Validate, potem CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
         ],
         correct: [2]
     },
@@ -194,7 +194,7 @@ export const quizData: QuizQuestion[] = [
             "Należy utworzyć blok PL/SQL, w którego części deklaracyjnej znajdzie się definicja wymaganego typu kolekcji. Następnie należy zapisać plik zawierający ten blok w bazie danych.",
             "Należy utworzyć w bazie danych specyfikację pakietu, w której znajdzie się definicja wymaganego typu kolekcji",
             "Należy utworzyć w bazie danych obiekt będący typem danych przy pomocy polecenia CREATE TYPE AS OBJECT, podając w nim definicję typu kolekcji",
-            "Należy utworzyć blok PL/SQL, w którego części deklaracyjnej znajdzie się definicja wymaganego typu kolekcji. Następnie należy zapisać ten blok w specyfikacji pakietu, utworzonej w bazie danych.\n💡 **Wyjaśnienie:** Cykl budowy obiektowej narzuca systematykę w Oracle - domyślnie instaluje się publiczną specyfikację poleceniem `CREATE OR REPLACE PACKAGE` z pustymi deklaracjami, by dopiero w drugiej fazie dostarczyć dedykowaną logikę za pomocą polecenia `CREATE OR REPLACE PACKAGE BODY`, modyfikującego algorytm bez usuwania ustawień bazy.",
+            "Należy utworzyć blok PL/SQL, w którego części deklaracyjnej znajdzie się definicja wymaganego typu kolekcji. Następnie należy zapisać ten blok w specyfikacji pakietu, utworzonej w bazie danych.",
         ],
         correct: [2]
     },
@@ -205,7 +205,7 @@ export const quizData: QuizQuestion[] = [
             "Każdy błąd systemowy jest skojarzony z wyjątkiem\npredefiniowanym o odpowiedniej nazwie",
             "Wyjątki użytkownika muszą mieć nazwy unikalne w tym samym bloku PL/SQL",
             "Wyjątki użytkownika nie mogą mieć nazw identycznych z nazwami wyjątków predefiniowanych",
-            "Każdy wyjątek musi być obsłużony w tym samym bloku, w którym powstał\n💡 **Wyjaśnienie:** Proces przechwytywania awarii powołuje rezerwy wbudowane w kod Oracle, np. dla zdarzeń o znanym id `NO_DATA_FOUND`. Jeśli tworzymy własny wyjątek sprzęgający dany numer usterki do konkretnej nazwy, musimy zadeklarować go flagą oraz powiązać z systemowym parametrem komendy `PRAGMA EXCEPTION_INIT`. Obsługa wszystkich generycznie wrzuconych do potoku nieprzechwyconych incydentów polega domyślnie na wylistowaniu na ostatnim u dołu rankingu tzw. śmieciarki catchera `WHEN OTHERS`.",
+            "Każdy wyjątek musi być obsłużony w tym samym bloku, w którym powstał",
         ],
         correct: [0, 2, 3]
     },
@@ -216,7 +216,7 @@ export const quizData: QuizQuestion[] = [
             "CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
             "Najpierw CREATE OR REPLACE PACKAGE Pckg_Validate, potem CREATE OR REPLACE PACKAGE BODY Pckg_Validate",
             "Najpierw CREATE PACKAGE Pckg_Validate, potem CREATE PACKAGE BODY Pckg_Validate",
-            "CREATE OR REPLACE PACKAGE Pckg_Validate\n💡 **Wyjaśnienie:** Cykl budowy obiektowej narzuca systematykę w Oracle - domyślnie instaluje się publiczną specyfikację poleceniem `CREATE OR REPLACE PACKAGE` z pustymi deklaracjami, by dopiero w drugiej fazie dostarczyć dedykowaną logikę za pomocą polecenia `CREATE OR REPLACE PACKAGE BODY`, modyfikującego algorytm bez usuwania ustawień bazy.",
+            "CREATE OR REPLACE PACKAGE Pckg_Validate",
         ],
         correct: [1]
     },
@@ -227,7 +227,7 @@ export const quizData: QuizQuestion[] = [
             "Otworzyć kursor, który nie pobierze żadnych rekordów z bazy danych",
             "Wykonać instrukcję SELECT ... INTO, podając w niej warunek, który nigdy nie będzie spełniony.",
             "Wykonać instrukcję FETCH dla kursora jawnego, który nie zawiera żadnych rekordów",
-            "Wykonać instrukcję RAISE NO_DATA_FOUND\n💡 **Wyjaśnienie:** Proces przechwytywania awarii powołuje rezerwy wbudowane w kod Oracle, np. dla zdarzeń o znanym id `NO_DATA_FOUND`. Jeśli tworzymy własny wyjątek sprzęgający dany numer usterki do konkretnej nazwy, musimy zadeklarować go flagą oraz powiązać z systemowym parametrem komendy `PRAGMA EXCEPTION_INIT`. Obsługa wszystkich generycznie wrzuconych do potoku nieprzechwyconych incydentów polega domyślnie na wylistowaniu na ostatnim u dołu rankingu tzw. śmieciarki catchera `WHEN OTHERS`.",
+            "Wykonać instrukcję RAISE NO_DATA_FOUND",
         ],
         correct: [1, 3]
     },
@@ -239,7 +239,7 @@ export const quizData: QuizQuestion[] = [
             "TOO_MANY_VALUES",
             "VALUE_ERROR",
             "NO_DATA_FOUND",
-            "TOO_MANY_ROWS\n💡 **Wyjaśnienie:** Proces przechwytywania awarii powołuje rezerwy wbudowane w kod Oracle, np. dla zdarzeń o znanym id `NO_DATA_FOUND`. Jeśli tworzymy własny wyjątek sprzęgający dany numer usterki do konkretnej nazwy, musimy zadeklarować go flagą oraz powiązać z systemowym parametrem komendy `PRAGMA EXCEPTION_INIT`. Obsługa wszystkich generycznie wrzuconych do potoku nieprzechwyconych incydentów polega domyślnie na wylistowaniu na ostatnim u dołu rankingu tzw. śmieciarki catchera `WHEN OTHERS`.",
+            "TOO_MANY_ROWS",
         ],
         correct: [3, 4]
     },
@@ -250,7 +250,7 @@ export const quizData: QuizQuestion[] = [
             "%ROWCOUNT",
             "%FOUND",
             "%NOTFOUND",
-            "%ISOPEN\n💡 **Wyjaśnienie:** Kursory jawne uruchamia się dla bezpiecznego powielania operacji na zapytaniach o dużej ilości wierszy z bazy. Chronią aplikację bazodanową przed wyjątkami `TOO_MANY_ROWS` w tradycyjnym `SELECT INTO` i pozwalają badać w pętlach m.in. atrybuty stanu bazy takie jak `%NOTFOUND` w przypadku braku nowych wierszy.",
+            "%ISOPEN",
         ],
         correct: [3]
     },
@@ -259,7 +259,7 @@ export const quizData: QuizQuestion[] = [
         question: "Czy poniższy kod PL/SQL jest poprawny z punktu widzenia składni:\nDECLARE\nFUNCTION Count_Exams (sid studenci.ID_student%TYPE) RETURN NUMBER IS exnr NUMBER ;\nBEGIN\nSELECT COUNT(*) INTO exnr FROM Egzaminy\nWHERE ID student = sid;\nRETURN exnr;\nEND Count_Exams ;\nCURSOR c1 IS SELECT ID student, Nazwisko, Imie FROM Studenci WHERE UPPER (Nazwisko) = 'MURYJAS' ;\nBEGIN\nFOR vc1 IN c1 LOOP\nDBMS_OUTPUT.PUT_LINE('ID - ' || Count_Exams (vc1.ID_student) );\nEND LOOP;\nEND;",
         options: [
             "Tak",
-            "Nie\n💡 **Wyjaśnienie:** Architektura kodu bazuje tu na regułach wymiarowania referencyjnego. Deklarujące ujęcie predykatu pomocniczego `%ROWTYPE` bezbłędnie przesyła schemat relacyjny pobranej bazy czy kursora do deklarowanej w PL/SQL zmiennej. Reguły te wymuszają także trzymanie zadeklarowanych nowości logicznych dla procedur składowych podprogramów funkcji i procedur tuż u dołu przed sekcją otwarcia bloku roboczego `BEGIN`.",
+            "Nie",
         ],
         correct: [1]
     },
@@ -272,7 +272,7 @@ export const quizData: QuizQuestion[] = [
             "Do typu innej dowolnej zmiennej",
             "Do typu innej zmiennej skalarnej",
             "Do struktury tabeli",
-            "Do zmiennej rekordowej\n💡 **Wyjaśnienie:** Architektura kodu bazuje tu na regułach wymiarowania referencyjnego. Deklarujące ujęcie predykatu pomocniczego `%ROWTYPE` bezbłędnie przesyła schemat relacyjny pobranej bazy czy kursora do deklarowanej w PL/SQL zmiennej. Reguły te wymuszają także trzymanie zadeklarowanych nowości logicznych dla procedur składowych podprogramów funkcji i procedur tuż u dołu przed sekcją otwarcia bloku roboczego `BEGIN`.",
+            "Do zmiennej rekordowej",
         ],
         correct: [0, 1, 4]
     },
@@ -283,7 +283,7 @@ export const quizData: QuizQuestion[] = [
             "WHEN STANDARD.NO_DATA_FOUND THEN Blok_Obsługi;",
             "WHEN SERVER.NO_DATA_FOUND THEN Blok_Obsługi;",
             "WHEN NO_DATA_FOUND THEN Blok_Obsługi;",
-            "WHEN BUILT_IN.NO_DATA_FOUND THEN Blok_Obsługi;\n💡 **Wyjaśnienie:** Proces przechwytywania awarii powołuje rezerwy wbudowane w kod Oracle, np. dla zdarzeń o znanym id `NO_DATA_FOUND`. Jeśli tworzymy własny wyjątek sprzęgający dany numer usterki do konkretnej nazwy, musimy zadeklarować go flagą oraz powiązać z systemowym parametrem komendy `PRAGMA EXCEPTION_INIT`. Obsługa wszystkich generycznie wrzuconych do potoku nieprzechwyconych incydentów polega domyślnie na wylistowaniu na ostatnim u dołu rankingu tzw. śmieciarki catchera `WHEN OTHERS`.",
+            "WHEN BUILT_IN.NO_DATA_FOUND THEN Blok_Obsługi;",
         ],
         correct: [0]
     },
@@ -294,7 +294,7 @@ export const quizData: QuizQuestion[] = [
             "9",
             "11",
             "3",
-            "7\n💡 **Wyjaśnienie:** Proces przechwytywania awarii powołuje rezerwy wbudowane w kod Oracle, np. dla zdarzeń o znanym id `NO_DATA_FOUND`. Jeśli tworzymy własny wyjątek sprzęgający dany numer usterki do konkretnej nazwy, musimy zadeklarować go flagą oraz powiązać z systemowym parametrem komendy `PRAGMA EXCEPTION_INIT`. Obsługa wszystkich generycznie wrzuconych do potoku nieprzechwyconych incydentów polega domyślnie na wylistowaniu na ostatnim u dołu rankingu tzw. śmieciarki catchera `WHEN OTHERS`.",
+            "7",
         ],
         correct: [1, 3]
     },
@@ -304,7 +304,7 @@ export const quizData: QuizQuestion[] = [
         options: [
             "Kolekcja typu NESTED TABLE",
             "Kolekcja typu tablica asocjacyjna",
-            "Kolekcja typu VARRAY\n💡 **Wyjaśnienie:** Kolekcje różnią się organizacją pod względem gęstości wierszy. Tablice asocjacyjne wspierają elastyczność i pozwalają na indeksy ujemne (poprzez indeksy oparte o PLS_INTEGER), a VARRAY to ze swej natury tablica sztywna, nierozszerzalna ponad założony limit i gęsta - dlatego nie można na niej wybiórczo usunąć pojedynczego elementu ze środka rzędu używając polecenia typu DELETE(indeks).",
+            "Kolekcja typu VARRAY",
         ],
         correct: [0, 2]
     },
@@ -315,7 +315,7 @@ export const quizData: QuizQuestion[] = [
             "5",
             "8",
             "2",
-            "9\n💡 **Wyjaśnienie:** Parametry domyślne dają elastyczność w omijaniu argumentów. Aby jednak skutecznie pominąć część wprowadzanych atrybutów bez błędu, stosujemy notację nazwaną ze strzałką '=>', jednoznacznie dopasowując przekazywany argument do docelowej nazwy w sygnaturze.",
+            "9",
         ],
         correct: [0]
     },
@@ -325,7 +325,7 @@ export const quizData: QuizQuestion[] = [
         options: [
             "Kolekcji typu tablica asocjacyjna",
             "Kolekcji VARRAY",
-            "Kolekcji NESTED TABLE\n💡 **Wyjaśnienie:** Kolekcje różnią się organizacją pod względem gęstości wierszy. Tablice asocjacyjne wspierają elastyczność i pozwalają na indeksy ujemne (poprzez indeksy oparte o PLS_INTEGER), a VARRAY to ze swej natury tablica sztywna, nierozszerzalna ponad założony limit i gęsta - dlatego nie można na niej wybiórczo usunąć pojedynczego elementu ze środka rzędu używając polecenia typu DELETE(indeks).",
+            "Kolekcji NESTED TABLE",
         ],
         correct: [1]
     },
@@ -336,7 +336,7 @@ export const quizData: QuizQuestion[] = [
             "Można skojarzyć z nią tylko jedno zapytanie, dla którego struktura zbioru wynikowego jest zgodna z definicją typu danych określonego w deklaracji zmiennej",
             "Można skojarzyć z nią tylko takie zapytanie, dla którego struktura zbioru wynikowego jest zgodna z definicją typu danych określonego w deklaracji zmiennej",
             "Można z nią skojarzyć dowolne zapytanie",
-            "Jej deklaracja zawiera definicję typu danych, który opisuje strukturę zbioru wynikowego zapytania skojarzonego z tą zmienną\n💡 **Wyjaśnienie:** Architektura kodu bazuje tu na regułach wymiarowania referencyjnego. Deklarujące ujęcie predykatu pomocniczego `%ROWTYPE` bezbłędnie przesyła schemat relacyjny pobranej bazy czy kursora do deklarowanej w PL/SQL zmiennej. Reguły te wymuszają także trzymanie zadeklarowanych nowości logicznych dla procedur składowych podprogramów funkcji i procedur tuż u dołu przed sekcją otwarcia bloku roboczego `BEGIN`.",
+            "Jej deklaracja zawiera definicję typu danych, który opisuje strukturę zbioru wynikowego zapytania skojarzonego z tą zmienną",
         ],
         correct: [3]
     },
@@ -347,7 +347,7 @@ export const quizData: QuizQuestion[] = [
             "4",
             "3",
             "6",
-            "5\n💡 **Wyjaśnienie:** Architektura kodu bazuje tu na regułach wymiarowania referencyjnego. Deklarujące ujęcie predykatu pomocniczego `%ROWTYPE` bezbłędnie przesyła schemat relacyjny pobranej bazy czy kursora do deklarowanej w PL/SQL zmiennej. Reguły te wymuszają także trzymanie zadeklarowanych nowości logicznych dla procedur składowych podprogramów funkcji i procedur tuż u dołu przed sekcją otwarcia bloku roboczego `BEGIN`.",
+            "5",
         ],
         correct: [0, 2]
     },
@@ -358,7 +358,7 @@ export const quizData: QuizQuestion[] = [
             "Instrukcja SELECT definiująca kursor nie jest poprawna składniowo",
             "Kursor został już uprzednio otwarty",
             "Połączenie z bazą danych zostało utracone",
-            "Zbiór wynikowy powstały po wykonaniu instrukcji SELECT, definiującej kursor, jest pusty\n💡 **Wyjaśnienie:** Kursory jawne uruchamia się dla bezpiecznego powielania operacji na zapytaniach o dużej ilości wierszy z bazy. Chronią aplikację bazodanową przed wyjątkami `TOO_MANY_ROWS` w tradycyjnym `SELECT INTO` i pozwalają badać w pętlach m.in. atrybuty stanu bazy takie jak `%NOTFOUND` w przypadku braku nowych wierszy.",
+            "Zbiór wynikowy powstały po wykonaniu instrukcji SELECT, definiującej kursor, jest pusty",
         ],
         correct: [1]
     },
@@ -370,7 +370,7 @@ export const quizData: QuizQuestion[] = [
             "Deklarację kursora",
             "Deklarację stałej",
             "Deklarację zmiennej",
-            "Deklarację typu danych\n💡 **Wyjaśnienie:** Cykl budowy obiektowej narzuca systematykę w Oracle - domyślnie instaluje się publiczną specyfikację poleceniem `CREATE OR REPLACE PACKAGE` z pustymi deklaracjami, by dopiero w drugiej fazie dostarczyć dedykowaną logikę za pomocą polecenia `CREATE OR REPLACE PACKAGE BODY`, modyfikującego algorytm bez usuwania ustawień bazy.",
+            "Deklarację typu danych",
         ],
         correct: [0, 1, 2, 3, 4]
     },
@@ -381,7 +381,7 @@ export const quizData: QuizQuestion[] = [
             "DECLARE\nCURSOR C1 IS SELECT Id_Student, Nazwisko, Imie FROM Studenci ; CURSOR C2(ids studenci.id_student%TYPE) IS\nBEGIN\nSELECT COUNT(Punkty) Total FROM Egzaminy WHERE Id_student ids;\nFOR vc1 IN c1 LOOP\nFOR vc2 IN c2(vc1.Id_Student) LOOP\nIF vc2.Total = 0 THEN\nDBMS_OUTPUT.PUT_LINE('Student o ID = vc1.Id_Student || nie zdawał egzaminu');\nEND IF;\nEND LOOP;\nEND LOOP;\nEND;",
             "DECLARE\nCURSOR C1 IS SELECT Id Student, Nazwisko, Imie FROM Studenci ;\nCURSOR C2(ids studenci.id_student%TYPE) IS\nBEGIN\nSELECT SUM(Punkty) Total FROM Egzaminy WHERE Id_student = ids;\nFOR vc1 IN c1 LOOP\nFOR vc2 IN c2(vc1.Id_Student) LOOP\nIF vc2. Total IS NULL THEN\nDBMS_OUTPUT.PUT_LINE('Student o ID= || vc1.Id_Student || nie zdawał egzaminu');\nEND IF ;\nEND LOOP;\nEND LOOP;\nEND;",
             "DECLARE\nCURSOR C1 IS SELECT Id_Student, Nazwisko, Imie FROM Studenci ; CURSOR C2(ids studenci.id_student%TYPE) IS\nBEGIN\nSELECT SUM(Punkty) Total FROM Egzaminy WHERE Id_student = ids;\nFOR vc1 IN c1 LOOP\nFOR vc2 IN c2(vc1.Id_Student) LOOP\nIF vc2.Total = 0 THEN\nDBMS_OUTPUT.PUT_LINE('Student o ID= || vc1.Id_Student ||\nnie zdawał egzaminu');\nEND IF ;\nEND LOOP;\nEND LOOP;\nEND;",
-            "DECLARE\nCURSOR C1 IS SELECT Id_Student, Nazwisko, Imie FROM Studenci ; CURSOR C2(ids studenci.id_student%TYPE) IS\nBEGIN\nSELECT COUNT(Punkty) Total FROM Egzaminy WHERE Id_student = ids;\nFOR vc1 IN c1 LOOP\nFOR vc2 IN c2(vc1. Id_Student) LOOP\nIF vc2.Total IS NULL THEN\nDBMS_OUTPUT.PUT_LINE('Student o ID = ' || vc1.Id_Student || nie zdawał egzaminu');\nEND IF ;\nEND LOOP;\nEND LOOP;\nEND;\n💡 **Wyjaśnienie:** Ważną właściwością grupowych zapytań SQL (używających np. MAX, SUM, COUNT) jest to, że nie rzucają błędu braku danych (NO_DATA_FOUND). Jeśli rekordy nie przyniosą wyników, funkcja uwzględniająca liczbę rzędów – COUNT, zwróci czyste i bezkonfliktowe wielkościowe 0. Natomiast zastosowana fukcja kalkulacyjna jak SUM narzuci na pustą wartość zwyczajny systemowy logiczy NULL.",
+            "DECLARE\nCURSOR C1 IS SELECT Id_Student, Nazwisko, Imie FROM Studenci ; CURSOR C2(ids studenci.id_student%TYPE) IS\nBEGIN\nSELECT COUNT(Punkty) Total FROM Egzaminy WHERE Id_student = ids;\nFOR vc1 IN c1 LOOP\nFOR vc2 IN c2(vc1. Id_Student) LOOP\nIF vc2.Total IS NULL THEN\nDBMS_OUTPUT.PUT_LINE('Student o ID = ' || vc1.Id_Student || nie zdawał egzaminu');\nEND IF ;\nEND LOOP;\nEND LOOP;\nEND;",
         ],
         correct: [0, 1]
     },
@@ -392,7 +392,7 @@ export const quizData: QuizQuestion[] = [
             "W pakiecie predefiniowanym o nazwie STANDARD",
             "W schemacie bazy danych jako jej obiekt",
             "W pakiecie utworzonym przez użytkownika, zapisanym jako obiekt bazy danych",
-            "W pliku dyskowym zapisanym w miejscu określonym przez definiującego podprogram składowany\n💡 **Wyjaśnienie:** Wybrana odpowiedź wprost odzwierciedla prawidłową, standardowo rekomendowaną ze sztuki i narzucaną w dokumentacjach architektoniczną konstrukcję ze środowisk od RDBMS dającą poprawnie funkcjonujący w bazie skrypt PL/SQL bez obciążeń na spadek spójności ani powodowaniach do przerwań.",
+            "W pliku dyskowym zapisanym w miejscu określonym przez definiującego podprogram składowany",
         ],
         correct: [1]
     },
@@ -403,7 +403,7 @@ export const quizData: QuizQuestion[] = [
             "zamknięcie kursora",
             "pobranie wiersza z kursora i zapisanie go w zmiennej rekordowej",
             "definicja kursora",
-            "otwarcie kursora\n💡 **Wyjaśnienie:** Kursory jawne uruchamia się dla bezpiecznego powielania operacji na zapytaniach o dużej ilości wierszy z bazy. Chronią aplikację bazodanową przed wyjątkami `TOO_MANY_ROWS` w tradycyjnym `SELECT INTO` i pozwalają badać w pętlach m.in. atrybuty stanu bazy takie jak `%NOTFOUND` w przypadku braku nowych wierszy.",
+            "otwarcie kursora",
         ],
         correct: [0, 1, 3]
     },
@@ -414,7 +414,7 @@ export const quizData: QuizQuestion[] = [
             "Nie ma takiej kolekcji, której indeks może być liczbą całkowitą ujemną",
             "Kolekcja typu VARRAY",
             "Kolekcja typu tablica asocjacyjna",
-            "Kolekcja typu NESTED TABLE\n💡 **Wyjaśnienie:** Kolekcje różnią się organizacją pod względem gęstości wierszy. Tablice asocjacyjne wspierają elastyczność i pozwalają na indeksy ujemne (poprzez indeksy oparte o PLS_INTEGER), a VARRAY to ze swej natury tablica sztywna, nierozszerzalna ponad założony limit i gęsta - dlatego nie można na niej wybiórczo usunąć pojedynczego elementu ze środka rzędu używając polecenia typu DELETE(indeks).",
+            "Kolekcja typu NESTED TABLE",
         ],
         correct: [2]
     },
@@ -425,7 +425,7 @@ export const quizData: QuizQuestion[] = [
             "Kolekcja typu tablica asocjacyjna",
             "Nie ma takiej kolekcji, której indeks może być liczbą całkowitą ujemną",
             "Kolekcja typu NESTED TABLE",
-            "Kolekcja typu VARRAY\n💡 **Wyjaśnienie:** Kolekcje różnią się organizacją pod względem gęstości wierszy. Tablice asocjacyjne wspierają elastyczność i pozwalają na indeksy ujemne (poprzez indeksy oparte o PLS_INTEGER), a VARRAY to ze swej natury tablica sztywna, nierozszerzalna ponad założony limit i gęsta - dlatego nie można na niej wybiórczo usunąć pojedynczego elementu ze środka rzędu używając polecenia typu DELETE(indeks).",
+            "Kolekcja typu VARRAY",
         ],
         correct: [0]
     },
@@ -434,7 +434,7 @@ export const quizData: QuizQuestion[] = [
         question: "Czy składnia instrukcji SELECT w części wykonawczej bloku PL/SQL jest identyczna ze składnią instrukcji SELECT języka SQL?",
         options: [
             "Nie",
-            "Tak\n💡 **Wyjaśnienie:** Składnia PL/SQL ściśle wymaga klauzuli `INTO` przy instrukcjach `SELECT`, które powracają jako zapytanie jednowierszowe, w celu przekazania wyników pod docelowe zmienne robocze. Brak tego wymogu rodzi błąd kompilacji bazy.",
+            "Tak",
         ],
         correct: [0]
     },
@@ -444,7 +444,7 @@ export const quizData: QuizQuestion[] = [
         options: [
             "13 i 3",
             "13 i 20",
-            "13 i 6\n💡 **Wyjaśnienie:** Kolekcje różnią się organizacją pod względem gęstości wierszy. Tablice asocjacyjne wspierają elastyczność i pozwalają na indeksy ujemne (poprzez indeksy oparte o PLS_INTEGER), a VARRAY to ze swej natury tablica sztywna, nierozszerzalna ponad założony limit i gęsta - dlatego nie można na niej wybiórczo usunąć pojedynczego elementu ze środka rzędu używając polecenia typu DELETE(indeks).",
+            "13 i 6",
         ],
         correct: [2]
     },
@@ -456,7 +456,7 @@ export const quizData: QuizQuestion[] = [
             "Instrukcja ta nigdy nie powoduje powstanie wyjątku",
             "TOO_MANY_ROWS",
             "NO_DATA_FOUND",
-            "INVALID_CURSOR\n💡 **Wyjaśnienie:** Proces przechwytywania awarii powołuje rezerwy wbudowane w kod Oracle, np. dla zdarzeń o znanym id `NO_DATA_FOUND`. Jeśli tworzymy własny wyjątek sprzęgający dany numer usterki do konkretnej nazwy, musimy zadeklarować go flagą oraz powiązać z systemowym parametrem komendy `PRAGMA EXCEPTION_INIT`. Obsługa wszystkich generycznie wrzuconych do potoku nieprzechwyconych incydentów polega domyślnie na wylistowaniu na ostatnim u dołu rankingu tzw. śmieciarki catchera `WHEN OTHERS`.",
+            "INVALID_CURSOR",
         ],
         correct: [2, 3]
     },
@@ -467,7 +467,7 @@ export const quizData: QuizQuestion[] = [
             "Można z nią skojarzyć dowolne zapytanie",
             "Jej deklaracja zawiera definicję typu danych, który opisuje strukturę zbioru wynikowego zapytania skojarzonego z tą zmienną",
             "Można skojarzyć z nią tylko jedno zapytanie, dla którego struktura zbioru wynikowego jest zgodna z definicją typu danych określonego w deklaracji zmiennej",
-            "Można skojarzyć z nią tylko takie zapytanie, dla którego struktura zbioru wynikowego jest zgodna z definicją typu danych określonego w deklaracji zmiennej\n💡 **Wyjaśnienie:** Architektura kodu bazuje tu na regułach wymiarowania referencyjnego. Deklarujące ujęcie predykatu pomocniczego `%ROWTYPE` bezbłędnie przesyła schemat relacyjny pobranej bazy czy kursora do deklarowanej w PL/SQL zmiennej. Reguły te wymuszają także trzymanie zadeklarowanych nowości logicznych dla procedur składowych podprogramów funkcji i procedur tuż u dołu przed sekcją otwarcia bloku roboczego `BEGIN`.",
+            "Można skojarzyć z nią tylko takie zapytanie, dla którego struktura zbioru wynikowego jest zgodna z definicją typu danych określonego w deklaracji zmiennej",
         ],
         correct: [0]
     },
@@ -476,7 +476,7 @@ export const quizData: QuizQuestion[] = [
         question: "Czy poniższy kod PL/SQL pozwala wyświetlić odpowiedni komunikat w przypadku, gdy student o nazwisku Kot nie istnieje w tabeli Studenci?\nDECLARE\ncursor c1 IS SELECT ID student, Nazwisko, Imie FROM Studenci\nWHERE UPPER (Nazwisko) = 'KOT' ;\nvc1 c1%ROWTYPE;\nBEGIN\nOPEN c1 ;\nFETCH c1 INTO vc1 ;\nIF C1%FOUND THEN\nDBMS_OUTPUT.PUT_LINE('Nie ma studenta o podanym nazwisku');\nEND IF ;\nCLOSE c1 ;\nEXCEPTION\nWHEN NO_DATA_FOUND THEN\nDBMS_OUTPUT.PUT_LINE('Nie ma studenta o podanym nazwisku') ;",
         options: [
             "Tak",
-            "Nie\n💡 **Wyjaśnienie:** Proces przechwytywania awarii powołuje rezerwy wbudowane w kod Oracle, np. dla zdarzeń o znanym id `NO_DATA_FOUND`. Jeśli tworzymy własny wyjątek sprzęgający dany numer usterki do konkretnej nazwy, musimy zadeklarować go flagą oraz powiązać z systemowym parametrem komendy `PRAGMA EXCEPTION_INIT`. Obsługa wszystkich generycznie wrzuconych do potoku nieprzechwyconych incydentów polega domyślnie na wylistowaniu na ostatnim u dołu rankingu tzw. śmieciarki catchera `WHEN OTHERS`.",
+            "Nie",
         ],
         correct: [1]
     },
@@ -487,7 +487,7 @@ export const quizData: QuizQuestion[] = [
             "WHEN NO_DATA_FOUND THEN\nBlok_obsługi_1;\nWHEN INVALID_NUMBER THEN\nBlok_obsługi_1;",
             "WHEN NO_DATA_FOUND OR INVALID_NUMBER THEN\nBlok_obsługi_1;",
             "WHEN NO_DATA_FOUND AND INVALID_NUMBER THEN\nBlok_obsługi_1;",
-            "WHEN OTHERS THEN\nBlok_obsługi_1;\n💡 **Wyjaśnienie:** Proces przechwytywania awarii powołuje rezerwy wbudowane w kod Oracle, np. dla zdarzeń o znanym id `NO_DATA_FOUND`. Jeśli tworzymy własny wyjątek sprzęgający dany numer usterki do konkretnej nazwy, musimy zadeklarować go flagą oraz powiązać z systemowym parametrem komendy `PRAGMA EXCEPTION_INIT`. Obsługa wszystkich generycznie wrzuconych do potoku nieprzechwyconych incydentów polega domyślnie na wylistowaniu na ostatnim u dołu rankingu tzw. śmieciarki catchera `WHEN OTHERS`.",
+            "WHEN OTHERS THEN\nBlok_obsługi_1;",
         ],
         correct: [1]
     },
@@ -498,7 +498,7 @@ export const quizData: QuizQuestion[] = [
             "My Rec ROWTYPE (Id NUMBER(5), Name VARCHAR2(30));",
             "TYPE tMy_Rec IS RECORD (Id NUMBER(5), Name VARCHAR2(30)); My_Rec tMy_Rec;",
             "TYPE tMy_Rec AS OBJECT (Id NUMBER(5), Name VARCHAR2(30)); My_Rec tMy_Rec;",
-            "My Rec IS RECORD (Id NUMBER(5), Name VARCHAR2(30));\n💡 **Wyjaśnienie:** Architektura kodu bazuje tu na regułach wymiarowania referencyjnego. Deklarujące ujęcie predykatu pomocniczego `%ROWTYPE` bezbłędnie przesyła schemat relacyjny pobranej bazy czy kursora do deklarowanej w PL/SQL zmiennej. Reguły te wymuszają także trzymanie zadeklarowanych nowości logicznych dla procedur składowych podprogramów funkcji i procedur tuż u dołu przed sekcją otwarcia bloku roboczego `BEGIN`.",
+            "My Rec IS RECORD (Id NUMBER(5), Name VARCHAR2(30));",
         ],
         correct: [1]
     },
@@ -509,7 +509,7 @@ export const quizData: QuizQuestion[] = [
             "%FOUND",
             "%ROWCOUNT",
             "%NOTFOUND",
-            "%ISOPEN\n💡 **Wyjaśnienie:** Kursory jawne uruchamia się dla bezpiecznego powielania operacji na zapytaniach o dużej ilości wierszy z bazy. Chronią aplikację bazodanową przed wyjątkami `TOO_MANY_ROWS` w tradycyjnym `SELECT INTO` i pozwalają badać w pętlach m.in. atrybuty stanu bazy takie jak `%NOTFOUND` w przypadku braku nowych wierszy.",
+            "%ISOPEN",
         ],
         correct: [0, 2]
     },
@@ -520,7 +520,7 @@ export const quizData: QuizQuestion[] = [
             "CLOSE",
             "OPEN",
             "DECLARE CURSOR",
-            "FETCH\n💡 **Wyjaśnienie:** Kursory jawne uruchamia się dla bezpiecznego powielania operacji na zapytaniach o dużej ilości wierszy z bazy. Chronią aplikację bazodanową przed wyjątkami `TOO_MANY_ROWS` w tradycyjnym `SELECT INTO` i pozwalają badać w pętlach m.in. atrybuty stanu bazy takie jak `%NOTFOUND` w przypadku braku nowych wierszy.",
+            "FETCH",
         ],
         correct: [0, 1, 3]
     },
@@ -531,7 +531,7 @@ export const quizData: QuizQuestion[] = [
             "My Constant IS CONSTANT NUMBER(1) := 5;",
             "My Constant CONSTANT NUMBER(1) NOT NULL := 10;",
             "My Constant CONSTANT NUMBER(1) := 10;",
-            "My Constant CONSTANT NUMBER(1) := 5;\n💡 **Wyjaśnienie:** Wybrana odpowiedź wprost odzwierciedla prawidłową, standardowo rekomendowaną ze sztuki i narzucaną w dokumentacjach architektoniczną konstrukcję ze środowisk od RDBMS dającą poprawnie funkcjonujący w bazie skrypt PL/SQL bez obciążeń na spadek spójności ani powodowaniach do przerwań.",
+            "My Constant CONSTANT NUMBER(1) := 5;",
         ],
         correct: [3]
     },
@@ -542,7 +542,7 @@ export const quizData: QuizQuestion[] = [
             "5",
             "20",
             "0",
-            "10\n💡 **Wyjaśnienie:** Kolekcje różnią się organizacją pod względem gęstości wierszy. Tablice asocjacyjne wspierają elastyczność i pozwalają na indeksy ujemne (poprzez indeksy oparte o PLS_INTEGER), a VARRAY to ze swej natury tablica sztywna, nierozszerzalna ponad założony limit i gęsta - dlatego nie można na niej wybiórczo usunąć pojedynczego elementu ze środka rzędu używając polecenia typu DELETE(indeks).",
+            "10",
         ],
         correct: [0]
     },
@@ -554,7 +554,7 @@ export const quizData: QuizQuestion[] = [
             "Jeżeli specyfikacja zawiera tylko deklarację zmiennej lub stałej.",
             "Jeżeli specyfikacja zawiera tylko deklarację kursora",
             "Jeżeli specyfikacja zawiera tylko deklarację typu danych",
-            "Jeżeli specyfikacja zawiera tylko deklarację wyjątku\n💡 **Wyjaśnienie:** Cykl budowy obiektowej narzuca systematykę w Oracle - domyślnie instaluje się publiczną specyfikację poleceniem `CREATE OR REPLACE PACKAGE` z pustymi deklaracjami, by dopiero w drugiej fazie dostarczyć dedykowaną logikę za pomocą polecenia `CREATE OR REPLACE PACKAGE BODY`, modyfikującego algorytm bez usuwania ustawień bazy.",
+            "Jeżeli specyfikacja zawiera tylko deklarację wyjątku",
         ],
         correct: [1, 3, 4]
     },
@@ -566,7 +566,7 @@ export const quizData: QuizQuestion[] = [
             "Sekcja wykonawcza (BEGIN)",
             "Sekcja wywołania pakietów",
             "Sekcja wywołania funkcji i procedur",
-            "Sekcja deklaracyjna (DECLARE)\n💡 **Wyjaśnienie:** Wybrana odpowiedź wprost odzwierciedla prawidłową, standardowo rekomendowaną ze sztuki i narzucaną w dokumentacjach architektoniczną konstrukcję ze środowisk od RDBMS dającą poprawnie funkcjonujący w bazie skrypt PL/SQL bez obciążeń na spadek spójności ani powodowaniach do przerwań.",
+            "Sekcja deklaracyjna (DECLARE)",
         ],
         correct: [1]
     },
@@ -576,7 +576,7 @@ export const quizData: QuizQuestion[] = [
         options: [
             "Kolekcja typu VARRAY",
             "Kolekcja typu tablica zagnieżdżona",
-            "Kolekcja typu tablica asocjacyjna\n💡 **Wyjaśnienie:** Kolekcje różnią się organizacją pod względem gęstości wierszy. Tablice asocjacyjne wspierają elastyczność i pozwalają na indeksy ujemne (poprzez indeksy oparte o PLS_INTEGER), a VARRAY to ze swej natury tablica sztywna, nierozszerzalna ponad założony limit i gęsta - dlatego nie można na niej wybiórczo usunąć pojedynczego elementu ze środka rzędu używając polecenia typu DELETE(indeks).",
+            "Kolekcja typu tablica asocjacyjna",
         ],
         correct: [1, 2]
     },
@@ -588,7 +588,7 @@ export const quizData: QuizQuestion[] = [
             "CURSOR_ALREADY_OPEN",
             "NO_DATA_FOUND",
             "Żaden wyjątek nie powstanie podczas wykonywania tego kodu PL/SQL",
-            "TOO_MANY_ROWS\n💡 **Wyjaśnienie:** Proces przechwytywania awarii powołuje rezerwy wbudowane w kod Oracle, np. dla zdarzeń o znanym id `NO_DATA_FOUND`. Jeśli tworzymy własny wyjątek sprzęgający dany numer usterki do konkretnej nazwy, musimy zadeklarować go flagą oraz powiązać z systemowym parametrem komendy `PRAGMA EXCEPTION_INIT`. Obsługa wszystkich generycznie wrzuconych do potoku nieprzechwyconych incydentów polega domyślnie na wylistowaniu na ostatnim u dołu rankingu tzw. śmieciarki catchera `WHEN OTHERS`.",
+            "TOO_MANY_ROWS",
         ],
         correct: [3]
     },
@@ -598,7 +598,7 @@ export const quizData: QuizQuestion[] = [
         options: [
             "0000020 - 2013-10-21\n0987654 - 2020-10-15\n9876543 -\n0909091 - 2022-12-06",
             "0000020 2013-10-21\n0987654-2020-10-15\n9876543 - brak egzaminów\n0909091 - 2022-12-06",
-            "0000020 - 2013-10-21\n0987654 - 2020-10-15\n9876543-0\n0909091 2022-12-06\n💡 **Wyjaśnienie:** Ważną właściwością grupowych zapytań SQL (używających np. MAX, SUM, COUNT) jest to, że nie rzucają błędu braku danych (NO_DATA_FOUND). Jeśli rekordy nie przyniosą wyników, funkcja uwzględniająca liczbę rzędów – COUNT, zwróci czyste i bezkonfliktowe wielkościowe 0. Natomiast zastosowana fukcja kalkulacyjna jak SUM narzuci na pustą wartość zwyczajny systemowy logiczy NULL.",
+            "0000020 - 2013-10-21\n0987654 - 2020-10-15\n9876543-0\n0909091 2022-12-06",
         ],
         correct: [0]
     },
@@ -610,7 +610,7 @@ export const quizData: QuizQuestion[] = [
             "Należy utworzyć w bazie danych obiekt będący funkcją przy pomocy polecenia CREATE FUNCTION, podając w nim definicję wymaganej funkcji.",
             "Należy utworzyć blok PL/SQL, w którego części deklaracyjnej znajdzie się definicja wymaganej funkcji. Następnie należy zapisać plik zawierający ten blok w bazie danych.",
             "Należy utworzyć w bazie danych pakiet, w którego specyfikacji znajdzie się deklaracja wymaganej funkcji. Następnie w ciele pakietu należy zdefiniować kod źródłowy dla tej funkcji.",
-            "Należy utworzyć w bazie danych specyfikację pakietu, w której znajdzie się definicja wymaganej funkcji\n💡 **Wyjaśnienie:** Wybrana odpowiedź wprost odzwierciedla prawidłową, standardowo rekomendowaną ze sztuki i narzucaną w dokumentacjach architektoniczną konstrukcję ze środowisk od RDBMS dającą poprawnie funkcjonujący w bazie skrypt PL/SQL bez obciążeń na spadek spójności ani powodowaniach do przerwań.",
+            "Należy utworzyć w bazie danych specyfikację pakietu, w której znajdzie się definicja wymaganej funkcji",
         ],
         correct: [1, 3]
     },
@@ -620,7 +620,7 @@ export const quizData: QuizQuestion[] = [
         options: [
             "declare\nCURSOR c1 is SELECT Id_Student, Nazwisko, Imie FROM Studenci;\nvnum NUMBER;\nno_data_found EXCEPTION;\nbegin\nFOR vc1 IN c1 LOOP\nbegin\nSELECT DISTINCT 1 INTO vnum FROM Egzaminy WHERE Id Student = vc1.Id_Student;\n dbms_output.put_line(vc1.Id_Student || ' - istnieje egzamin' );\nexception\nwhen NO_DATA_FOUND then\ndbms_output.put_line(vc1.Id_Student || ' - brak egzaminów\");\nend;\nEND LOOP;\n end;",
             "declare\nCURSOR c1 is SELECT Id_Student, Nazwisko, Imie FROM Studenci;\nvnum NUMBER;\nno_data_found EXCEPTION;\nbegin\nFOR vc1 IN c1 LOOP\nbegin\nSELECT DISTINCT 1 INTO vnum FROM Egzaminy WHERE Id_Student = vc1.Id_Student;\n dbms_output.put_line(vc1.Id_Student || ' - istnieje egzamin' );\nexception\nwhen STANDARD.NO_DATA_FOUND then\ndbms_output.put_line(vc1.Id_Student || ' - brak egzaminów');\nend;\nEND LOOP;\nend;",
-            "declare\nCURSOR c1 is SELECT Id Student, Nazwisko, Imie FROM Studenci ;\nvnum NUMBER;\nno_data_found EXCEPTION;\nbegin\nFOR vc1 IN c1 LOOP\nbegin\nSELECT DISTINCT 1 INTO vnum FROM Egzaminy WHERE Id_Student = vc1.Id_Student;\n IF vnum IS NOT NULL THEN\ndbms_output.put_line(vc1.Id_Student || ' - istnieje egzamin');\nELSE\ndbms_output.put_line(vc1.Id_Student || ' - brak egzaminów\");\nEND IF;\nend;\nEND LOOP;\n end;\n💡 **Wyjaśnienie:** Ważną właściwością grupowych zapytań SQL (używających np. MAX, SUM, COUNT) jest to, że nie rzucają błędu braku danych (NO_DATA_FOUND). Jeśli rekordy nie przyniosą wyników, funkcja uwzględniająca liczbę rzędów – COUNT, zwróci czyste i bezkonfliktowe wielkościowe 0. Natomiast zastosowana fukcja kalkulacyjna jak SUM narzuci na pustą wartość zwyczajny systemowy logiczy NULL.",
+            "declare\nCURSOR c1 is SELECT Id Student, Nazwisko, Imie FROM Studenci ;\nvnum NUMBER;\nno_data_found EXCEPTION;\nbegin\nFOR vc1 IN c1 LOOP\nbegin\nSELECT DISTINCT 1 INTO vnum FROM Egzaminy WHERE Id_Student = vc1.Id_Student;\n IF vnum IS NOT NULL THEN\ndbms_output.put_line(vc1.Id_Student || ' - istnieje egzamin');\nELSE\ndbms_output.put_line(vc1.Id_Student || ' - brak egzaminów\");\nEND IF;\nend;\nEND LOOP;\n end;",
         ],
         correct: [1]
     },
