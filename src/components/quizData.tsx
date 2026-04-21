@@ -36,7 +36,7 @@ export const quizData: QuizQuestion[] = [
             "jego parametry podaje się bezpośrednio po nazwie klasy (z opcjonlanym słowem constructor)",
             "nie jest zawsze wykonywany przy tworzeniu obiektu",
             "składnia konstruktora pozwala na równoczesne stworzenie właściwości klasy",
-            "nie można ustawić parametrów",
+            "nie musi miećparametrów",
         ],
         correct: [1]
     },
