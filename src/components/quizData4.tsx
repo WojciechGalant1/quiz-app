@@ -63,7 +63,7 @@ export const quizData: QuizQuestion[] = [
         options: [
             "Translację danych pomiędzy relacyjną bazą danych a światem obiektowym",
             "Obsługę trwałości obiektów z wykorzystaniem informacji o odwzorowaniu obiektowo-relacyjnym modelu danych aplikacji",
-            "Automatyczne generowanie widoków HTML dla encji",
+            "Odwzorowanie obiektowej architektury systemu informatycznego na bazę danych o relacyjnym charakterze",
         ],
         correct: [0, 1]
     },
@@ -71,12 +71,11 @@ export const quizData: QuizQuestion[] = [
         id: 7,
         question: "AOP to:",
         options: [
-            "Odwzorowanie obiektowej architektury systemu informatycznego na bazę danych o relacyjnym charakterze",
             "Aspect-Object Programming",
             "Aspect-Oriented Programming",
             "Aspect-Oriented Problems",
         ],
-        correct: [2]
+        correct: [1]
     },
     {
         id: 8,
@@ -183,9 +182,10 @@ export const quizData: QuizQuestion[] = [
         question: "Metadane konfiguracyjne w Springu:",
         options: [
             "Są odczytywane przez Spring IoC Container",
-            "Określają obiekty w aplikacji, ich konfigurację oraz współzależności między tymi obiektami. Są pobierane z obiektów POJO",
+            "Określają obiekty w aplikacji, ich konfigurację oraz współzależności między tymi obiektami.",
+            "Są pobierane z obiektów POJO",
         ],
-        correct: [0]
+        correct: [0, 1]
     },
     {
         id: 19,
@@ -467,19 +467,21 @@ export const quizData: QuizQuestion[] = [
         id: 45,
         question: "Poprawna definicja komponentu klasy KomponentBean w Javie ma postać:",
         options: [
-            "public class omponentBean { private int x,y; public int pobierzX() {return x;} public void ustawX(int x) {this.x=x;} public int pobierzY() {return x;} public void ustawY(int y) {this.y=y;} } oraz konfiguracja XML ze scope session",
+            "public class omponentBean { private int x,y; public int pobierzX() {return x;} public void ustawX(intx) {this.x=x;} public int pobierzY() {return x;}public void ustawY(int y) {this.y=y;}}",
+            " <managed-bean> <managed-bean-name>komponentBean </managed-bean-name> <managed-bean-scope>session </managed-bean-scope> </managed-bean>",
             "public class omponentBean { private int x,y; public int getX() {return x;} public void setX(int x) {this.x=x;} public int getY() {return x;} public void setY(int y) {this.y=y;} }",
         ],
-        correct: [1]
+        correct: [2]
     },
     {
         id: 46,
         question: "Poprawna definicja komponentu klasy KomponentBean w pliku XML ma postać:",
         options: [
-            "public class componentBean { private int x,y; ... } oraz fragment XML bez managed-bean-class",
-            "<managed-bean> <managed-bean-name>komponentBean</managed-bean-name> <managed-bean-class>komponentBean</managed-bean-class> <managed-bean-scope>request</managed-bean-scope> </managed-bean>",
+            "public class omponentBean { private int x,y; public int pobierzX() {return x;} public void ustawX(intx) {this.x=x;} public int pobierzY() {return x;}public void ustawY(int y) {this.y=y;}}",
+            "<managed-bean><managed-bean-name>komponentBean</managed-bean-name><managed-bean-scope>request</managed-bean-scope></managed-bean>",
+            "<managed-bean> <managed-bean-name>komponentBean </managed-bean-name> <managed-bean-class>komponentBean </managed-bean- class > <managed-bean-scope>request </managed-bean-scope> </managed-bean>",
         ],
-        correct: [1]
+        correct: [2]
     },
     {
         id: 47,
