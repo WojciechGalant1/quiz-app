@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { RotateCcw } from 'lucide-react';
-import { quizData, type QuizQuestion } from './quizData';
+import { quizData, type QuizQuestion } from './quizData4';
 
 // Sub-components
 import Navbar from './quiz/Navbar';

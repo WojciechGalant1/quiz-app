@@ -1,6 +1,6 @@
 import React from 'react';
 import { X, Layers, BookOpen, Check, Download, Trash2 } from 'lucide-react';
-import { quizData, type QuizQuestion } from '../quizData';
+import { quizData, type QuizQuestion } from '../quizData4';
 
 interface LibraryModalProps {
     isOpen: boolean;
@@ -70,7 +70,7 @@ const LibraryModal = ({
                                     </div>
                                     <div>
                                         <p className="font-bold text-white text-lg">Wszystkie pytania</p>
-                                        <p className="text-white/30 text-xs">Pełna baza z quizData.tsx (~155 pytań)</p>
+                                        <p className="text-white/30 text-xs">Pełna baza z quizData4.tsx (~70 pytań)</p>
                                     </div>
                                 </div>
                                 {activePoolName === 'Wszystkie pytania' && <Check className="w-6 h-6 text-purple-400" />}
